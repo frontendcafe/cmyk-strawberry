@@ -1,5 +1,5 @@
 # cmyk-strawberry
-{Descripcion}
+Tutti Frutti es un juego de lápiz y papel que consiste en buscar palabras a partir de una letra y de una serie de categorías definidas previamente. En esta oportunidad lo vamos a llevar a lo digital, donde se podrá disfrutar jugando con amigos, para divertirse y pasar un buen rato. El ganador del juego es quien logre conseguir más puntos a lo largo de las diferentes rondas.
 
 ## 🌐 URL
  #### Web
