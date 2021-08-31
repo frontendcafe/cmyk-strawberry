@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-sass-guidelines"
+  ],
+  "plugins": [
+		"stylelint-order",
+    "stylelint-declaration-use-variable"
+	],
+  "rules": { 
+    "order/properties-alphabetical-order": true,
+    "selector-max-class": 4,
+    "sh-waqar/declaration-use-variable": [["/color/", "z-index", "font-size", "font-weight", { "ignoreValues": ["transparent", "inherit", "/regexForspecialFunc/"] }]]
+  }
+}
