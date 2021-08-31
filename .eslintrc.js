@@ -14,7 +14,35 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
+    indent: ['error', 2],
+    'react/jsx-wrap-multilines': ['error', {
+      declaration: 'parens',
+      assignment: 'parens',
+      return: 'parens',
+      arrow: 'parens',
+      condition: 'ignore',
+      logical: 'ignore',
+      prop: 'ignore'
+    }],
+    'react/self-closing-comp': ['error', {
+      component: true,
+      html: true
+    }],
+    'no-multi-spaces': 'error',
+    'react/jsx-tag-spacing': ['error', {
+      closingSlash: 'never',
+      beforeSelfClosing: 'never',
+      afterOpening: 'never',
+      beforeClosing: 'never'
+    }],
+    'react/jsx-closing-bracket-location': [1, 'tag-aligned'],
+    'no-unused-vars': ['warn', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }],
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error']
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
   }
 }
