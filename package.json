@@ -7,7 +7,8 @@
     "lint-fix": "eslint src/**/*.ts src/**/*.tsx --fix && npx stylelint \"**/*.scss\" --fix",
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "prepare": "husky install"
   },
   "dependencies": {
     "node-sass": "^6.0.1",
@@ -34,6 +35,7 @@
     "stylelint-declaration-use-variable": "^1.7.3",
     "stylelint-order": "^4.1.0",
     "typescript": "^4.3.2",
-    "vite": "^2.5.1"
+    "vite": "^2.5.1",
+    "husky": "^7.0.2"
   }
 }
