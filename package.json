@@ -5,7 +5,6 @@
     "lint": "eslint src/**/*.ts src/**/*.tsx",
     "lint-scss": "npx stylelint \"**/*.scss\"",
     "lint-fix": "eslint src/**/*.ts src/**/*.tsx --fix && npx stylelint \"**/*.scss\" --fix",
-    "format": "npx prettier --check .",
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview"
@@ -28,7 +27,6 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.25.1",
-    "prettier": "2.3.2",
     "standard": "^16.0.3",
     "stylelint": "^13.13.1",
     "stylelint-config-sass-guidelines": "^8.0.0",
