@@ -1,0 +1,24 @@
+.countdown {
+  align-items: center;
+  background-color: black;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-size: 144px;
+  height: 235px;
+  width: 235px;
+  position: relative;
+
+  svg {
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    position: absolute;
+  }
+
+  .circle {
+    stroke-dasharray: 283; /* this value is the pixel circumference of the circle */
+    stroke-dashoffset: 283;
+    transition: all 1s linear;
+  }
+}
