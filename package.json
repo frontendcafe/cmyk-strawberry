@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
+    "prepare": "husky install",
     "deploy" : "npm run build && firebase deploy --only hosting"
   },
   "dependencies": {
@@ -35,6 +36,7 @@
     "stylelint-declaration-use-variable": "^1.7.3",
     "stylelint-order": "^4.1.0",
     "typescript": "^4.3.2",
-    "vite": "^2.5.1"
+    "vite": "^2.5.1",
+    "husky": "^7.0.2"
   }
 }
