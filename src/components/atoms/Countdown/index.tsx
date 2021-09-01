@@ -28,14 +28,14 @@ const Countdown: React.FC<Props> = ({ size, duration, handleEnd, className }) =>
   return (
     <div className={`${styles.wrapper} ${className}`}>
       <CountdownCircleTimer
-        isPlaying
-        onComplete={handleEnd}
-        duration={duration}
-        size={size ?? defaultsize}
-        strokeWidth={strokewidth}
-        strokeLinecap={strokelinecap}
-        trailColor={trailcolor}
         colors={[[linecolor, 0.33]]}
+        duration={duration}
+        onComplete={handleEnd}
+        size={size ?? defaultsize}
+        strokeLinecap={strokelinecap}
+        strokeWidth={strokewidth}
+        trailColor={trailcolor}
+        isPlaying
       >
         {renderTime}
       </CountdownCircleTimer>
