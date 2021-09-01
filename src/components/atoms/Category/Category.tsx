@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.scss'
+import styles from './Category.module.scss'
 
 interface Props {
   type: string;
@@ -7,21 +7,14 @@ interface Props {
   onClick: () => void;
 }
 
-// type Props = {
-//   label: string;
-//   type: 'error' | 'warning' | 'success';
-//   onChange: () => void;
-// }
-
-// const types = ['Child', 'Infant', 'Grandchild', 'Cousin']
-
 export const Category: React.FC<Props> = ({ type = 'uncheck', label, onClick }) => {
   return (
     <button
-      onClick={ onClick }
-      className={ type }
+      onClick={onClick}
+      className={styles[type]}
     >
-      { label }
+      {label}
     </button>
+
   )
 }

@@ -31,18 +31,6 @@ function App () {
         onClick = { handleClickCategory2 }
       />
 
-      <Category
-        type = 'approved'
-        label="Frutas/Verduras"
-        onClick = { () => console.log('HandleChangeCategory')}
-      />
-
-      <Category
-        type = 'deselected'
-        label="Frutas/Verduras"
-        onClick = { () => console.log('HandleChangeCategory')}
-      />
-
     </>
   )
 }
