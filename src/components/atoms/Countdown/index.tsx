@@ -8,8 +8,6 @@ interface Props {
   handleEndCount: () => void;
 }
 
-const initialOffset = 440
-
 function Countdown ({ initialPoint, toNumber, handleEndCount }: Props) {
   const [count, setCount] = useState(initialPoint ?? 0)
   const isValid = useRef<number>()
@@ -19,15 +17,6 @@ function Countdown ({ initialPoint, toNumber, handleEndCount }: Props) {
     if (count > toNumber) setCount(prevCount => prevCount - 1)
     else setCount(prevCount => prevCount + 1)
   }
-
-  function calculateTimeFraction () {
-    const rawTimeFraction = count / toNumber
-    return rawTimeFraction - (1 / toNumber) * (1 - rawTimeFraction)
-  }
-
-  const circleDasharray = `${(
-    calculateTimeFraction() * 283
-  ).toFixed(0)} 283`
 
   useEffect(() => {
     // I have to use a ref to use that value into interval, useState not work in it
@@ -52,24 +41,6 @@ function Countdown ({ initialPoint, toNumber, handleEndCount }: Props) {
   return (
     <div className={styles.countdown}>
       {count}
-      <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
-        <g>
-          <title>Layer 1</title>
-          <circle
-            id="circle"
-            className={styles.circle}
-            r="69.85699"
-            cy="81"
-            cx="81"
-            strokeWidth="8"
-            stroke="#6fdb6f"
-            fill="none"
-            style={{
-              strokeDashoffset: circleDasharray
-            }}
-          />
-        </g>
-      </svg>
     </div>
   )
 }

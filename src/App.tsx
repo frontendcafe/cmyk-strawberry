@@ -4,7 +4,7 @@ import Countdown from './components/atoms/Countdown'
 function App () {
   return (
     <h1>
-      <Countdown initialPoint={12} toNumber={0} handleEndCount={() => console.log('a')}/>
+      <Countdown initialPoint={5} toNumber={0} handleEndCount={() => console.log('a')}/>
     </h1>
   )
 }
