@@ -15,7 +15,8 @@ const Countdown: React.FC<Props> = ({ size, duration, handleEnd, className }) =>
     defaultsize,
     strokewidth,
     strokelinecap,
-    linecolor
+    linecolor,
+    trailcolor
   } = styles
 
   const renderTime = ({ remainingTime }: { remainingTime: number }) => (
@@ -33,6 +34,7 @@ const Countdown: React.FC<Props> = ({ size, duration, handleEnd, className }) =>
         size={size ?? defaultsize}
         strokeWidth={strokewidth}
         strokeLinecap={strokelinecap}
+        trailColor={trailcolor}
         colors={[[linecolor, 0.33]]}
       >
         {renderTime}

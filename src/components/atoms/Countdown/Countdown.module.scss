@@ -1,7 +1,7 @@
 // TODO: Update that with the style-guide
 $count-font-size: 135px;
-$color: #f00;
-$font-color: #000;
+$color: #c74647;
+$font-color: #fff;
 
 .wrapper {
   display: flex;
@@ -18,4 +18,5 @@ $font-color: #000;
   linecolor: $color;
   strokelinecap: 1;
   strokewidth: 25;
+  trailcolor: transparent;
 }
