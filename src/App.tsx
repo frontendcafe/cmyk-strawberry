@@ -1,6 +1,6 @@
 import React from 'react'
 
-function App ({ prop }: any) {
+function App () {
   return (
     <h1>Tutti Stop App</h1>
   )
