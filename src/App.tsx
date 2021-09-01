@@ -15,7 +15,7 @@ function App () {
 
   return (
     <>
-      <h1>App</h1>
+      <h1>Tutti Stop App</h1>
 
       <h2>Category Atom</h2>
 
@@ -32,6 +32,7 @@ function App () {
       />
 
     </>
+
   )
 }
 
