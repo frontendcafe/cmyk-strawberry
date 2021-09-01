@@ -1,7 +1,7 @@
 import React from 'react'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
-import styles from './styles.module.scss'
+import styles from './Countdown.module.scss'
 
 interface Props {
   duration: number
