@@ -1,0 +1,46 @@
+$primary-color: #c74647;
+$secondary-color: #013231;
+$neutral-color: #6b7278;
+$border-color: #f8f9fa;
+$shadow-color: #adb5bd;
+$font-color: #f8f9fa;
+$weight: 600;
+
+button {
+  border: 2px solid $border-color;
+  border-radius: 12px;
+  box-shadow: 0 1px 0 $shadow-color;
+  box-sizing: border-box;
+  color: $font-color;
+  font-weight: $weight;
+  max-width: 200px;
+  padding: 8px 16px;
+}
+
+.approved {
+  background-color: $primary-color;
+
+  &::before {
+    color: $font-color;
+    content: '✔';
+    margin-right: 11px;
+  }
+}
+
+.deselected {
+  background-color: $secondary-color;
+}
+
+.disapproved {
+  background-color: $neutral-color;
+
+  &::before {
+    color: $font-color;
+    content: '✖';
+    margin-right: 11px;
+  }
+}
+
+.uncheck {
+  background-color: $primary-color;
+}
