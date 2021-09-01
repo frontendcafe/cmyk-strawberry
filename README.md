@@ -44,3 +44,24 @@ Informacion util sobre las tecnologias que usamos(ej. next, styled components)
 
 Lenguaje de codigo
 Estructura de archivos
+
+## 👩‍💻 Consideraciones para realizar un deploy
+
+
+1. Instala Node.js. Firebase CLI requiere Node.js 10.13.0 o versiones posteriores.
+
+2. Ejecuta el siguiente comando para instalar Firebase CLI con npm:
+
+```bash
+npm install -g firebase-tools
+```
+
+Esto habilita el comando firebase disponible de manera global
+
+3. Accede a Firebase con tu Cuenta de Google ejecutando el siguiente comando
+
+```bash
+firebase login
+```
+
+4. Ejecuta el script ``` npm run deploy ```
