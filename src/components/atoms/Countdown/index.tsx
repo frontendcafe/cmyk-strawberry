@@ -1,46 +1,42 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
+import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
 import styles from './styles.module.scss'
 
 interface Props {
-  initialPoint?: number;
-  toNumber: number;
-  handleEndCount: () => void;
+  duration: number
+  handleEnd: () => void
+  className?: string
+  size?: number
 }
 
-function Countdown ({ initialPoint, toNumber, handleEndCount }: Props) {
-  const [count, setCount] = useState(initialPoint ?? 0)
-  const isValid = useRef<number>()
-  let interval: number
+const Countdown: React.FC<Props> = ({ size, duration, handleEnd, className }) => {
+  const {
+    defaultsize,
+    strokewidth,
+    strokelinecap,
+    linecolor
+  } = styles
 
-  const updateCount = () => {
-    if (count > toNumber) setCount(prevCount => prevCount - 1)
-    else setCount(prevCount => prevCount + 1)
-  }
-
-  useEffect(() => {
-    // I have to use a ref to use that value into interval, useState not work in it
-    isValid.current = count
-  }, [count])
-
-  useEffect(() => {
-    interval = setInterval(() => {
-      if (isValid.current === toNumber) {
-        clearInterval(interval)
-        handleEndCount()
-      } else {
-        updateCount()
-      }
-    }, 1000)
-
-    return () => {
-      clearInterval(interval)
-    }
-  }, [])
+  const renderTime = ({ remainingTime }: { remainingTime: number }) => (
+    <span className={styles.count}>
+      {remainingTime}
+    </span>
+  )
 
   return (
-    <div className={styles.countdown}>
-      {count}
+    <div className={`${styles.wrapper} ${className}`}>
+      <CountdownCircleTimer
+        isPlaying
+        onComplete={handleEnd}
+        duration={duration}
+        size={size ?? defaultsize}
+        strokeWidth={strokewidth}
+        strokeLinecap={strokelinecap}
+        colors={[[linecolor, 0.33]]}
+      >
+        {renderTime}
+      </CountdownCircleTimer>
     </div>
   )
 }

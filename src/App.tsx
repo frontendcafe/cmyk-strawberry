@@ -1,10 +1,13 @@
 import React from 'react'
 import Countdown from './components/atoms/Countdown'
 
-function App () {
+function App ({ prop }: any) {
   return (
     <h1>
-      <Countdown initialPoint={5} toNumber={0} handleEndCount={() => console.log('a')}/>
+      <Countdown
+        duration={5}
+        handleEnd={() => console.log('a')}
+      />
     </h1>
   )
 }
