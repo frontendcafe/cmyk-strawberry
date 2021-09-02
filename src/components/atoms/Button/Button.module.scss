@@ -1,0 +1,59 @@
+$font-size: 0.9em;
+$weight: 600;
+$white-color: #fff;
+$brand-color: #2995c0;
+$grey-2: #919191;
+$grey-3: #dadada;
+$grey-4: #ededed;
+
+.button {
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  display: block;
+  font-size: $font-size;
+  font-weight: $weight;
+  outline: 0;
+  position: relative;
+  text-transform: uppercase;
+}
+
+/* Size */
+.small {
+  padding: 0.5em 0.6em;
+}
+
+.medium {
+  padding: 1.1em 1.3em;
+}
+
+.large {
+  padding: 1.7em 2.4em;
+}
+
+/* Theme */
+.default {
+  background: $brand-color;
+  border: 1px solid $brand-color;
+  color: $white-color;
+}
+
+.rounded {
+  background: $white-color;
+  border: 1px solid $brand-color;
+  border-radius: 50%;
+  color: $brand-color;
+  transition: color 0.3s ease, background 0.3s ease;
+
+  &:hover {
+    background: $brand-color;
+    color: $white-color;
+  }
+}
+
+.disabled {
+  background: color($grey-4 tint(40%));
+  border-color: $grey-4;
+  color: $grey-2;
+  cursor: default;
+}
