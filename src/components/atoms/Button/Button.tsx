@@ -4,7 +4,7 @@ import styles from './Button.module.scss'
 
 interface Props {
   type: 'submit' | 'reset' | 'button';
-  theme: 'default' | 'rounded';
+  theme: 'primary' | 'secondary' | 'tertiary';
   size: 'small' | 'medium' | 'large';
   onClick: () => void;
   children: React.ReactNode;

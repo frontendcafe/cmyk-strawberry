@@ -1,59 +1,72 @@
 $font-size: 0.9em;
 $weight: 600;
-$white-color: #fff;
-$brand-color: #2995c0;
+$white-color: #f8f9fa;
+$black-color: #272727;
+$shadow-primary-color: #672829;
+$shadow-secondary-color: #f8f9fa;
+$shadow-tertiary-color: #6b7278;
+$primary-color: #c74647;
+$secondary-color: #272727;
+$tertiary-color: #f8f9fa;
+$font-color: #f8f9fa;
 $grey-2: #919191;
 $grey-3: #dadada;
 $grey-4: #ededed;
 
 .button {
-  border: 0;
-  border-radius: 3px;
+  align-items: center;
+  border-radius: 12px;
+  box-sizing: border-box;
+  color: $font-color;
   cursor: pointer;
-  display: block;
+  display: flex;
   font-size: $font-size;
   font-weight: $weight;
-  outline: 0;
-  position: relative;
+  justify-content: center;
+  outline: none;
   text-transform: uppercase;
 }
 
 /* Size */
 .small {
-  padding: 0.5em 0.6em;
+  padding: 1em 1.3em;
 }
 
 .medium {
-  padding: 1.1em 1.3em;
-}
-
-.large {
-  padding: 1.7em 2.4em;
+  padding: 1em 4em;
 }
 
 /* Theme */
-.default {
-  background: $brand-color;
-  border: 1px solid $brand-color;
-  color: $white-color;
-}
+.primary {
+  background: $primary-color;
+  border: 2px solid $shadow-primary-color;
+  box-shadow: 0 4px $shadow-primary-color;
 
-.rounded {
-  background: $white-color;
-  border: 1px solid $brand-color;
-  border-radius: 50%;
-  color: $brand-color;
-  transition: color 0.3s ease, background 0.3s ease;
-
-  &:hover {
-    background: $brand-color;
-    color: $white-color;
+  &:active {
+    box-shadow: 0 1px $shadow-primary-color;
+    transform: translateY(4px);
   }
 }
 
-.disabled {
-  background: color($grey-4 tint(40%));
-  border-color: $grey-4;
-  color: $grey-2;
-  cursor: default;
+.secondary {
+  background: $secondary-color;
+  border: 2px solid $shadow-secondary-color;
+  box-shadow: 0 4px 0 $shadow-secondary-color;
+
+  &:active {
+    box-shadow: 0 1px $shadow-secondary-color;
+    transform: translateY(4px);
+  }
+}
+
+.tertiary {
+  background: $tertiary-color;
+  border: 2px solid $white-color;
+  box-shadow: 0 4px 0 $shadow-tertiary-color;
+  color: $black-color;
+
+  &:active {
+    box-shadow: 0 1px $shadow-tertiary-color;
+    transform: translateY(4px);
+  }
 }
