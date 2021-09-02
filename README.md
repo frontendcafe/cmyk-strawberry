@@ -6,7 +6,7 @@ Tutti Frutti es un juego de lápiz y papel que consiste en buscar palabras a par
 
 #### Web
 
-{A Definir}
+[URL](https://cmyk-strawberry.web.app/)
 
 #### Informacion
 
@@ -22,8 +22,8 @@ Tutti Frutti es un juego de lápiz y papel que consiste en buscar palabras a par
 
 ## ⚛️ Tecnologias
 
-Se utilizara React como framework para el Frontend y Firebase para guardar las configuraciones de las partidas con base de datos en tiempo real y ¿hosting?
-{A Definir}
+Se utilizara React como framework para el Frontend y Firebase para guardar las configuraciones de las partidas con base de datos en tiempo real.
+Ademas vamos a usar Typescript y SCSS.
 
 ## 👨‍💻 Como iniciar
 
@@ -33,20 +33,11 @@ cd cmyk-strawberry
 npm install && npm run dev
 ```
 
-## 👩‍💻 Descripcion
-
-{A definir}
-Informacion util sobre las tecnologias que usamos(ej. next, styled components)
-
 ## 👩‍💻 Consideraciones para codear
-
-{A definir}
-
-Lenguaje de codigo
-Estructura de archivos
+El codigo, los commits y las ramas deben estar en ingles. 
+Sobre la estructura de archivos vamos a utilizar atomic design. Existira una carpeta atoms, molecules y organisms que estara directamente relacionado con el figma.
 
 ## 👩‍💻 Consideraciones para realizar un deploy
-
 
 1. Instala Node.js. Firebase CLI requiere Node.js 10.13.0 o versiones posteriores.
 
