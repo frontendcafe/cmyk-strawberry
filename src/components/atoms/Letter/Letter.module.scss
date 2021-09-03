@@ -1,0 +1,13 @@
+$bg-color: #000;
+$font-color: #fff;
+$font-size: 1.5rem;
+$weight: bold;
+
+.letter {
+  background-color: $bg-color;
+  border-radius: 0.5rem;
+  color: $font-color;
+  font-size: $font-size;
+  font-weight: $weight;
+  padding: 0.5rem;
+}
