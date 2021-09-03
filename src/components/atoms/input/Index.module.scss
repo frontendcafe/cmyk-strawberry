@@ -1,0 +1,34 @@
+// TODO: Update that with the style-guide
+$font-size: 23px;
+$input-height-small: 40px;
+$input-height: 48px;
+$input-width: 280px;
+$input-text-indent: 16px;
+$input-box-shadow-color: #4991da;
+$input-border-radius: 2px;
+
+.input {
+  border-radius: $input-border-radius;
+  font-size: $font-size;
+  height: $input-height-small;
+  text-indent: $input-text-indent;
+  width: $input-width;
+}
+
+.input:focus {
+  box-shadow:
+    3px -3px  $input-box-shadow-color,
+    -3px -3px $input-box-shadow-color,
+    -3px 3px  $input-box-shadow-color,
+    3px 3px  $input-box-shadow-color;
+}
+
+.small {
+  height: $input-height-small;
+  width: $input-width;
+}
+
+.medium {
+  height: $input-height;
+  width: $input-width;
+}
