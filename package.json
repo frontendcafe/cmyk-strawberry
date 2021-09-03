@@ -12,6 +12,7 @@
     "deploy": "npm run build && firebase deploy --only hosting"
   },
   "dependencies": {
+    "firebase": "^9.0.1",
     "node-sass": "^6.0.1",
     "react": "^17.0.0",
     "react-countdown-circle-timer": "^2.5.4",
