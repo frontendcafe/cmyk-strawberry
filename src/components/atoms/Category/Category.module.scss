@@ -35,7 +35,7 @@ button {
 .disapproved {
   background-color: $neutral-color;
 
-  &::before {#C74647
+  &::before {
     color: $font-color;
     content: '✖';
     margin-right: 11px;
