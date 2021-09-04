@@ -1,0 +1,68 @@
+//TODO update with UI kit global variables
+$primary-50: #C74647;
+$neutral-color: #F8F9FA;
+$input-border-radius: 10px;
+$fit-thumb-in-slider: -6px;
+
+// input[type=slider] structure inside
+// track, progress and thumb
+// https://css-tricks.com/sliding-nightmare-understanding-range-input/
+
+.header {
+  text-align: center;
+}
+
+.container {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .slider {
+    width: 100%;
+
+    // .input {
+    //   height: 100%;
+    //   width: 100%;
+    //   appearance: none;
+    //   outline: none;
+    //   background: $neutral-color;
+    //   border-radius: $input-border-radius;
+    //   cursor: pointer;
+
+    //   &::-webkit-slider-thumb {
+    //     appearance: none;
+    //     width: 20px;
+    //     height: 20px;
+    //     border-radius: 50%;
+    //     background: #C74647;
+    //     border: 3px solid #F8F9FA;
+    //     margin-top: $fit-thumb-in-slider;
+    //   }
+
+    //   &::-moz-range-thumb {
+    //     -webkit-appearance: none;
+    //     -moz-appearance: none;
+    //     appearance: none;
+    //     width: 20px;
+    //     height: 20px;
+    //     border-radius: 50%;
+    //     background-color: #C74647;
+    //     border: 3px solid #F8F9FA;
+    //   }
+
+    //   &::-webkit-slider-runnable-track {
+    //     height: 8px;
+    //     background: $primary-50;
+    //     border: 25px;
+    //     content: '';
+    //   }
+
+    //   &::-moz-range-progress {
+    //     height: 8px;
+    //     background-color: $primary-50;
+    //     border-radius: 25px;
+    //   }
+    // }
+  }
+}

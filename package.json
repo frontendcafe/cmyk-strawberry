@@ -18,6 +18,7 @@
     "react": "^17.0.0",
     "react-countdown-circle-timer": "^2.5.4",
     "react-dom": "^17.0.0",
+    "react-range": "^1.8.11",
     "react-router-dom": "^5.2.1",
     "sass": "^1.38.2"
   },
