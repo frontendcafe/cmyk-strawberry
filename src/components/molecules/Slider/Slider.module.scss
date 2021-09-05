@@ -1,0 +1,79 @@
+//TODO update with UI kit global variables
+$primary-50: #C74647;
+$neutral-color: #F8F9FA;
+$label-color: #6B7278;
+$label-active-color: #F8F9FA;
+$input-border-radius: 10px;
+$font-size: 20px;
+$line-height: 28px;
+$background-color: #17252E;
+
+.header {
+  text-align: center;
+  color: $label-active-color;
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+.container {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: $background-color;
+
+  .slider {
+    width: 100%;  
+  }
+}
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+  
+  .label {
+    color: $label-color;
+    font-size: 18px;
+    font-weight: 600;
+    left: 0;
+    cursor: pointer;
+  }
+  
+  .active {
+    color: $label-active-color;
+  }
+}
+
+.thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: $primary-50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid $neutral-color;
+  outline: none
+}
+
+.progress {
+  height: 5px;
+  width: 100%;
+  border-radius: $input-border-radius;
+  align-self: 'center';
+}
+
+.track {
+  height: 20px;
+  display: flex;
+  width: 100%;
+}
+
+:export {
+  primary-color: $primary-50;
+  neutral-color: $neutral-color;
+}

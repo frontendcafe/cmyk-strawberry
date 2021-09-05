@@ -1,7 +1,8 @@
 import React from 'react'
+import Slider from '../components/molecules/Slider'
 
 const HomePage: React.FC<any> = () => {
-  return <h1>HOME page!</h1>
+  return <Slider/>
 }
 
 export default HomePage
