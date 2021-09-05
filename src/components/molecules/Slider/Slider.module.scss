@@ -1,15 +1,18 @@
 //TODO update with UI kit global variables
 $primary-50: #C74647;
 $neutral-color: #F8F9FA;
+$label-color: #6B7278;
+$label-active-color: #F8F9FA;
 $input-border-radius: 10px;
-$fit-thumb-in-slider: -6px;
-
-// input[type=slider] structure inside
-// track, progress and thumb
-// https://css-tricks.com/sliding-nightmare-understanding-range-input/
+$font-size: 20px;
+$line-height: 28px;
+$background-color: #17252E;
 
 .header {
   text-align: center;
+  color: $label-active-color;
+  font-size: $font-size;
+  line-height: $line-height;
 }
 
 .container {
@@ -17,52 +20,60 @@ $fit-thumb-in-slider: -6px;
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-color: $background-color;
 
   .slider {
-    width: 100%;
-
-    // .input {
-    //   height: 100%;
-    //   width: 100%;
-    //   appearance: none;
-    //   outline: none;
-    //   background: $neutral-color;
-    //   border-radius: $input-border-radius;
-    //   cursor: pointer;
-
-    //   &::-webkit-slider-thumb {
-    //     appearance: none;
-    //     width: 20px;
-    //     height: 20px;
-    //     border-radius: 50%;
-    //     background: #C74647;
-    //     border: 3px solid #F8F9FA;
-    //     margin-top: $fit-thumb-in-slider;
-    //   }
-
-    //   &::-moz-range-thumb {
-    //     -webkit-appearance: none;
-    //     -moz-appearance: none;
-    //     appearance: none;
-    //     width: 20px;
-    //     height: 20px;
-    //     border-radius: 50%;
-    //     background-color: #C74647;
-    //     border: 3px solid #F8F9FA;
-    //   }
-
-    //   &::-webkit-slider-runnable-track {
-    //     height: 8px;
-    //     background: $primary-50;
-    //     border: 25px;
-    //     content: '';
-    //   }
-
-    //   &::-moz-range-progress {
-    //     height: 8px;
-    //     background-color: $primary-50;
-    //     border-radius: 25px;
-    //   }
-    // }
+    width: 100%;  
   }
+}
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+  
+  .label {
+    color: $label-color;
+    font-size: 18px;
+    font-weight: 600;
+    left: 0;
+    cursor: pointer;
+  }
+  
+  .active {
+    color: $label-active-color;
+  }
+}
+
+.thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: $primary-50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid $neutral-color;
+  outline: none
+}
+
+.progress {
+  height: 5px;
+  width: 100%;
+  border-radius: $input-border-radius;
+  align-self: 'center';
+}
+
+.track {
+  height: 20px;
+  display: flex;
+  width: 100%;
+}
+
+:export {
+  primary-color: $primary-50;
+  neutral-color: $neutral-color;
 }
