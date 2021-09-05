@@ -2,7 +2,8 @@ import React from 'react'
 
 function App () {
   return (
-    <h1>Tutti Stop App</h1>
+    <div className="container"/>
+
   )
 }
 

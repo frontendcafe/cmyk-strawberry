@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
+$colours: #fff;
+$size: 60px;
+$weight: 400;
+$coloursred: #f00;
+$spacing: -0.05em;
+$shadow: -10px 12px 4px #3e3e3e;
+
+.letra {
+  align-items: center;
+  color: $colours;
+  display: flex;
+  font-family: 'Titan One', cursive;
+  font-size: $size;
+  font-style: normal;
+  font-weight: $weight;
+  letter-spacing: $spacing;
+  line-height: 50px;
+  text-align: center;
+  text-shadow: -6px 6px 1px #000;
+  -webkit-text-stroke: 4px $coloursred;
+  transition: all 0.6s;
+
+  /* Neutral/10 */
+
+  &:hover {
+    color: $colours;
+    text-shadow: $shadow;
+    -webkit-text-stroke: 4px $coloursred;
+  }
+}
