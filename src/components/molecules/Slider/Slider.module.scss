@@ -1,79 +1,81 @@
 //TODO update with UI kit global variables
-$primary-50: #C74647;
-$neutral-color: #F8F9FA;
-$label-color: #6B7278;
-$label-active-color: #F8F9FA;
+$primary-50: #c74647;
+$neutral-color: #f8f9fa;
+$label-color: #6b7278;
+$label-active-color: #f8f9fa;
 $input-border-radius: 10px;
 $font-size: 20px;
 $line-height: 28px;
-$background-color: #17252E;
+$background-color: #17252e;
+$font-w: 600;
+$font-s: 18px;
 
 .header {
-  text-align: center;
   color: $label-active-color;
   font-size: $font-size;
   line-height: $line-height;
+  text-align: center;
 }
 
 .container {
-  padding: 2rem;
-  display: flex;
   align-items: center;
-  flex-direction: column;
   background-color: $background-color;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
 
   .slider {
-    width: 100%;  
+    width: 100%;
   }
 }
 
 .labels {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  position: relative;
-  align-items: center;
-  width: 100%;
   margin-bottom: 2rem;
-  
+  position: relative;
+  width: 100%;
+
   .label {
     color: $label-color;
-    font-size: 18px;
-    font-weight: 600;
-    left: 0;
     cursor: pointer;
+    font-size: $font-s;
+    font-weight: $font-w;
+    left: 0;
   }
-  
+
   .active {
     color: $label-active-color;
   }
 }
 
 .thumb {
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background-color: $primary-50;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  background-color: $primary-50;
   border: 3px solid $neutral-color;
-  outline: none
+  border-radius: 50%;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  outline: none;
+  width: 20px;
 }
 
 .progress {
+  align-self: 'center';
+  border-radius: $input-border-radius;
   height: 5px;
   width: 100%;
-  border-radius: $input-border-radius;
-  align-self: 'center';
 }
 
 .track {
-  height: 20px;
   display: flex;
+  height: 20px;
   width: 100%;
 }
 
 :export {
-  primary-color: $primary-50;
   neutral-color: $neutral-color;
+  primary-color: $primary-50;
 }
