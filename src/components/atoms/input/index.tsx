@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import styles from './Index.module.scss'
 
 interface Props {
-    changeHandler: (value: string) => void;
+    changeHandler: (value:string) => void;
     buttonHandler?: () => void;
     size: 'small-size' | 'medium-size'
     addButton: boolean
