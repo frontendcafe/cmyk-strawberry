@@ -1,0 +1,23 @@
+$white: #f8f9fa;
+$border-confirm-color: #672829;
+
+.fontcolor {
+  color: $white;
+}
+
+.title {
+  color: $white;
+  padding: 48px 23.5px 0;
+}
+
+.cancelbutton {
+  border: 2px solid $white !important;
+  border-radius: 16px !important;
+  padding: 12px 28px;
+}
+
+.confirmbutton {
+  border: 2px solid $border-confirm-color !important;
+  border-radius: 16px !important;
+  padding: 12px 28px;
+}
