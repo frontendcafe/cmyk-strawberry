@@ -1,8 +1,8 @@
 import React from 'react'
-import Letter from '../components/atoms/Letter'
+import Slider from '../components/molecules/Slider'
 
 const HomePage: React.FC<any> = () => {
-  return <Letter/>
+  return <Slider/>
 }
 
 export default HomePage
