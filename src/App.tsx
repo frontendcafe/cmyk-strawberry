@@ -1,9 +1,9 @@
 import React from 'react'
-
 function App () {
   return (
-    <h1>Tutti Stop App</h1>
+    <>
+      <h1>Tutti Stop App</h1>
+    </>
   )
 }
-
 export default App
