@@ -1,13 +1,55 @@
-$bg-color: #000;
-$font-color: #fff;
-$font-size: 1.5rem;
+$bg-color: #32527b;
+$border-color: #daecf7;
+$shadow-color: #141414cc;
+$font-color: #f8f9fa;
+$font-size: 124px;
+$font-size-mini: 24px;
 $weight: bold;
 
+.container {
+  display: grid;
+  height: 100vh;
+  place-items: center;
+}
+
+.containerletters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  height: 100%;
+  overflow: hidden;
+  padding: 25px;
+  width: 100%;
+}
+
 .letter {
-  background-color: $bg-color;
-  border-radius: 0.5rem;
+  background: $bg-color;
+  border: 8px solid $border-color;
+  border-radius: 24px;
+  box-shadow: -7px 6px 1px $shadow-color;
+  box-sizing: border-box;
   color: $font-color;
+  display: grid;
   font-size: $font-size;
   font-weight: $weight;
-  padding: 0.5rem;
+  height: 233px;
+  padding: 44px 60px;
+  place-items: center;
+  width: 236px;
+}
+
+.lettermini {
+  background: $bg-color;
+  border: 3px solid $border-color;
+  border-radius: 10px;
+  box-shadow: -3px 2px 1px $shadow-color;
+  color: $font-color;
+  display: grid;
+  font-size: $font-size-mini;
+  font-weight: $weight;
+  height: 48px;
+  margin-bottom: 15px;
+  padding: 10.0024px 14px;
+  place-items: center;
+  width: 50px;
 }
