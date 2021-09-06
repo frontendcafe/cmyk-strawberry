@@ -1,0 +1,22 @@
+// TODO: Update that with the style-guide
+$count-font-size: 135px;
+$color: #c74647;
+$font-color: #fff;
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+
+  .count {
+    color: $font-color;
+    font-size: $count-font-size;
+  }
+}
+
+:export {
+  defaultsize: 235;
+  linecolor: $color;
+  strokelinecap: 1;
+  strokewidth: 25;
+  trailcolor: transparent;
+}

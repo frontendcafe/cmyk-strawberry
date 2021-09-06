@@ -14,6 +14,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
+    'react/prop-types': 'off',
     indent: ['error', 2],
     'react/jsx-wrap-multilines': ['error', {
       declaration: 'parens',
