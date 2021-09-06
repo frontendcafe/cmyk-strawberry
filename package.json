@@ -12,6 +12,7 @@
     "deploy": "npm run build && firebase deploy --only hosting"
   },
   "dependencies": {
+    "@types/react-router": "^5.1.16",
     "classnames": "^2.3.1",
     "firebase": "^9.0.1",
     "node-sass": "^6.0.1",
