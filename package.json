@@ -12,6 +12,7 @@
     "deploy": "npm run build && firebase deploy --only hosting"
   },
   "dependencies": {
+    "@types/react-router": "^5.1.16",
     "classnames": "^2.3.1",
     "firebase": "^9.0.1",
     "node-sass": "^6.0.1",
@@ -20,7 +21,8 @@
     "react-dom": "^17.0.0",
     "react-range": "^1.8.11",
     "react-router-dom": "^5.2.1",
-    "sass": "^1.38.2"
+    "sass": "^1.38.2",
+    "sweetalert2": "^11.1.4"
   },
   "devDependencies": {
     "@svgr/rollup": "^5.5.0",
