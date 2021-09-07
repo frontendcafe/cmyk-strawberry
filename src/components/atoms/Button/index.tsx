@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import styles from './Button.module.scss'
 
-interface Props {
+export interface Props {
   type: 'submit' | 'reset' | 'button';
   theme: 'primary' | 'secondary' | 'tertiary';
   size: 'small' | 'medium' | 'large';

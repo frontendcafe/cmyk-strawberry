@@ -1,0 +1,23 @@
+// TODO: use style-guide
+$bg-color: #272727;
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-color: $bg-color;
+  background-image: url('../../../assets/bg-mobile-pattern.svg');
+  min-height: 100vh;
+
+  .footer {
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding-bottom: 30px;
+    width: 100%;
+  }
+}
