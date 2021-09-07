@@ -1,0 +1,21 @@
+$neutral: #f8f9fa;
+$secondary: #1f4459;
+$box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
+$border-radius: 4px;
+
+.container {
+  background-color: $secondary;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  color: $neutral;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 20px;
+  width: 80%;
+}
+
+.rounds {
+  display: flex;
+  flex-direction: column;
+}
