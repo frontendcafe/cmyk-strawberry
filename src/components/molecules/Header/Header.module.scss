@@ -1,0 +1,37 @@
+// TODO: use style-guide
+$bg-color: #272727;
+$color: #fff;
+$size: 22px;
+$weight-bold: 700;
+
+$size-sub: 18px;
+$weight-medium: 500;
+
+.header {
+  align-items: center;
+  background-color: $bg-color;
+  box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  height: 88px;
+  width: 100%;
+
+  .close {
+    justify-self: center;
+  }
+
+  .title {
+    color: $color;
+    font-size: $size;
+    font-weight: $weight-bold;
+    line-height: 30px;
+    margin: 0;
+  }
+
+  .subtitle {
+    color: $color;
+    font-size: $size-sub;
+    font-weight: $weight-medium;
+    line-height: 26px;
+  }
+}

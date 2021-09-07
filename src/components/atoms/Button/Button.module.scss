@@ -19,6 +19,7 @@ $font-color: #f8f9fa;
   display: flex;
   font-size: $font-size;
   font-weight: $weight;
+  gap: 16px;
   justify-content: center;
   outline: none;
   text-transform: uppercase;
@@ -31,6 +32,13 @@ $font-color: #f8f9fa;
 
 .medium {
   padding: 1em 4em;
+}
+
+.large {
+  height: 52px;
+  max-width: 320px;
+  padding: 16px;
+  width: 100%;
 }
 
 /* Theme */
