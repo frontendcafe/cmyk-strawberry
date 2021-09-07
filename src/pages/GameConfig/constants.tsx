@@ -8,14 +8,14 @@ export const FOOTER_BUTTONS: ButtonProps[] = [
     type: 'button',
     theme: 'secondary',
     size: 'large',
-    onClick: () => console.log('nashe'),
+    onClick: () => console.log('todo'),
     children: <><CopyIcon/>INVITAR AMIGOS</>
   },
   {
     type: 'submit',
     theme: 'primary',
     size: 'large',
-    onClick: () => console.log('nashe'),
+    onClick: () => console.log('todo'),
     children: 'CREAR'
   }
 ]
