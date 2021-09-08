@@ -1,11 +1,11 @@
 // TODO: use style-guide
 $bg-color: #272727;
-$color: #fff;
+$color: #f8f9fa;
 $size: 22px;
 $weight-bold: 700;
-
 $size-sub: 18px;
 $weight-medium: 500;
+$font-size: 24px;
 
 .header {
   align-items: center;
@@ -13,7 +13,7 @@ $weight-medium: 500;
   box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
   display: grid;
   grid-template-columns: 72px 1fr;
-  height: 88px;
+  height: 64px;
   width: 100%;
 
   .close {
@@ -33,5 +33,24 @@ $weight-medium: 500;
     font-size: $size-sub;
     font-weight: $weight-medium;
     line-height: 26px;
+  }
+}
+
+.lettercontainer {
+  display: flex;
+  justify-content: center;
+  transform: translateX(-37px);
+
+  .letter {
+    background: $bg-color;
+    border: 3px solid $color;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: $color;
+    display: grid;
+    font-size: $font-size;
+    font-weight: $weight-bold;
+    padding: 10.0024px 14px;
+    place-items: center;
   }
 }

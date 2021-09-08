@@ -4,7 +4,8 @@ import styles from './CategoryInput.module.scss'
 export interface Props {
   title: string;
   value: string;
-  handleInputChange: any;
+  // eslint-disable-next-line no-unused-vars
+  handleInputChange: (e:React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const CategoryInput: React.FC<Props> = ({ title, value, handleInputChange }) => {

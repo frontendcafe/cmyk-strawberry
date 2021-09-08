@@ -49,13 +49,14 @@ const BoardPage: React.FC<Props> = ({ categories = categoriesMock }) => {
 
   return (
     <Layout
-      title="M"
+      title=""
       subTitle=""
       closePath={paths.HOME}
+      letter="M" // TODO: Get current letter
     >
       <Button
         type='button'
-        onClick={() => console.log({ formValues })}
+        onClick={() => console.log(formValues)}
         theme='primary'
         size='large'
       >
