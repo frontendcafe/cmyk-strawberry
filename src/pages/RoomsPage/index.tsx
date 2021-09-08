@@ -10,7 +10,7 @@ const labels = {
   CLOSE_PATH: '/'
 }
 
-const RoomsPage: React.FC<any> = () => {
+const RoomsPage: React.FC = () => {
   const [showPrivate, setShowPrivate] = useState(false)
 
   return (

@@ -5,7 +5,7 @@ import SkeletonRoom from '../../molecules/SkeletonRoom'
 import styles from './Rooms.module.scss'
 
 type Props = {
-  rooms: {label: string, rounds: number, players: number, private: boolean}[]
+  rooms: {label: string, rounds: number, totalRounds: number, players: number, private: boolean}[]
   showPrivate: boolean
 }
 
