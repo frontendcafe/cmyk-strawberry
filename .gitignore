@@ -6,3 +6,4 @@ dist-ssr
 .vscode
 .env
 .env.local
+package-lock.json
