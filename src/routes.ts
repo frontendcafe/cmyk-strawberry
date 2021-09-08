@@ -2,13 +2,15 @@ import IRoute from './interfaces/route'
 import HomePage from './pages/HomePage'
 import SecondPage from './pages/SecondPage'
 import AboutPage from './pages/AboutPage'
+import BoardPage from './pages/BoardPage'
 import GameConfig from './pages/GameConfig'
 import RoomsPage from './pages/RoomsPage'
 
 export enum paths {
   HOME = '/',
   GAME_CONFIG = '/game-config',
-  ROOMS = '/rooms'
+  ROOMS = '/rooms',
+  BOARD = '/board'
 }
 
 const routes: IRoute[] = [
@@ -40,6 +42,12 @@ const routes: IRoute[] = [
     path: paths.ROOMS,
     name: 'Rooms',
     component: RoomsPage,
+    exact: true
+  },
+  {
+    path: paths.BOARD,
+    name: 'Board Page',
+    component: BoardPage,
     exact: true
   },
   {
