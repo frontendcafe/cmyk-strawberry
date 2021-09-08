@@ -19,19 +19,19 @@ $font-size: 18px;
   margin-top: $margin-top;
   text-align: center;
   width: 100%;
+}
 
-  .radio-input {
-    display: none;
-  }
+.radio-input {
+  display: none;
+}
 
-  .radio-label {
-    cursor: pointer;
-    padding: $label-padding;
-    width: 100%;
-  }
+.radio-label {
+  cursor: pointer;
+  padding: $label-padding;
+  width: 100%;
+}
 
-  .active {
-    background-color: $bg-color-active;
-    box-shadow: $box-shadow-active;
-  }
+.active {
+  background-color: $bg-color-active;
+  box-shadow: $box-shadow-active;
 }

@@ -1,20 +1,35 @@
 import React from 'react'
+import { ReactComponent as UserIcon } from '../../../assets/users.svg'
+import { ReactComponent as LockIcon } from '../../../assets/lock.svg'
 
 import styles from './Room.module.scss'
 
-const Room: React.FC = () => {
+interface IRoom {
+  label: string
+  players: number
+  rounds: number
+  totalRounds: number
+  private: boolean
+}
+
+interface Props {
+  room: IRoom
+}
+
+const Room: React.FC<Props> = ({ room }) => {
   return (
     <section className={styles.container}>
-      <div>
-        <span>Sala 01</span>
+      <div className={styles['label-wrap']}>
+        <span className={styles.title}>{room.label}</span>
+        {room.private && <LockIcon className={styles['lock-icon']}/>}
       </div>
-      <div>
-        <i>icon</i>
-        <span>2</span>
+      <div className={styles['user-icon']}>
+        <UserIcon/>
+        <span className={styles['user-label']}>{room.players}</span>
       </div>
       <div className={styles.rounds}>
-        <span>2/4</span>
-        <span>Rondas</span>
+        <span>{room.rounds}/{room.totalRounds}</span>
+        <span className={styles['round-label']}>Rondas</span>
       </div>
     </section>
   )
