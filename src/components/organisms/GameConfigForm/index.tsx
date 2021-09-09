@@ -1,14 +1,27 @@
 import React from 'react'
+import { useCategories } from '../../../hooks/useCategories'
 
 import Card from '../../atoms/Card'
-import { Category } from '../../atoms/Category'
 import Input from '../../atoms/input'
 import Select from '../../atoms/Select'
 import { roundOptions } from './constants'
 
 import styles from './GameConfigForm.module.scss'
 
+const MOCK_CATEGORIES = [
+  { name: 'Comidas' },
+  { name: 'Paises' },
+  { name: 'Marcas' },
+  { name: 'Cosas' },
+  { name: 'Frutas/Verduras' }
+]
+
 const GameConfigForm = () => {
+  const { renderCategories } = useCategories({
+    initialCategories: MOCK_CATEGORIES,
+    mode: 'reviewing'
+  })
+
   return (
     <form className={styles.form}>
       <Card
@@ -31,7 +44,7 @@ const GameConfigForm = () => {
         title="Categorías"
         subtitle="Selección de temas a completar"
       >
-        <Category type="approved" label="category"/>
+        {renderCategories()}
       </Card>
       <Card
         title="Contraseña"

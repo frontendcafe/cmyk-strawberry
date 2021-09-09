@@ -5,6 +5,7 @@ import { ReactComponent as CopyIcon } from '../../assets/copy.svg'
 
 export const FOOTER_BUTTONS: ButtonProps[] = [
   {
+    key: 'INVITE_FRIENDS',
     type: 'button',
     theme: 'secondary',
     size: 'large',
@@ -12,6 +13,7 @@ export const FOOTER_BUTTONS: ButtonProps[] = [
     children: <><CopyIcon/>INVITAR AMIGOS</>
   },
   {
+    key: 'CREATE_GAME',
     type: 'submit',
     theme: 'primary',
     size: 'large',
