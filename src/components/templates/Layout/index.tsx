@@ -10,10 +10,10 @@ interface Props extends HeaderProps{
   buttons?: ButtonProps[];
 }
 
-const Layout = ({ title, subTitle, closePath, children, buttons }: Props) => {
+const Layout = ({ title, subTitle, letter, closePath, children, buttons }: Props) => {
   return (
     <div className={styles.container}>
-      <Header title={title} subTitle={subTitle} closePath={closePath}/>
+      <Header title={title} subTitle={subTitle} closePath={closePath} letter={letter}/>
       <main className={styles.main}>
         {children}
       </main>
