@@ -3,6 +3,15 @@ import { Category } from '../../components/atoms/Category'
 import { APPROVED_STATE, DESELECTED_STATE } from './constants'
 import { CATEGORY_STATUS, iCategory, useCategoriesType } from './types'
 
+/**
+ * This hook allows you to use a list of categories, change their state contemplating their diferent possibilities
+ * @param config.allCategories
+ * @param config.initialSelectedCategories
+ * @param config.defaultApproved
+ * @param config.mode
+ * @param config.categoryCustomProps
+ * @returns first element it's the list of categories with their status. Second element it's a function tu render the list of categories
+ */
 export const useCategories:useCategoriesType = ({
   allCategories,
   initialSelectedCategories,
