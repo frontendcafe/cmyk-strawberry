@@ -17,9 +17,9 @@ const MOCK_CATEGORIES = [
 ]
 
 const GameConfigForm = () => {
-  const { renderCategories } = useCategories({
-    initialCategories: MOCK_CATEGORIES,
-    mode: 'reviewing'
+  const [, renderCategories] = useCategories({
+    allCategories: MOCK_CATEGORIES,
+    mode: 'view'
   })
 
   return (

@@ -1,26 +1,34 @@
-import React, { useCallback, useState } from 'react'
-import { Category, Props as CategoryProps } from '../../components/atoms/Category'
-import { APPROVED_STATE, CATEGORY_STATUS, DESELECTED_STATE, iCategory } from './constants'
+import React, { useCallback, useMemo, useState } from 'react'
+import { Category } from '../../components/atoms/Category'
+import { APPROVED_STATE, DESELECTED_STATE } from './constants'
+import { CATEGORY_STATUS, iCategory, useCategoriesType } from './types'
 
-interface Params {
-  initialCategories: iCategory[],
-  mode: 'view' | 'reviewing' | 'selecting',
-  categoryCustomProps?: CategoryProps
-}
-
-export function useCategories ({
-  initialCategories,
+export const useCategories:useCategoriesType = ({
+  allCategories,
+  initialSelectedCategories,
+  defaultApproved = true,
   mode,
   categoryCustomProps
-}: Params) {
+}) => {
+  const DEFAULT_STATUS = useMemo(() =>
+    defaultApproved
+      ? APPROVED_STATE
+      : DESELECTED_STATE[mode] as CATEGORY_STATUS
+  , [defaultApproved])
+
   const getInitialCategories = () => {
-    return initialCategories.map(category => ({
-      ...category,
-      status: category.status || APPROVED_STATE
-    }))
+    return allCategories.map((category) => {
+      if (initialSelectedCategories?.some(({ name }) => name === category.name)) {
+        category.status = APPROVED_STATE
+      } else {
+        category.status ||= DEFAULT_STATUS
+      }
+
+      return category
+    })
   }
 
-  const [categories, setCategories] = useState<iCategory[]>(getInitialCategories)
+  const [categories, setCategories] = useState(getInitialCategories)
 
   const toggleState = (category: iCategory) => {
     if (category.status === APPROVED_STATE) {
@@ -50,7 +58,7 @@ export function useCategories ({
         categories.map(({ status, name }) => (
           <Category
             key={name}
-            type={status ?? APPROVED_STATE}
+            type={status ?? DEFAULT_STATUS}
             label={name}
             onClick={() => handleClick(name)}
             {...categoryCustomProps}
@@ -60,5 +68,5 @@ export function useCategories ({
     </>
   ), [categories])
 
-  return { categories, renderCategories }
+  return [categories, renderCategories]
 }
