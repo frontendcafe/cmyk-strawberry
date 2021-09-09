@@ -16,9 +16,9 @@ $font-size: 18px;
   display: inline-flex;
   font-size: $font-size;
   font-weight: $font-bold;
-  margin-top: $margin-top;
+  margin: -11px -16px 8px;
   text-align: center;
-  width: 100%;
+  width: calc(100% + 32px);
 }
 
 .radio-input {
