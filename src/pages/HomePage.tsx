@@ -1,8 +1,8 @@
 import React from 'react'
-import Slider from '../components/molecules/Slider'
+import Logotype1 from '../components/atoms/Logotype/Index'
 
 const HomePage: React.FC<any> = () => {
-  return <Slider/>
+  return <Logotype1/>
 }
 
 export default HomePage

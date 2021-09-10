@@ -5,7 +5,7 @@ $size: 60px;
 $weight: 400;
 $coloursred: #f00;
 $spacing: -0.05em;
-$shadow: -10px 12px 4px #3e3e3e;
+$shadow: -11px 15px 4px #3e3e3e;
 
 .letra {
   align-items: center;
@@ -18,7 +18,7 @@ $shadow: -10px 12px 4px #3e3e3e;
   letter-spacing: $spacing;
   line-height: 50px;
   text-align: center;
-  text-shadow: -6px 6px 1px #000;
+  text-shadow: -6px 8px 1px #000;
   -webkit-text-stroke: 4px $coloursred;
   transition: all 0.6s;
 
