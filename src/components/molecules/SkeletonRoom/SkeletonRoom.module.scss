@@ -1,0 +1,51 @@
+$background-skeleton: #6c86a8;
+$border-radius: 4px;
+$secondary: #1f4459;
+$box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
+$neutral: #f8f9fa;
+
+.dummy-container {
+  align-items: center;
+  background-color: $secondary;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  box-sizing: border-box;
+  color: $neutral;
+  cursor: not-allowed;
+  display: flex;
+  height: 68px;
+  justify-content: space-around;
+  margin-bottom: 0.5rem;
+  padding: 10px 20px;
+  width: 80%;
+
+  .skeleton {
+    background-color: $background-skeleton;
+    border-radius: $border-radius;
+    height: 70%;
+    width: 15%;
+  }
+}
+
+.skeleton-small-wrap {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  justify-content: space-around;
+  width: 11%;
+
+  .skeleton-small {
+    background-color: $background-skeleton;
+    border-radius: $border-radius;
+    height: 30%;
+    width: 60%;
+  }
+
+  .skeleton-medium {
+    background-color: $background-skeleton;
+    border-radius: $border-radius;
+    height: 30%;
+    width: 80%;
+  }
+}
