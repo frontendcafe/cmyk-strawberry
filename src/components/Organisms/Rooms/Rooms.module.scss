@@ -1,0 +1,17 @@
+$color: #fff;
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1.3rem;
+  width: 100%;
+}
+
+.empty-state {
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

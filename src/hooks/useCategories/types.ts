@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Props as CategoryProps } from '../../components/atoms/Category'
 
-export type CATEGORY_STATUS = 'approved' | 'disapproved' | 'deselected' | 'uncheck'
+export type CATEGORY_STATUS = 'basic' | 'approved' | 'disapproved' | 'deselected' | 'uncheck'
 
 export interface iCategory {
   name: string;
