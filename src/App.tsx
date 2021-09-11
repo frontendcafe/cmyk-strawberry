@@ -1,5 +1,4 @@
 import React from 'react'
-import AboutPage from './pages/AboutPage'
 import { BrowserRouter, Route, Switch, RouteComponentProps } from 'react-router-dom'
 import routes from './routes'
 
@@ -25,7 +24,6 @@ const Application: React.FunctionComponent<{}> = () => {
             )
           })}
         </Switch>
-        <AboutPage/>
       </BrowserRouter>
     </div>
   )

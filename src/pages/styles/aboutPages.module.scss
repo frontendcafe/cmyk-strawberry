@@ -1,13 +1,12 @@
-//@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,700;1,400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
 
 //variables
 //$font-primary: "Work Sans", sans-serif;
-$font-medium: "work sans", sans-serif;
+$font-medium: 'work sans', sans-serif;
 $white-color: #f8f9fa;
 $font-size-02: 22px;
 $font-size-03: 20px;
-$font-small-bold: 16px;
+$font-small: 16px;
 $black-color: #272727;
 $secundary-60: #1f4459;
 $weight-500: 500;
@@ -15,7 +14,7 @@ $weight-600: 600;
 $weight-700: 700;
 
 .container {
-  background-image: url("../../assets/bg-mobile-blue.png");
+  background-image: url('../../assets/bg-mobile-blue.png');
   background-size: cover;
   color: $white-color;
   font-family: $font-medium;
@@ -24,7 +23,7 @@ $weight-700: 700;
   .header {
     align-items: center;
     background-color: $black-color;
-    border-bottom: 4px solid #1a1a1d;
+    box-shadow: 0 1px 0 #6b7278;
     display: flex;
     flex-direction: row;
     font-size: $font-size-02;
@@ -37,9 +36,6 @@ $weight-700: 700;
 
 .title {
   padding-left: 28px;
-}
-
-.info {
 }
 
 .project {
@@ -58,8 +54,9 @@ $weight-700: 700;
   }
 
   p {
-    font-size: $font-medium;
+    font-size: $font-small;
     font-weight: $weight-500;
+    letter-spacing: 0.3px;
     line-height: 24px;
   }
 

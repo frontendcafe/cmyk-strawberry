@@ -25,7 +25,7 @@ const PersonalCard = ({ name, job, description, image, hrefLinkedin, hrefTwitter
     <div className={styles.container}>
       <img src={imageCard[image]} className={styles.imgcard}/>
       <h3>{name}</h3>
-      <p>{job}</p>
+      <p className={styles.job}>{job}</p>
       <div className={styles.icon}>
         {
           twitter && (
@@ -56,7 +56,7 @@ const PersonalCard = ({ name, job, description, image, hrefLinkedin, hrefTwitter
           )
         }
       </div>
-      <p>{description}</p>
+      <p className={styles.description}>{description}</p>
     </div>
   )
 }
