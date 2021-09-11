@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Category.module.scss'
 
 interface Props {
-  type: 'approved' | 'disapproved' | 'deselected' | 'uncheck';
+  type: 'basic' | 'approved' | 'disapproved' | 'deselected' | 'uncheck';
   label: string;
   onClick: () => void;
 }
