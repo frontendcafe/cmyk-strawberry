@@ -1,4 +1,3 @@
-
 export const DESELECTED_STATE = {
   reviewing: 'disapproved',
   selecting: 'deselected',
