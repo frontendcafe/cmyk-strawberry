@@ -8,15 +8,15 @@ export interface Props {
     name: string;
     job: string;
     description: string;
-    hrefLinkedin: string;
-    hrefTwitter: string;
-    hrefDribbble: string;
-    hreftGithub: string;
+    hrefLinkedin?: string;
+    hrefTwitter?: string;
+    hrefDribbble?: string;
+    hreftGithub?: string;
     image: 'photo' | 'ejemplo'
-    twitter: string;
-    linkedin: string;
-    dribbble: string;
-    github: string;
+    twitter?: string;
+    linkedin?: string;
+    dribbble?: string;
+    github?: string;
 }
 
 const PersonalCard = ({ name, job, description, image, hrefLinkedin, hrefTwitter, hrefDribbble, hreftGithub, twitter, linkedin, dribbble, github }: Props) => {

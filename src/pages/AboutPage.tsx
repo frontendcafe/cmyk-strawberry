@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './styles/AboutPages.module.scss'
+import styles from './styles/aboutPages.module.scss'
 import close from '../assets/close.svg'
 import { Link, withRouter } from 'react-router-dom'
 import PersonalCard from '../components/molecules/PersonalCard/index'
