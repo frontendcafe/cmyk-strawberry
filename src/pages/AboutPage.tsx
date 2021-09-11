@@ -38,6 +38,16 @@ const AboutPage: React.FC<any & RouteComponentProps<any>> = Props => {
             github={'github'}
             description={'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.'}
           />
+          <PersonalCard
+            name={ 'Maria Moreno' }
+            job={'Front End Developer'}
+            image={'ejemplo'}
+            linkedin={'linkedin'}
+            hrefLinkedin={'https://www.linkedin.com/in/maria-moreno86/'}
+            twitter={'twitter'}
+            github={'github'}
+            description={'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.'}
+          />
         </div>
       </div>
     </div>

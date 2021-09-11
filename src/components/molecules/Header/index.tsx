@@ -9,16 +9,29 @@ export interface Props {
   title: string;
   subTitle: string;
   closePath: string;
+  letter?: string;
 }
 
-const Header = ({ title, subTitle, closePath }: Props) => {
+const Header = ({ title, subTitle, closePath, letter = '' }: Props) => {
   return (
     <header className={styles.header}>
       <Link to={closePath} className={styles.close}><CloseIcon/></Link>
-      <div className={styles.titlecontainer}>
-        <h1 className={styles.title}>{title}</h1>
-        <span className={styles.subtitle}>{subTitle}</span>
-      </div>
+      {
+        letter !== ''
+          ? (
+            <div className={styles.lettercontainer}>
+              <div className={styles.letter}>
+                {letter}
+              </div>
+            </div>
+          )
+          : (
+            <div className={styles.titlecontainer}>
+              <h1 className={styles.title}>{title}</h1>
+              <span className={styles.subtitle}>{subTitle}</span>
+            </div>
+          )
+      }
     </header>
   )
 }

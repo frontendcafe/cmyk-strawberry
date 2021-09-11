@@ -1,0 +1,37 @@
+$bg-color: #272727;
+$bg-color-active: #1f4459;
+$color: #f8f9fa;
+$box-shadow: 0 1px 1px $color;
+$box-shadow-active: 0 3px 1px $color;
+$label-padding: 1rem;
+$margin-top: 3px;
+$font-bold: bold;
+$font-size: 18px;
+
+.toogle-buttoms {
+  align-items: center;
+  background-color: $bg-color;
+  box-shadow: $box-shadow;
+  color: $color;
+  display: inline-flex;
+  font-size: $font-size;
+  font-weight: $font-bold;
+  margin: -11px -16px 8px;
+  text-align: center;
+  width: calc(100% + 32px);
+}
+
+.radio-input {
+  display: none;
+}
+
+.radio-label {
+  cursor: pointer;
+  padding: $label-padding;
+  width: 100%;
+}
+
+.active {
+  background-color: $bg-color-active;
+  box-shadow: $box-shadow-active;
+}
