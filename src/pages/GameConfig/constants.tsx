@@ -21,3 +21,21 @@ export const FOOTER_BUTTONS: ButtonProps[] = [
     children: 'CREAR'
   }
 ]
+
+export const MOCK_GAME = {
+  rounds: 5,
+  timeout: null,
+  categories: [
+    'Animales',
+    'Deportes'
+  ],
+  password: null,
+  players: [
+    {
+      id: '123',
+      name: '9gustin',
+      host: true
+    }
+  ],
+  state: 'STARTED' // ENDED
+}
