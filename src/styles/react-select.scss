@@ -1,0 +1,28 @@
+/* stylelint-disable */
+
+$red-color: red;
+$white-color: white;
+
+.react-select-container {
+  .react-select__control {
+    background-color: $red-color;
+    border: none;
+    color: $white-color;
+    .react-select__value-container {
+    }
+    .react-select__indicators {
+    }
+  }
+  .react-select__menu {
+    color: $white-color;
+    .react-select__menu-list {
+      background-color: $red-color;
+      .react-select__option {
+        background-color: $white-color;
+        color: $red-color;
+      }
+    }
+  }
+}
+
+/* stylelint-enable */

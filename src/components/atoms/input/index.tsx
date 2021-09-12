@@ -5,7 +5,7 @@ interface Props {
     changeHandler: (value:string) => void;
     buttonHandler?: () => void;
     size: 'small-size' | 'medium-size'
-    addButton: boolean
+    addButton?: boolean
 }
 
 const Input: React.FC<Props> = ({ changeHandler, buttonHandler, size, addButton = false }) => {

@@ -12,7 +12,7 @@ export enum paths {
   GAME_CONFIG = '/game-config',
   ROOMS = '/rooms',
   BOARD = '/board',
-  PREVIEW = '/preview'
+  PREVIEW = '/preview/:id'
 }
 
 const routes: IRoute[] = [
