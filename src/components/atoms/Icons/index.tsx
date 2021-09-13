@@ -13,9 +13,7 @@ function Icon ({ variante }:Props) {
 
   return (
     <div className={styles.container}>
-      <a href='!#'>
-        <img src={imgIcon[variante]} alt='Logo'/>
-      </a>
+      <img src={imgIcon[variante]} alt='Logo'/>
     </div>
   )
 }
