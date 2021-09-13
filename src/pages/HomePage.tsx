@@ -1,8 +1,8 @@
 import React from 'react'
-import Logotype1 from '../components/atoms/Logotype/Index'
+import Avatar from '../components/atoms/Avatars/index'
 
 const HomePage: React.FC<any> = () => {
-  return <Logotype1/>
+  return <Avatar/>
 }
 
 export default HomePage
