@@ -3,6 +3,15 @@ $color: #fff;
 $box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
 $border-radius: 8px;
 $padding: 16px;
+$separator: 2px solid #adb5bd;
+$font-weight-700: 700;
+$font-size-20: 20px;
+
+.title {
+  font-size: $font-size-20;
+  font-weight: $font-weight-700;
+  margin-bottom: 12px;
+}
 
 .container {
   background: $background-color;
@@ -10,15 +19,34 @@ $padding: 16px;
   box-shadow: $box-shadow;
   color: $color;
   display: flex;
+  justify-content: space-around;
   padding: $padding;
+  width: 95%;
 
   .left {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    width: 100%;
+  }
+
+  .separator {
+    border-right: $separator;
+    margin: 0 24px;
   }
 
   .right {
     display: flex;
     flex-direction: column;
+    text-align: center;
+    width: 100%;
   }
+}
+
+.right-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
