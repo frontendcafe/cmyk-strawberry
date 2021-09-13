@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react'
 
-// eslint-disable-next-line semi
-import avatar1 from './assets/avatar1.svg';
-// eslint-disable-next-line semi
-import avatar2 from './assets/avatar2.svg';
-// eslint-disable-next-line semi
-import avatar3 from './assets/avatar3.svg';
-// eslint-disable-next-line semi
-import avatar4 from './assets/avatar4.svg';
-// eslint-disable-next-line semi
-import avatar5 from './assets/avatar5.svg';
+import avatar1 from './assets/avatar1.svg'
+
+import avatar2 from './assets/avatar2.svg'
+
+import avatar3 from './assets/avatar3.svg'
+
+import avatar4 from './assets/avatar4.svg'
+
+import avatar5 from './assets/avatar5.svg'
 
 interface AvatarProps {
   index?: number;
