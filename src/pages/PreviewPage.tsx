@@ -5,6 +5,7 @@ import { Props as ButtonProps } from '../components/atoms/Button'
 import PlayersList from '../components/molecules/PlayersList'
 import PreviewInfoRoom from '../components/molecules/PreviewInfoRoom'
 import PasswordRoom from '../components/molecules/PasswordRoom'
+import { ReactComponent as CopyIcon } from '../../src/assets/copy2.svg'
 
 export const FOOTER_BUTTONS: ButtonProps[] = [
   {
@@ -16,36 +17,53 @@ export const FOOTER_BUTTONS: ButtonProps[] = [
   }
 ]
 
+export const FOOTER_BUTTONS_HOST: ButtonProps[] = [
+  {
+    type: 'button',
+    theme: 'tertiary',
+    size: 'large',
+    onClick: () => console.log('Comenzar partida'),
+    children: <><CopyIcon/>INVITAR AMIGOS</>
+  },
+  {
+    type: 'submit',
+    theme: 'primary',
+    size: 'large',
+    onClick: () => console.log('Comenzar partida'),
+    children: 'COMENZAR PARTIDA'
+  }
+]
+
 const playersMock = [
   {
     id: '1',
     name: 'Juan',
-    urlImage: 'https://lh3.googleusercontent.com/proxy/WLuLBdzYqHREBRQQNbKPScTarjj8pNiroMmzrIyMUakC_w1deiaa2-F8Ru4bCjiqyGMl0CjSRhE5cERoZ-175vZyYwfD8bPTDr_oXUYnCl6yAh2k7fNYSosveQ'
+    urlImage: 'https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png'
   },
   {
     id: '2',
     name: 'Pedro',
-    urlImage: 'https://lh3.googleusercontent.com/proxy/WLuLBdzYqHREBRQQNbKPScTarjj8pNiroMmzrIyMUakC_w1deiaa2-F8Ru4bCjiqyGMl0CjSRhE5cERoZ-175vZyYwfD8bPTDr_oXUYnCl6yAh2k7fNYSosveQ'
+    urlImage: 'https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png'
   },
   {
     id: '3',
     name: 'Andres',
-    urlImage: 'https://lh3.googleusercontent.com/proxy/WLuLBdzYqHREBRQQNbKPScTarjj8pNiroMmzrIyMUakC_w1deiaa2-F8Ru4bCjiqyGMl0CjSRhE5cERoZ-175vZyYwfD8bPTDr_oXUYnCl6yAh2k7fNYSosveQ'
+    urlImage: 'https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png'
   },
   {
     id: '4',
     name: 'Camilo',
-    urlImage: 'https://lh3.googleusercontent.com/proxy/WLuLBdzYqHREBRQQNbKPScTarjj8pNiroMmzrIyMUakC_w1deiaa2-F8Ru4bCjiqyGMl0CjSRhE5cERoZ-175vZyYwfD8bPTDr_oXUYnCl6yAh2k7fNYSosveQ'
+    urlImage: 'https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png'
   },
   {
     id: '5',
     name: 'Sergio',
-    urlImage: 'https://lh3.googleusercontent.com/proxy/WLuLBdzYqHREBRQQNbKPScTarjj8pNiroMmzrIyMUakC_w1deiaa2-F8Ru4bCjiqyGMl0CjSRhE5cERoZ-175vZyYwfD8bPTDr_oXUYnCl6yAh2k7fNYSosveQ'
+    urlImage: 'https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png'
   },
   {
     id: '6',
     name: 'Alex',
-    urlImage: 'https://lh3.googleusercontent.com/proxy/WLuLBdzYqHREBRQQNbKPScTarjj8pNiroMmzrIyMUakC_w1deiaa2-F8Ru4bCjiqyGMl0CjSRhE5cERoZ-175vZyYwfD8bPTDr_oXUYnCl6yAh2k7fNYSosveQ'
+    urlImage: 'https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png'
   }
 ]
 
@@ -77,16 +95,20 @@ const roomMock = {
   name: 'Sala 1',
   rounds: 10,
   seconds: 70,
-  categories: categoriesMock
+  categories: categoriesMock,
+  userHost: '6'
 }
 
 const PreviewPage = ({ players = playersMock, room = roomMock, isPrivate = true }) => {
+  // TODO Obtener el id del usuario logueado
+  const userId = '6'
+
   return (
     <Layout
       title={ isPrivate ? room.name + ' 🔒' : room.name }
       subTitle=""
       closePath={paths.HOME}
-      buttons={ FOOTER_BUTTONS }
+      buttons={ room.userHost === userId ? FOOTER_BUTTONS_HOST : FOOTER_BUTTONS }
     >
       <PlayersList players={players}/>
 
