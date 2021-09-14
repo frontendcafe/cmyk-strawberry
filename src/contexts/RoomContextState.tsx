@@ -1,12 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react'
 import useLocalStorage from '../hooks/useLocalStorage'
 import { getRoomByKeyWithSync } from '../firebase/services/room'
-import { IRoom } from '../types/room'
-
-interface IRoomContext {
-  room: IRoom | null,
-  setRoom?: React.Dispatch<React.SetStateAction<IRoom | null>>
-}
+import { IRoomContext } from '../types/room'
 
 export const RoomContext = createContext<IRoomContext>({} as IRoomContext)
 
