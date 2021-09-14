@@ -1,0 +1,18 @@
+$background-color: #c74647;
+$color-white: #f8f9fa;
+
+.container {
+  background-color: $color-white;
+  border-radius: 50px;
+  height: 8px;
+  margin: 50;
+  width: 100%;
+}
+
+.filler {
+  background-color: $background-color;
+  border-radius: inherit;
+  height: 100%;
+  text-align: right;
+  transition: width 0.1s ease-in-out;
+}

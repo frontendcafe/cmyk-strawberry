@@ -5,12 +5,16 @@ import AboutPage from './pages/AboutPage'
 import BoardPage from './pages/BoardPage'
 import GameConfig from './pages/GameConfig'
 import RoomsPage from './pages/RoomsPage'
+import ValidationPage from './pages/ValidationPage'
+import PreviewPage from './pages/PreviewPage'
 
 export enum paths {
   HOME = '/',
   GAME_CONFIG = '/game-config',
   ROOMS = '/rooms',
-  BOARD = '/board'
+  BOARD = '/board',
+  VALIDATION = '/validation',
+  PREVIEW = '/preview/:id'
 }
 
 const routes: IRoute[] = [
@@ -48,6 +52,18 @@ const routes: IRoute[] = [
     path: paths.BOARD,
     name: 'Board Page',
     component: BoardPage,
+    exact: true
+  },
+  {
+    path: paths.VALIDATION,
+    name: 'Validation',
+    component: ValidationPage,
+    exact: true
+  },
+  {
+    path: paths.PREVIEW,
+    name: 'Preview Page',
+    component: PreviewPage,
     exact: true
   },
   {

@@ -20,7 +20,7 @@ const Layout = ({ title, subTitle, letter, closePath, children, buttons }: Props
       {buttons && (
         <footer className={styles.footer}>
           {
-            buttons.map(({ key, ...buttonProps }: any) => <Button key={key} {...buttonProps}/>)
+            buttons.map(({ key, ...buttonProps }: ButtonProps) => <Button key={key} {...buttonProps}/>)
           }
         </footer>
       )}
