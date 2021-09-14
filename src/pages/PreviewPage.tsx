@@ -6,6 +6,8 @@ import PlayersList from '../components/molecules/PlayersList'
 import PreviewInfoRoom from '../components/molecules/PreviewInfoRoom'
 import PasswordRoom from '../components/molecules/PasswordRoom'
 import { ReactComponent as CopyIcon } from '../../src/assets/copy2.svg'
+import { useHistory } from 'react-router-dom'
+import { Modal } from '../components/atoms/Modal'
 
 export const FOOTER_BUTTONS: ButtonProps[] = [
   {
@@ -19,6 +21,7 @@ export const FOOTER_BUTTONS: ButtonProps[] = [
 
 export const FOOTER_BUTTONS_HOST: ButtonProps[] = [
   {
+    key: '0001',
     type: 'button',
     theme: 'tertiary',
     size: 'large',
@@ -26,6 +29,7 @@ export const FOOTER_BUTTONS_HOST: ButtonProps[] = [
     children: <><CopyIcon/>INVITAR AMIGOS</>
   },
   {
+    key: '0002',
     type: 'submit',
     theme: 'primary',
     size: 'large',
@@ -103,11 +107,36 @@ const PreviewPage = ({ players = playersMock, room = roomMock, isPrivate = true 
   // TODO Obtener el id del usuario logueado
   const userId = '6'
 
+  const history = useHistory()
+
+  const getTextModal = () => {
+    if (room.userHost === userId) {
+      return 'Volveras al inicio del juego'
+    } else {
+      return `Volveras a las salas ${isPrivate ? 'privadas' : 'públicas'}`
+    }
+  }
+
+  const showModal = () => {
+    Modal.fire({
+      title: '¿Estas seguro que quieres salir de la sala?',
+      text: getTextModal(),
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        history.push(paths.HOME)
+      } else if (result.isDismissed) {
+        console.log('Cancelado')
+      }
+    })
+  }
+
   return (
     <Layout
       title={ isPrivate ? room.name + ' 🔒' : room.name }
       subTitle=""
-      closePath={paths.HOME}
+      onClose={showModal}
       buttons={ room.userHost === userId ? FOOTER_BUTTONS_HOST : FOOTER_BUTTONS }
     >
       <PlayersList players={players}/>
