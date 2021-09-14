@@ -1,11 +1,11 @@
 import React from 'react'
-import Slider from '../components/molecules/Slider'
+import Avatar from '../components/atoms/Avatars'
 import { RoomContext } from '../contexts/RoomContextState'
 
 const HomePage: React.FC<any> = () => {
   const { room } = React.useContext(RoomContext)
   console.log(room)
-  return <Slider/>
+  return <Avatar/>
 }
 
 export default HomePage
