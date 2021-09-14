@@ -1,3 +1,5 @@
+import React from 'react'
+
 interface ICategory {
   id: string,
   name: string
@@ -20,4 +22,9 @@ export interface IRoom {
   password: string | null,
   players: IPlayer[],
   state: 'CREATED' | 'IN_PROGRESS' | 'ENDED'
+}
+
+export interface IRoomContext {
+  room: IRoom | null,
+  setRoom?: React.Dispatch<React.SetStateAction<IRoom | null>>
 }
