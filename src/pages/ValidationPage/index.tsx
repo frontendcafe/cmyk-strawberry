@@ -16,7 +16,7 @@ export const FOOTER_BUTTONS: ButtonProps[] = [
 ]
 
 const categories = ['comida']
-const ValidationPage:any = () => {
+const ValidationPage = () => {
   return (
     <Layout
       title='Validación'
