@@ -15,7 +15,7 @@ const MOCK_WORDS = [
 const WordsValidation = () => {
   const [, renderCategories] = useCategories({
     allCategories: MOCK_WORDS,
-    mode: 'view'
+    mode: 'reviewing'
   })
 
   return (
