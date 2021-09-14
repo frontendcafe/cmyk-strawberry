@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from '../../atoms/Button'
 import { Category } from '../../atoms/Category'
 import styles from './PreviewInfoRoom.module.scss'
 
@@ -12,7 +13,8 @@ interface IRoom {
   name: string,
   rounds: number,
   seconds: number,
-  categories: ICategory[]
+  categories: ICategory[],
+  userHost: string
 }
 
 interface Props {
@@ -21,6 +23,9 @@ interface Props {
 
 const PreviewInfoRoom: React.FC<Props> = ({ room }) => {
   const { rounds, seconds, categories } = room
+
+  // TODO Obtener el id del usuario logueado
+  const userId = '6'
 
   return (
     <div className={styles.container}>
@@ -46,6 +51,18 @@ const PreviewInfoRoom: React.FC<Props> = ({ room }) => {
           ))
         }
       </div>
+
+      { room.userHost === userId &&
+        <Button
+          type="button"
+          onClick={() => {}}
+          size="large"
+          theme="secondary"
+          className={styles.editbutton}
+        >
+          EDITAR CONFIGURACIÓN
+        </Button>
+      }
     </div>
   )
 }

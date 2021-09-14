@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 import { ReactComponent as CloseIcon } from '../../../assets/close.svg'
 
@@ -8,14 +7,14 @@ import styles from './Header.module.scss'
 export interface Props {
   title: string;
   subTitle: string;
-  closePath: string;
+  onClose: () => void;
   letter?: string;
 }
 
-const Header = ({ title, subTitle, closePath, letter = '' }: Props) => {
+const Header = ({ title, subTitle, onClose, letter = '' }: Props) => {
   return (
     <header className={styles.header}>
-      <Link to={closePath} className={styles.close}><CloseIcon/></Link>
+      <a className={styles.close} onClick={onClose}><CloseIcon/></a>
       {
         letter !== ''
           ? (
