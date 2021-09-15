@@ -9,7 +9,7 @@ interface Props {
   letter: string
 }
 
-const CategoryRound: React.FC<Props> = ({ categories, letter }) => {
+const CategoryRound: React.FC<Props> = ({ categories }) => {
   return (
     <section className={styles.container}>
       <div className={styles.left}>

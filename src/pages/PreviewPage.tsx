@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Layout from '../components/templates/Layout'
 import { paths } from '../routes'
 import { Props as ButtonProps } from '../components/atoms/Button'
@@ -8,9 +8,11 @@ import PasswordRoom from '../components/molecules/PasswordRoom'
 import { ReactComponent as CopyIcon } from '../../src/assets/copy2.svg'
 import { useHistory } from 'react-router-dom'
 import { Modal } from '../components/atoms/Modal'
+import { RoomContext } from '../contexts/RoomContextState'
 
 export const FOOTER_BUTTONS: ButtonProps[] = [
   {
+    key: 'UNIRSE',
     type: 'submit',
     theme: 'primary',
     size: 'large',
@@ -21,7 +23,7 @@ export const FOOTER_BUTTONS: ButtonProps[] = [
 
 export const FOOTER_BUTTONS_HOST: ButtonProps[] = [
   {
-    key: '0001',
+    key: 'INVITAR AMIGOS',
     type: 'button',
     theme: 'tertiary',
     size: 'large',
@@ -29,7 +31,7 @@ export const FOOTER_BUTTONS_HOST: ButtonProps[] = [
     children: <><CopyIcon/>INVITAR AMIGOS</>
   },
   {
-    key: '0002',
+    key: 'COMENZAR PARTIDA',
     type: 'submit',
     theme: 'primary',
     size: 'large',
@@ -38,79 +40,19 @@ export const FOOTER_BUTTONS_HOST: ButtonProps[] = [
   }
 ]
 
-const playersMock = [
-  {
-    id: '1',
-    name: 'Juan',
-    urlImage: 'https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png'
-  },
-  {
-    id: '2',
-    name: 'Pedro',
-    urlImage: 'https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png'
-  },
-  {
-    id: '3',
-    name: 'Andres',
-    urlImage: 'https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png'
-  },
-  {
-    id: '4',
-    name: 'Camilo',
-    urlImage: 'https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png'
-  },
-  {
-    id: '5',
-    name: 'Sergio',
-    urlImage: 'https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png'
-  },
-  {
-    id: '6',
-    name: 'Alex',
-    urlImage: 'https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png'
-  }
-]
-
-const categoriesMock = [
-  {
-    id: '1',
-    name: 'Comidas'
-  },
-  {
-    id: '2',
-    name: 'Países'
-  },
-  {
-    id: '3',
-    name: 'Frutas/Verduras'
-  },
-  {
-    id: '4',
-    name: 'Marcas'
-  },
-  {
-    id: '5',
-    name: 'Cosas'
-  }
-]
-
-const roomMock = {
-  id: '1',
-  name: 'Sala 1',
-  rounds: 10,
-  seconds: 70,
-  categories: categoriesMock,
-  userHost: '6'
-}
-
-const PreviewPage = ({ players = playersMock, room = roomMock, isPrivate = true }) => {
-  // TODO Obtener el id del usuario logueado
-  const userId = '6'
-
+const PreviewPage = () => {
   const history = useHistory()
+  const { room } = useContext(RoomContext)
+
+  // TODO Obtener el id del usuario logueado
+  const userId = '222'
+
+  const isPrivate = room?.password !== undefined
+
+  const userHost = room?.players.find(player => player.host)
 
   const getTextModal = () => {
-    if (room.userHost === userId) {
+    if (userHost?.id === userId) {
       return 'Volveras al inicio del juego'
     } else {
       return `Volveras a las salas ${isPrivate ? 'privadas' : 'públicas'}`
@@ -134,12 +76,12 @@ const PreviewPage = ({ players = playersMock, room = roomMock, isPrivate = true 
 
   return (
     <Layout
-      title={ isPrivate ? room.name + ' 🔒' : room.name }
+      title={ isPrivate ? room.name + ' 🔒' : room?.name || '' }
       subTitle=""
       onClose={showModal}
-      buttons={ room.userHost === userId ? FOOTER_BUTTONS_HOST : FOOTER_BUTTONS }
+      buttons={ userHost?.id === userId ? FOOTER_BUTTONS_HOST : FOOTER_BUTTONS }
     >
-      <PlayersList players={players}/>
+      <PlayersList players={room?.players}/>
 
       <PreviewInfoRoom room={room}/>
 

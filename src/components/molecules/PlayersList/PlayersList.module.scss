@@ -1,4 +1,5 @@
 $background-color: #1f4459;
+$bg-color-avatar: #f15362;
 $white: #f8f9fa;
 
 .container {
@@ -18,8 +19,12 @@ $white: #f8f9fa;
   p {
     margin: 0;
   }
+}
 
-  .avatarimg {
+.avatar {
+  img {
+    background-color: $bg-color-avatar;
+    border-radius: 50px;
     height: 60px;
     width: 60px;
   }

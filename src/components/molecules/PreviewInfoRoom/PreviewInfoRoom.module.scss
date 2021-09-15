@@ -5,10 +5,12 @@ $white: #f8f9fa;
   background-color: $bg-color;
   border-radius: 8px;
   box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
+  box-sizing: border-box;
   color: $white;
   margin-top: 20px;
   padding: 12px 37px;
   text-align: center;
+  width: 100%;
 
   h2 {
     margin: 0 0 20px;
