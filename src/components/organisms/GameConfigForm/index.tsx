@@ -1,26 +1,30 @@
 import React from 'react'
 import { useCategories } from '../../../hooks/useCategories'
+import { setValueType } from '../../../hooks/useForm'
+import { IRoom } from '../../../types/room'
+import { Button } from '../../atoms/Button'
 
 import Card from '../../atoms/Card'
 import Input from '../../atoms/input'
 import Select from '../../atoms/Select'
-import { roundOptions } from './constants'
+import { GAME_CONFIG_FIELDS, roundOptions } from './constants'
 
 import styles from './GameConfigForm.module.scss'
 
-const MOCK_CATEGORIES = [
-  { name: 'Comidas' },
-  { name: 'Paises' },
-  { name: 'Marcas' },
-  { name: 'Cosas' },
-  { name: 'Frutas/Verduras' }
-]
+interface Props {
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  setValue: setValueType
+  values: IRoom
+}
 
-const GameConfigForm = () => {
+const GameConfigForm: React.FC<Props> = ({ values, handleChange, setValue }) => {
   const [, renderCategories] = useCategories({
-    allCategories: MOCK_CATEGORIES,
+    allCategories: values.categories,
     mode: 'view'
   })
+
+  const rounds = roundOptions()
+  const selectedRounds = rounds.find(option => Number(option.value) === values.rounds)
 
   return (
     <form className={styles.form}>
@@ -28,29 +32,40 @@ const GameConfigForm = () => {
         title="Rondas"
         subtitle="Número de rondas a jugar"
       >
-        <Select options={roundOptions()}/>
-      </Card>
-      <Card
-        title="Finalización"
-        subtitle="Cómo terminara cada ronda"
-      >
-        <select>
-          {roundOptions().map(({ value, label }) => (
-            <option key={value} value={value}>{label}</option>
-          ))}
-        </select>
+        <Select
+          name={GAME_CONFIG_FIELDS.ROUNDS}
+          options={rounds}
+          setValue={setValue}
+          value={selectedRounds ?? null}
+        />
       </Card>
       <Card
         title="Categorías"
         subtitle="Selección de temas a completar"
       >
-        {renderCategories()}
+        <div className={styles.categories}>
+          {renderCategories()}
+        </div>
+        <Button
+          type="button"
+          size="medium"
+          theme="secondary"
+          onClick={console.log}
+          className={styles['edit-btn']}
+        >
+          EDITAR CATEGORIAS
+        </Button>
       </Card>
       <Card
         title="Contraseña"
-        subtitle="Escribiendo una, se hara privada"
+        subtitle="Escribí una contraseña para que la sala se convierta en privada."
       >
-        <Input size="small-size" changeHandler={console.log}/>
+        <Input
+          name={GAME_CONFIG_FIELDS.PASSWORD}
+          size="small-size"
+          onChange={handleChange}
+          value={values.password ?? ''}
+        />
       </Card>
     </form>
   )

@@ -14,6 +14,8 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
     'react/prop-types': 'off',
     indent: ['error', 2],
     'react/jsx-wrap-multilines': ['error', {
@@ -37,7 +39,6 @@ module.exports = {
       beforeClosing: 'never'
     }],
     'react/jsx-closing-bracket-location': [1, 'tag-aligned'],
-    'no-unused-vars': ['warn', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }],
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error']
   },

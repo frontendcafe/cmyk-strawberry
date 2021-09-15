@@ -3,4 +3,21 @@
   flex-wrap: wrap;
   gap: 20px;
   padding: 20px;
+
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+
+    /* stylelint-disable-next-line max-nesting-depth */
+    button {
+      margin: 0;
+    }
+  }
+
+  .edit-btn {
+    background-color: transparent;
+    margin: 20px auto;
+  }
 }

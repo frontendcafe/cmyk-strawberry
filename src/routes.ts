@@ -10,7 +10,7 @@ import PreviewPage from './pages/PreviewPage'
 
 export enum paths {
   HOME = '/',
-  GAME_CONFIG = '/game-config',
+  GAME_CONFIG = '/new-room',
   ROOMS = '/rooms',
   BOARD = '/board',
   VALIDATION = '/validation',
