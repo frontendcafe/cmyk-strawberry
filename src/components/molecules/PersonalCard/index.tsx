@@ -12,18 +12,22 @@ export interface Props {
     name: string;
     job: string;
     description: string;
+    image: 'FreudMunera' | 'KevinAu' | 'MaxiCris' | 'AgustinVazquez' | 'MaruMoreno' | 'JoshuaRodriguez'
     hrefLinkedin?: string;
     hrefTwitter?: string;
     hrefDribbble?: string;
-    hreftGithub?: string;
-    image: 'FreudMunera' | 'KevinAu' | 'MaxiCris' | 'AgustinVazquez' | 'MaruMoreno' | 'JoshuaRodriguez'
+    hrefGithub?: string;
+    hrefFigma?: string;
+    hrefWeb?: string;
     twitter?: string;
     linkedin?: string;
     dribbble?: string;
     github?: string;
+    figma?: string;
+    web?: string;
 }
 
-const PersonalCard = ({ name, job, description, image, hrefLinkedin, hrefTwitter, hrefDribbble, hreftGithub, twitter, linkedin, dribbble, github }: Props) => {
+const PersonalCard = ({ name, job, description, image, hrefLinkedin, hrefTwitter, hrefDribbble, hrefGithub, hrefFigma, hrefWeb, twitter, linkedin, dribbble, github, figma, web }: Props) => {
   const imageCard = { FreudMunera, KevinAu, MaxiCris, AgustinVazquez, MaruMoreno, JoshuaRodriguez }
   return (
     <div className={styles.container}>
@@ -54,8 +58,22 @@ const PersonalCard = ({ name, job, description, image, hrefLinkedin, hrefTwitter
         }
         {
           github && (
-            <a href={hreftGithub}>
+            <a href={hrefGithub}>
               <Icon variante='github'/>
+            </a>
+          )
+        }
+        {
+          figma && (
+            <a href={hrefFigma}>
+              <Icon variante='figma'/>
+            </a>
+          )
+        }
+        {
+          web && (
+            <a href={hrefWeb}>
+              <Icon variante='web'/>
             </a>
           )
         }

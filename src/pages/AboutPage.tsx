@@ -33,7 +33,7 @@ const AboutPage: React.FC = () => {
             twitter={'twitter'}
             hrefTwitter={'https://twitter.com/atKevin71'}
             github={'github'}
-            hreftGithub={'https://github.com/kevin-dev71'}
+            hrefGithub={'https://github.com/kevin-dev71'}
             description={'Aprendiendo todos los dias sobre tecnologia, trabajo en equipo y algun dia alcanzar el dream job (viajar y libertad financiera).'}
           />
           <PersonalCard
@@ -45,7 +45,7 @@ const AboutPage: React.FC = () => {
             twitter={'twitter'}
             hrefTwitter={'https://twitter.com/AlexandroMunera'}
             github={'github'}
-            hreftGithub={'https://github.com/AlexandroMunera'}
+            hrefGithub={'https://github.com/AlexandroMunera'}
             description={'Desarrollador de software con experiencia en los entornos web y móvil. Me gusta resolver problemas y conocer nuevas personas, tengo pensamiento critico y disfruto mucho aprender nuevas cosas.'}
           />
           <PersonalCard
@@ -56,6 +56,8 @@ const AboutPage: React.FC = () => {
             hrefLinkedin={'https://linkedin.com/in/maxicris'}
             twitter={'twitter'}
             hrefTwitter={'https://twitter.com/_maxicris'}
+            figma={'figma'}
+            hrefFigma={'https://figma.com/@maxicris'}
             description={'Diseñador UX orientado en Visual Design e Interaction Design. Mi objetivo es crear soluciones a problemas reales, colocando a los usuarios en el centro del proceso.'}
           />
           <PersonalCard
@@ -65,9 +67,11 @@ const AboutPage: React.FC = () => {
             linkedin={'linkedin'}
             hrefLinkedin={'https://www.linkedin.com/in/maria-moreno86/'}
             github={'github'}
-            hreftGithub={'https://github.com/maru8605'}
+            hrefGithub={'https://github.com/maru8605'}
             twitter={'twitter'}
             hrefTwitter={'https://twitter.com/maru_1101'}
+            web={'web'}
+            hrefWeb={' https://9gustin.com/'}
             description={'Entre al mundo del desarrollo Front end por curiosidad y me quede por la diversión. Aprendiendo constantementa. Disfruto del trabajo en equipo'}
           />
           <PersonalCard
@@ -77,7 +81,7 @@ const AboutPage: React.FC = () => {
             linkedin={'linkedin'}
             hrefLinkedin={'https://www.linkedin.com/in/maria-moreno86/'}
             github={'github'}
-            hreftGithub={'https://github.com/maru8605'}
+            hrefGithub={'https://github.com/maru8605'}
             twitter={'twitter'}
             hrefTwitter={'https://twitter.com/maru_1101'}
             description={'Entre al mundo del desarrollo Front end por curiosidad y me quede por la diversión. Aprendiendo constantementa. Disfruto del trabajo en equipo'}
@@ -89,7 +93,7 @@ const AboutPage: React.FC = () => {
             linkedin={'linkedin'}
             hrefLinkedin={'https://www.linkedin.com/in/joshua-rodriguez-60943b214/'}
             github={'github'}
-            hreftGithub={'https://github.com/joshuaabel1'}
+            hrefGithub={'https://github.com/joshuaabel1'}
           />
         </div>
       </div>
