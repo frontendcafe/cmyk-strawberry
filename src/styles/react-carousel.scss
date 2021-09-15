@@ -1,0 +1,30 @@
+$carousel-background: #1f4459;
+$dot-color: #ced4da;
+$dot-selected-color: #6b7278;
+/* stylelint-disable */
+.carousel-slider {
+  .control-dots {
+    top: 400px;
+    .dot {
+      height: 12px;
+      width: 12px;
+      border-radius: 3px;
+      border-radius: 0px;
+      background-color: $dot-color;
+      opacity: 100;
+      margin: 0px 4px;
+    }
+    .selected {
+      background: $dot-selected-color;
+      opacity: 100;
+    }
+    button .control-arrow {
+      top: -150px;
+    }
+  }
+}
+
+.carousel-root {
+  background: $carousel-background;
+}
+/* stylelint-enable */
