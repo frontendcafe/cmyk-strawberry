@@ -2,7 +2,7 @@ import React from 'react'
 import Room from '../../molecules/Room'
 import SkeletonRoom from '../../molecules/SkeletonRoom'
 import { ReactComponent as EmptyStateIcon } from '../../../assets/empty-state.svg'
-import { IRoom } from '../../../types/room'
+import { IRoom, RoomState } from '../../../types/room'
 
 import styles from './Rooms.module.scss'
 
@@ -12,10 +12,9 @@ type Props = {
 }
 
 const Rooms: React.FC<Props> = ({ rooms, showPrivate }) => {
-  const filteredRooms =
-    showPrivate
-      ? rooms.filter(room => room.password)
-      : rooms.filter(room => !Object.prototype.hasOwnProperty.call(room, 'password'))
+  const filteredRooms = rooms.filter(
+    room => Boolean(room.password) === showPrivate && room.state !== RoomState.ENDED
+  )
 
   return (
     <section className={styles.container}>
