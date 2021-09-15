@@ -5,10 +5,10 @@ interface ICategory {
   name: string
 }
 
-interface IPlayer {
+export interface IPlayer {
   id: string,
   name: string,
-  urlImage?: string,
+  imageIndex: number,
   host?: boolean
 }
 
