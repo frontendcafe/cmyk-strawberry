@@ -4,6 +4,7 @@ import CategoryRound from '../../components/Organisms/Validation/CategoryRound'
 import { paths } from '../../routes'
 import { Props as ButtonProps } from '../../components/atoms/Button'
 import WordsValidation from '../../components/Organisms/Validation/WordsValidation'
+import { useHistory } from 'react-router'
 
 export const FOOTER_BUTTONS: ButtonProps[] = [
   {
@@ -17,11 +18,13 @@ export const FOOTER_BUTTONS: ButtonProps[] = [
 
 const categories = ['comida']
 const ValidationPage = () => {
+  const history = useHistory()
+
   return (
     <Layout
       title='Validación'
       subTitle='Aprueba o no las palabras'
-      closePath={paths.HOME}
+      onClose={() => history.push(paths.HOME)}
       buttons={ FOOTER_BUTTONS }
     >
       <CategoryRound categories={categories} letter='M'/>

@@ -5,6 +5,7 @@ $font-medium: 'work sans', sans-serif;
 $weight-500: 500;
 $font-small: 16px;
 $font-size-02: 22px;
+$bold: bold;
 
 .container {
   align-items: center;
@@ -29,7 +30,7 @@ $font-size-02: 22px;
   h3 {
     font-size: $font-size-02;
     font-style: normal;
-    font-weight: bold;
+    font-weight: $bold;
     letter-spacing: 0.3px;
     line-height: 30px;
     margin: 10px 0 0;

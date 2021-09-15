@@ -4,6 +4,7 @@ import CategoryInput from '../components/atoms/CategoryInput'
 import { useForm } from '../hooks/useForm'
 import Layout from '../components/templates/Layout'
 import { paths } from '../routes'
+import { useHistory } from 'react-router'
 
 export interface Props {
   categories: Category[]
@@ -45,13 +46,15 @@ const categoriesMock: Category[] = [
 ]
 
 const BoardPage: React.FC<Props> = ({ categories = categoriesMock }) => {
-  const [formValues, handleInputChange] = useForm({})
+  const [formValues, handleInputChange] = useForm<any>({})
+
+  const history = useHistory()
 
   return (
     <Layout
       title=""
       subTitle=""
-      closePath={paths.HOME}
+      onClose={() => history.push(paths.HOME)}
       letter="M" // TODO: Get current letter
     >
       <Button
