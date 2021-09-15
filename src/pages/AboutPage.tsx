@@ -58,7 +58,7 @@ const AboutPage: React.FC = () => {
             hrefTwitter={'https://twitter.com/_maxicris'}
             figma={'figma'}
             hrefFigma={'https://figma.com/@maxicris'}
-            description={'Diseñador UX orientado en Visual Design e Interaction Design. Mi objetivo es crear soluciones a problemas reales, colocando a los usuarios en el centro del proceso.'}
+            description={'Diseñador UX orientado en Visual e Interaction Design. Mi objetivo es crear soluciones a problemas reales, colocando a los usuarios en el centro del proceso.'}
           />
           <PersonalCard
             name={'Agustin Vazquez'}
@@ -81,7 +81,7 @@ const AboutPage: React.FC = () => {
             hrefGithub={'https://github.com/maru8605'}
             twitter={'twitter'}
             hrefTwitter={'https://twitter.com/maru_1101'}
-            description={'Entre al mundo del desarrollo Front end por curiosidad y me quede por la diversión. Aprendiendo constantementa. Disfruto del trabajo en equipo'}
+            description={'Entre al mundo del desarrollo Front end por curiosidad y me quede por la diversión. En Capacitación constante. Disfruto del trabajo en equipo'}
           />
           <PersonalCard
             name={'Joshua Rodriguez'}
