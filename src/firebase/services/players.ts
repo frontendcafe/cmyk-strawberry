@@ -1,5 +1,5 @@
 import { db } from '../config'
-import { ref, set, push, onValue, child, get, update } from 'firebase/database'
+import { ref, set, push, onValue, child, get, update, onDisconnect } from 'firebase/database'
 
 interface Player {
   name?: string
@@ -39,4 +39,20 @@ export const updatePlayer = (playerKey: string, playerChanges: Player) => {
 
 export const deletePlayer = (playerKey: string) => {
   return set(ref(db, 'players/' + playerKey), null)
+}
+
+export const subscribePlayerOnlineStatus = (playerKey: string) => {
+  const playerRef = ref(db, 'players/' + playerKey)
+  const isOnlineRef = ref(db, '.info/connected')
+
+  onValue(isOnlineRef, (snap) => {
+    if (snap.val() === true) {
+      update(playerRef, {
+        online: true
+      })
+      onDisconnect(playerRef).update({
+        online: false
+      })
+    }
+  })
 }
