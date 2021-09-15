@@ -43,7 +43,6 @@ export const FOOTER_BUTTONS_HOST: ButtonProps[] = [
 const PreviewPage = () => {
   const history = useHistory()
   const { room } = useContext(RoomContext)
-  console.log(room)
 
   // TODO Obtener el id del usuario logueado
   const userId = '222'
