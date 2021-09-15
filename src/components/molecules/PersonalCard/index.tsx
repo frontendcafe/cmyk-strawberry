@@ -1,26 +1,35 @@
 import React from 'react'
 import styles from './PersonalCard.module.scss'
-import photo from '../../../assets/photo.png'
-import ejemplo from '../../../assets/ejemploo.jpg'
 import Icon from '../../atoms/Icons'
-
+// Team members
+import FreudMunera from '../../../assets/about-img/FreudMunera.jpg'
+import KevinAu from '../../../assets/about-img/KevinAu.jpg'
+import MaxiCris from '../../../assets/about-img/MaxiCris.jpg'
+import AgustinVazquez from '../../../assets/about-img/AgustinVazquez.png'
+import MaruMoreno from '../../../assets/about-img/MaruMoreno.jpg'
+import JoshuaRodriguez from '../../../assets/about-img/JoshuaRodriguez.jpg'
+import JonatanMoreno from '../../../assets/about-img/JonatanMoreno.jpg'
 export interface Props {
     name: string;
     job: string;
-    description: string;
+    description?: string;
+    image: 'FreudMunera' | 'KevinAu' | 'MaxiCris' | 'AgustinVazquez' | 'MaruMoreno' | 'JoshuaRodriguez' | 'JonatanMoreno'
     hrefLinkedin?: string;
     hrefTwitter?: string;
     hrefDribbble?: string;
-    hreftGithub?: string;
-    image: 'photo' | 'ejemplo'
+    hrefGithub?: string;
+    hrefFigma?: string;
+    hrefWeb?: string;
     twitter?: string;
     linkedin?: string;
     dribbble?: string;
     github?: string;
+    figma?: string;
+    web?: string;
 }
 
-const PersonalCard = ({ name, job, description, image, hrefLinkedin, hrefTwitter, hrefDribbble, hreftGithub, twitter, linkedin, dribbble, github }: Props) => {
-  const imageCard = { photo, ejemplo }
+const PersonalCard = ({ name, job, description, image, hrefLinkedin, hrefTwitter, hrefDribbble, hrefGithub, hrefFigma, hrefWeb, twitter, linkedin, dribbble, github, figma, web }: Props) => {
+  const imageCard = { FreudMunera, KevinAu, MaxiCris, AgustinVazquez, MaruMoreno, JoshuaRodriguez, JonatanMoreno }
   return (
     <div className={styles.container}>
       <img src={imageCard[image]} className={styles.imgcard}/>
@@ -50,13 +59,27 @@ const PersonalCard = ({ name, job, description, image, hrefLinkedin, hrefTwitter
         }
         {
           github && (
-            <a href={hreftGithub}>
+            <a href={hrefGithub}>
               <Icon variante='github'/>
             </a>
           )
         }
+        {
+          figma && (
+            <a href={hrefFigma}>
+              <Icon variante='figma'/>
+            </a>
+          )
+        }
+        {
+          web && (
+            <a href={hrefWeb}>
+              <Icon variante='web'/>
+            </a>
+          )
+        }
       </div>
-      <p className={styles.description}>{description}</p>
+      {description && <p className={styles.description}>{description}</p>}
     </div>
   )
 }
