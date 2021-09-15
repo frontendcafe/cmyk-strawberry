@@ -6,9 +6,11 @@ $input-width: 280px;
 $input-text-indent: 16px;
 $input-box-shadow-color: #4991da;
 $input-border-radius: 2px;
+$color: #000;
 
 .input {
   border-radius: $input-border-radius;
+  color: $color;
   font-size: $font-size;
   height: $input-height-small;
   text-indent: $input-text-indent;
