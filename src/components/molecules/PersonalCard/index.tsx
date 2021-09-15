@@ -12,7 +12,7 @@ import JonatanMoreno from '../../../assets/about-img/JonatanMoreno.jpg'
 export interface Props {
     name: string;
     job: string;
-    description: string;
+    description?: string;
     image: 'FreudMunera' | 'KevinAu' | 'MaxiCris' | 'AgustinVazquez' | 'MaruMoreno' | 'JoshuaRodriguez' | 'JonatanMoreno'
     hrefLinkedin?: string;
     hrefTwitter?: string;
@@ -79,7 +79,7 @@ const PersonalCard = ({ name, job, description, image, hrefLinkedin, hrefTwitter
           )
         }
       </div>
-      <p className={styles.description}>{description}</p>
+      {description && <p className={styles.description}>{description}</p>}
     </div>
   )
 }

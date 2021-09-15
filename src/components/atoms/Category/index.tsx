@@ -1,5 +1,5 @@
 import React from 'react'
-import { CATEGORY_STATUS } from '../../../hooks/useCategories/constants'
+import { CATEGORY_STATUS } from '../../../hooks/useCategories/types'
 import styles from './Category.module.scss'
 
 export interface Props {
