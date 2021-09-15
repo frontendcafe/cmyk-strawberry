@@ -29,7 +29,7 @@ button {
 
   &::before {
     color: $font-color;
-    content: '✔';
+    content: url('../../../assets/check.svg');
     margin-right: 11px;
   }
 }
