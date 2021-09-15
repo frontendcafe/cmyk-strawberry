@@ -25,7 +25,7 @@ export const INITIAL_STATE_GAME: IRoom = {
     { name: 'Cosas' },
     { name: 'Frutas/Verduras' }
   ],
-  password: 'nashe',
+  password: null,
   players: [],
   state: 'CREATED'
 }

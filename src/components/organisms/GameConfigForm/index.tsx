@@ -58,7 +58,7 @@ const GameConfigForm: React.FC<Props> = ({ values, handleChange, setValue }) => 
       </Card>
       <Card
         title="Contraseña"
-        subtitle="Escribiendo una, se hara privada"
+        subtitle="Escribí una contraseña para que la sala se convierta en privada."
       >
         <Input
           name={GAME_CONFIG_FIELDS.PASSWORD}
