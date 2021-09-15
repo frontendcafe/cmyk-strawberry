@@ -38,7 +38,7 @@ const AboutPage: React.FC = () => {
           />
           <PersonalCard
             name={'Freud Munera'}
-            job={'Front End Developer'}
+            job={'FrontEnd Developer'}
             image={'FreudMunera'}
             linkedin={'linkedin'}
             hrefLinkedin={'https://www.linkedin.com/in/freud-alexandro/'}
@@ -62,21 +62,18 @@ const AboutPage: React.FC = () => {
           />
           <PersonalCard
             name={'Agustin Vazquez'}
-            job={'Frontend Developer'}
+            job={'FrontEnd Developer'}
             image={'AgustinVazquez'}
-            linkedin={'linkedin'}
-            hrefLinkedin={'https://www.linkedin.com/in/maria-moreno86/'}
             github={'github'}
-            hrefGithub={'https://github.com/maru8605'}
+            hrefGithub={'https://github.com/9gustin'}
             twitter={'twitter'}
-            hrefTwitter={'https://twitter.com/maru_1101'}
+            hrefTwitter={'https://twitter.com/9gustin'}
             web={'web'}
             hrefWeb={' https://9gustin.com/'}
-            description={'Entre al mundo del desarrollo Front end por curiosidad y me quede por la diversión. Aprendiendo constantementa. Disfruto del trabajo en equipo'}
           />
           <PersonalCard
             name={'Maru Moreno'}
-            job={'UX Designer'}
+            job={'FrontEnd Developer'}
             image={'MaruMoreno'}
             linkedin={'linkedin'}
             hrefLinkedin={'https://www.linkedin.com/in/maria-moreno86/'}
@@ -94,6 +91,15 @@ const AboutPage: React.FC = () => {
             hrefLinkedin={'https://www.linkedin.com/in/joshua-rodriguez-60943b214/'}
             github={'github'}
             hrefGithub={'https://github.com/joshuaabel1'}
+          />
+          <PersonalCard
+            name={'Jonatan Moreno'}
+            job={'Frontend Developer'}
+            image={'JonatanMoreno'}
+            github={'github'}
+            hrefGithub={'https://github.com/Jseven5'}
+            twitter={'twitter'}
+            hrefTwitter={'https://twitter.com/Jonatan7Moreno'}
           />
         </div>
       </div>

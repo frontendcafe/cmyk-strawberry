@@ -8,11 +8,12 @@ import MaxiCris from '../../../assets/about-img/MaxiCris.jpg'
 import AgustinVazquez from '../../../assets/about-img/AgustinVazquez.png'
 import MaruMoreno from '../../../assets/about-img/MaruMoreno.jpg'
 import JoshuaRodriguez from '../../../assets/about-img/JoshuaRodriguez.jpg'
+import JonatanMoreno from '../../../assets/about-img/JonatanMoreno.jpg'
 export interface Props {
     name: string;
     job: string;
     description: string;
-    image: 'FreudMunera' | 'KevinAu' | 'MaxiCris' | 'AgustinVazquez' | 'MaruMoreno' | 'JoshuaRodriguez'
+    image: 'FreudMunera' | 'KevinAu' | 'MaxiCris' | 'AgustinVazquez' | 'MaruMoreno' | 'JoshuaRodriguez' | 'JonatanMoreno'
     hrefLinkedin?: string;
     hrefTwitter?: string;
     hrefDribbble?: string;
@@ -28,7 +29,7 @@ export interface Props {
 }
 
 const PersonalCard = ({ name, job, description, image, hrefLinkedin, hrefTwitter, hrefDribbble, hrefGithub, hrefFigma, hrefWeb, twitter, linkedin, dribbble, github, figma, web }: Props) => {
-  const imageCard = { FreudMunera, KevinAu, MaxiCris, AgustinVazquez, MaruMoreno, JoshuaRodriguez }
+  const imageCard = { FreudMunera, KevinAu, MaxiCris, AgustinVazquez, MaruMoreno, JoshuaRodriguez, JonatanMoreno }
   return (
     <div className={styles.container}>
       <img src={imageCard[image]} className={styles.imgcard}/>
