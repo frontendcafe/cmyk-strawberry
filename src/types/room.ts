@@ -21,10 +21,16 @@ export interface IRoom {
   timeout: number | null,
   password: string | null,
   players: IPlayer[],
-  state: 'CREATED' | 'IN_PROGRESS' | 'ENDED'
+  state: RoomState.CREATED | RoomState.IN_PROGRESS | RoomState.ENDED
 }
 
 export interface IRoomContext {
   room: IRoom | null,
   setRoom?: React.Dispatch<React.SetStateAction<IRoom | null>>
+}
+
+export enum RoomState {
+  CREATED,
+  IN_PROGRESS,
+  ENDED
 }

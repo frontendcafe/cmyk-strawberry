@@ -10,6 +10,12 @@ export const addRoom = (room : IRoom) => {
   return newRoomRef.key
 }
 
+export const getRoomsWithSync = (callback: any): Unsubscribe => {
+  return onValue(roomsRef, (snapshot) => {
+    callback(snapshot.val())
+  })
+}
+
 export const getRoomByKeyWithSync = (roomKey: string, callback: any): Unsubscribe => {
   const roomRef = ref(db, `rooms/${roomKey}`)
 
