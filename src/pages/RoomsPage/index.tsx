@@ -23,7 +23,9 @@ const RoomsPage: React.FC = () => {
     return () => unsuscribeEvent?.()
   }, [])
 
-  const roomsArr = Object.keys(rooms).map(roomKey => ({ id: roomKey, ...rooms[roomKey] }))
+  console.log(rooms)
+
+  const roomsArr = Object.keys(rooms).map(roomKey => ({ id: roomKey, ...(rooms as any)[roomKey] }))
 
   return (
     <Layout title={labels.TITLE} subTitle={labels.SUB_TITLE} onClose={() => history.push(labels.CLOSE_PATH)}>

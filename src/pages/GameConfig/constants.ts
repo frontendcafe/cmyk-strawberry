@@ -1,5 +1,5 @@
 import { Props as ButtonProps } from '../../components/atoms/Button'
-import { IRoom } from '../../types/room'
+import { IRoom, RoomState } from '../../types/room'
 
 // eslint-disable-next-line no-unused-vars
 type footerButtons = (handleClick: () => void) => ButtonProps[]
@@ -27,5 +27,5 @@ export const INITIAL_STATE_GAME: IRoom = {
   ],
   password: null,
   players: [],
-  state: 'CREATED'
+  state: RoomState.CREATED
 }
