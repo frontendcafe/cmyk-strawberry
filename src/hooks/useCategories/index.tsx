@@ -39,6 +39,11 @@ export const useCategories:useCategoriesType = ({
 
   const [categories, setCategories] = useState(getInitialCategories)
 
+  const selectedCategories = useMemo(() =>
+    categories.filter(category =>
+      category.status === APPROVED_STATE)
+  , [categories])
+
   const toggleState = (category: iCategory) => {
     if (category.status === APPROVED_STATE) {
       category.status = DESELECTED_STATE[mode] as CATEGORY_STATUS
@@ -61,6 +66,9 @@ export const useCategories:useCategoriesType = ({
     setCategories(newCategories)
   }
 
+  const addCategory = (newCategory: iCategory) =>
+    setCategories(prevCategories => [...prevCategories, newCategory])
+
   const renderCategories = useCallback(() => (
     <>
       {
@@ -77,5 +85,5 @@ export const useCategories:useCategoriesType = ({
     </>
   ), [categories])
 
-  return [categories, renderCategories]
+  return [categories, renderCategories, selectedCategories, addCategory]
 }

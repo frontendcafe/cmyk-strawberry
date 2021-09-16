@@ -18,4 +18,9 @@ interface Params {
 }
 
 // eslint-disable-next-line no-unused-vars
-export type useCategoriesType = (config: Params) => [iCategory[], () => React.ReactNode]
+export type useCategoriesType = (config: Params) => [
+  iCategory[],
+  () => React.ReactNode,
+  iCategory[],
+  (newCategory: iCategory) => void
+]
