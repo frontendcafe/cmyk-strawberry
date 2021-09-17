@@ -9,40 +9,12 @@ import { ReactComponent as CopyIcon } from '../../src/assets/copy2.svg'
 import { useHistory } from 'react-router-dom'
 import { Modal } from '../components/atoms/Modal'
 import { RoomContext } from '../contexts/RoomContextState'
-
-export const FOOTER_BUTTONS: ButtonProps[] = [
-  {
-    key: 'UNIRSE',
-    type: 'submit',
-    theme: 'primary',
-    size: 'large',
-    onClick: () => console.log('todo'),
-    children: 'UNIRSE'
-  }
-]
-
-export const FOOTER_BUTTONS_HOST: ButtonProps[] = [
-  {
-    key: 'INVITAR AMIGOS',
-    type: 'button',
-    theme: 'tertiary',
-    size: 'large',
-    onClick: () => console.log('Comenzar partida'),
-    children: <><CopyIcon/>INVITAR AMIGOS</>
-  },
-  {
-    key: 'COMENZAR PARTIDA',
-    type: 'submit',
-    theme: 'primary',
-    size: 'large',
-    onClick: () => console.log('Comenzar partida'),
-    children: 'COMENZAR PARTIDA'
-  }
-]
+import { PlayerContext } from '../contexts/PlayerContextState'
 
 const PreviewPage = () => {
   const history = useHistory()
-  const { room } = useContext(RoomContext)
+  const { room, addPlayerToRoom } = useContext(RoomContext)
+  const { player } = useContext(PlayerContext)
 
   // TODO Obtener el id del usuario logueado
   const userId = '222'
@@ -73,6 +45,36 @@ const PreviewPage = () => {
       }
     })
   }
+
+  const FOOTER_BUTTONS: ButtonProps[] = [
+    {
+      key: 'UNIRSE',
+      type: 'submit',
+      theme: 'primary',
+      size: 'large',
+      onClick: () => addPlayerToRoom(player),
+      children: 'UNIRSE'
+    }
+  ]
+
+  const FOOTER_BUTTONS_HOST: ButtonProps[] = [
+    {
+      key: 'INVITAR AMIGOS',
+      type: 'button',
+      theme: 'tertiary',
+      size: 'large',
+      onClick: () => console.log('Comenzar partida'),
+      children: <><CopyIcon/>INVITAR AMIGOS</>
+    },
+    {
+      key: 'COMENZAR PARTIDA',
+      type: 'submit',
+      theme: 'primary',
+      size: 'large',
+      onClick: () => console.log('Comenzar partida'),
+      children: 'COMENZAR PARTIDA'
+    }
+  ]
 
   return (
     <Layout

@@ -7,7 +7,7 @@ import { Unsubscribe } from 'firebase/database'
 export const RoomContext = createContext<IRoomContext>({} as IRoomContext)
 
 export const RoomProvider: React.FC = ({ children }) => {
-  const [room, setRoom] = useState(null)
+  const [room, setRoom] = useState<any>(null)
   const [roomKey] = useLocalStorage('room_key', '-MjKz1_1N27ZUvGxfVrA')
   let unsuscribeEvent: Unsubscribe | null = null
 
@@ -23,8 +23,15 @@ export const RoomProvider: React.FC = ({ children }) => {
     }
   }, [room])
 
+  const addPlayerToRoom = (player: any) => {
+    setRoom((prevState: any) => ({
+      ...prevState,
+      players: room.players?.concat(player)
+    }))
+  }
+
   return (
-    <RoomContext.Provider value={ { room } }>
+    <RoomContext.Provider value={ { room, addPlayerToRoom } }>
       {children}
     </RoomContext.Provider>
   )
