@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react'
 import useLocalStorage from '../hooks/useLocalStorage'
 import { getRoomByKeyWithSync, updateRoom } from '../firebase/services/room'
-import { IRoomContext, RoomState } from '../types/room'
+import { IPlayer, IRoomContext, RoomState } from '../types/room'
 import { Unsubscribe } from 'firebase/database'
 import { paths } from '../routes'
 
@@ -25,7 +25,7 @@ export const RoomProvider: React.FC = ({ children }) => {
     }
   }, [room])
 
-  const addPlayerToRoom = (player: any, history: any) => {
+  const addPlayerToRoom = (player: IPlayer, history: any) => {
     // check player is already in the room
     if (room && room.players.find((p:any) => p.id === player.id) !== undefined) {
       history.push(paths.BOARD)
@@ -42,8 +42,17 @@ export const RoomProvider: React.FC = ({ children }) => {
     }
   }
 
+  const changeRoomStateTo = (state: RoomState, history: any) => {
+    setRoom((prevState: any) => ({
+      ...prevState,
+      state
+    }))
+
+    history.push(paths.BOARD)
+  }
+
   return (
-    <RoomContext.Provider value={ { room, addPlayerToRoom } }>
+    <RoomContext.Provider value={ { room, addPlayerToRoom, changeRoomStateTo } }>
       {children}
     </RoomContext.Provider>
   )

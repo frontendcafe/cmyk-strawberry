@@ -27,7 +27,8 @@ export interface IRoom {
 export interface IRoomContext {
   room: IRoom | null,
   setRoom?: React.Dispatch<React.SetStateAction<IRoom | null>>,
-  addPlayerToRoom: any,
+  addPlayerToRoom: (player: IPlayer, history: any) => void,
+  changeRoomStateTo: (state: RoomState, history: any) => void,
 }
 
 export enum RoomState {

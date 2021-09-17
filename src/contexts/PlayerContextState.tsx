@@ -5,7 +5,7 @@ import { addPlayer, getPlayerByKeyWithSync, subscribePlayerOnlineStatus } from '
 export const PlayerContext = createContext<any>({} as any)
 
 export const PlayerProvider: React.FC = ({ children }) => {
-  const [player, setPlayer] = useState(null)
+  const [player, setPlayer] = useState('000')
   const [playerKey] = useLocalStorage('player_key', 'player1_key')
 
   useEffect(() => {
