@@ -39,9 +39,7 @@ const PreviewPage = () => {
       cancelButtonText: 'No'
     }).then((result) => {
       if (result.isConfirmed) {
-        history.push(paths.HOME)
-      } else if (result.isDismissed) {
-        console.log('Cancelado')
+        history.push(userHost?.id === userId ? paths.HOME : paths.ROOMS)
       }
     })
   }
