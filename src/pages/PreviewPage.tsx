@@ -52,7 +52,7 @@ const PreviewPage = () => {
       type: 'submit',
       theme: 'primary',
       size: 'large',
-      onClick: () => addPlayerToRoom(player),
+      onClick: () => addPlayerToRoom(player, history),
       children: 'UNIRSE'
     }
   ]
