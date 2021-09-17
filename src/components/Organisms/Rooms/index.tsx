@@ -1,6 +1,5 @@
 import React from 'react'
 import Room from '../../molecules/Room'
-import SkeletonRoom from '../../molecules/SkeletonRoom'
 import { ReactComponent as EmptyStateIcon } from '../../../assets/empty-state.svg'
 import { IRoom, RoomState } from '../../../types/room'
 
@@ -23,7 +22,6 @@ const Rooms: React.FC<Props> = ({ rooms, showPrivate }) => {
           ? filteredRooms.map(room => <Room key={room.id} room={room}/>)
           : <EmptyStateIcon className={styles['empty-state']}/>
       }
-      <SkeletonRoom/>
     </section>
   )
 }
