@@ -50,3 +50,7 @@ export const FOOTER_BUTTONS = (toggleEditing: () => void): ButtonProps[] => [
 export const EDIT_CATEGORY_FIELDS = {
   NAME: 'name'
 }
+
+// TODO: Implement with message
+export const MIN_CATEGORIES = 4
+export const MAX_CATEGORIES = 12

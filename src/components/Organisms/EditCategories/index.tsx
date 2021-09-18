@@ -5,7 +5,7 @@ import { useForm } from '../../../hooks/useForm'
 import Card from '../../atoms/Card'
 import Input from '../../atoms/input'
 import Layout from '../../templates/Layout'
-import { EDIT_CATEGORY_FIELDS, FOOTER_BUTTONS, PRESELECTED_CATEGORIES } from './constants'
+import { EDIT_CATEGORY_FIELDS, FOOTER_BUTTONS, MAX_CATEGORIES, PRESELECTED_CATEGORIES } from './constants'
 
 import styles from './EditCategories.module.scss'
 
@@ -42,7 +42,10 @@ function EditCategories ({ categories, setCategories, toggleEditing }: Props) {
   const handleAddCategory = () => {
     const { name } = addingCategory
 
-    if (name && !allSelected.some(category => category.name === name)) {
+    if (name &&
+      !allSelected.some(category => category.name === name) &&
+      allSelected.length < MAX_CATEGORIES
+    ) {
       addCategory({ name })
       reset()
     }
@@ -56,8 +59,8 @@ function EditCategories ({ categories, setCategories, toggleEditing }: Props) {
   return (
     <Layout
       title="Edicción de categorías"
-      subTitle={`${selected.length} de 12 categorías posibles`}
-      onClose={console.log}
+      subTitle={`${allSelected.length} de 12 categorías posibles`}
+      onClose={handleEndEditing}
       buttons={FOOTER_BUTTONS(handleEndEditing)}
     >
       <div className={styles.container}>
