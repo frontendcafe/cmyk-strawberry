@@ -1,10 +1,11 @@
 import React, { useMemo } from 'react'
 import { useCategories } from '../../../hooks/useCategories'
 import { iCategory } from '../../../hooks/useCategories/types'
+import { useForm } from '../../../hooks/useForm'
 import Card from '../../atoms/Card'
 import Input from '../../atoms/input'
 import Layout from '../../templates/Layout'
-import { FOOTER_BUTTONS, PRESELECTED_CATEGORIES } from './constants'
+import { EDIT_CATEGORY_FIELDS, FOOTER_BUTTONS, PRESELECTED_CATEGORIES } from './constants'
 
 import styles from './EditCategories.module.scss'
 
@@ -29,13 +30,26 @@ function EditCategories ({ categories, setCategories, toggleEditing }: Props) {
     )
   , [categories])
 
-  const [, renderAdded, newCategories] = useCategories({
+  const [, renderAdded, newCategories, addCategory] = useCategories({
     allCategories: originalCategories,
-    mode: 'selecting'
+    mode: 'adding'
   })
 
+  const allSelected = useMemo(() => [...selected, ...newCategories], [selected, newCategories])
+
+  const [addingCategory, handleChange, reset] = useForm({ name: '' })
+
+  const handleAddCategory = () => {
+    const { name } = addingCategory
+
+    if (name && !allSelected.some(category => category.name === name)) {
+      addCategory({ name })
+      reset()
+    }
+  }
+
   const handleEndEditing = () => {
-    setCategories([...selected, ...newCategories])
+    setCategories(allSelected)
     toggleEditing()
   }
 
@@ -56,7 +70,14 @@ function EditCategories ({ categories, setCategories, toggleEditing }: Props) {
         <Card>
           <h3>Agregar categoría</h3>
           <span>Incorporación de nuevas categorías</span>
-          <Input addButton={true} size="medium-size"/>
+          <Input
+            size="medium-size"
+            name={EDIT_CATEGORY_FIELDS.NAME}
+            value={addingCategory.name}
+            buttonHandler={handleAddCategory}
+            onChange={handleChange}
+            addButton
+          />
           <div className={styles.categories}>
             {renderAdded()}
           </div>

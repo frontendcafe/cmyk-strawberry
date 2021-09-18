@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Props as CategoryProps } from '../../components/atoms/Category'
 
-export type CATEGORY_STATUS = 'basic' | 'approved' | 'disapproved' | 'deselected' | 'uncheck'
+export type CATEGORY_STATUS = 'basic' | 'approved' | 'disapproved' | 'deselected' | 'uncheck' | 'invisible'
 
 export interface iCategory {
   name: string;
@@ -11,13 +11,12 @@ export interface iCategory {
 
 interface Params {
   allCategories: iCategory[];
-  mode: 'view' | 'reviewing' | 'selecting';
+  mode: 'view' | 'reviewing' | 'selecting' | 'adding';
   defaultApproved?: boolean;
   initialSelectedCategories?: iCategory[];
   categoryCustomProps?: CategoryProps
 }
 
-// eslint-disable-next-line no-unused-vars
 export type useCategoriesType = (config: Params) => [
   iCategory[],
   () => React.ReactNode,

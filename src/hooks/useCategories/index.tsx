@@ -47,6 +47,14 @@ export const useCategories:useCategoriesType = ({
       }))
   , [categories])
 
+  const addCategory = (newCategory: iCategory) => {
+    newCategory.status ||= DEFAULT_STATUS
+    setCategories(prevCategories => [...prevCategories, newCategory])
+  }
+
+  const removeCategory = (category: iCategory) =>
+    setCategories(categories.filter(({ name }) => name !== category.name))
+
   const toggleState = (category: iCategory) => {
     if (category.status === APPROVED_STATE) {
       category.status = DESELECTED_STATE[mode] as CATEGORY_STATUS
@@ -58,6 +66,12 @@ export const useCategories:useCategoriesType = ({
   }
 
   const handleClick = (name: string) => {
+    if (mode === 'adding') {
+      const existentCategory = categories.find((category) => category.name === name)
+      if (existentCategory) removeCategory(existentCategory)
+      return
+    }
+
     if (mode === 'view') return
 
     const newCategories = categories.map(category => {
@@ -69,21 +83,19 @@ export const useCategories:useCategoriesType = ({
     setCategories(newCategories)
   }
 
-  const addCategory = (newCategory: iCategory) =>
-    setCategories(prevCategories => [...prevCategories, newCategory])
-
   const renderCategories = useCallback(() => (
     <>
       {
-        categories.map(({ status, name }) => (
-          <Category
-            key={name}
-            type={status ?? DEFAULT_STATUS}
-            label={name}
-            onClick={() => handleClick(name)}
-            {...categoryCustomProps}
-          />
-        ))
+        categories
+          .map(({ status, name }) => (
+            <Category
+              key={name}
+              type={status ?? DEFAULT_STATUS}
+              label={name}
+              onClick={() => handleClick(name)}
+              {...categoryCustomProps}
+            />
+          ))
       }
     </>
   ), [categories])

@@ -46,3 +46,7 @@ export const FOOTER_BUTTONS = (toggleEditing: () => void): ButtonProps[] => [
     children: 'VOLVER'
   }
 ]
+
+export const EDIT_CATEGORY_FIELDS = {
+  NAME: 'name'
+}
