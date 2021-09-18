@@ -42,6 +42,9 @@ export const useCategories:useCategoriesType = ({
   const selectedCategories = useMemo(() =>
     categories.filter(category =>
       category.status === APPROVED_STATE)
+      .map(({ name }) => ({
+        name
+      }))
   , [categories])
 
   const toggleState = (category: iCategory) => {

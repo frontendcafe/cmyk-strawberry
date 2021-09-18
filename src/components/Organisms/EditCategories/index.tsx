@@ -10,10 +10,11 @@ import styles from './EditCategories.module.scss'
 
 interface Props {
   categories: iCategory[];
+  setCategories: (categories: iCategory[]) => void;
   toggleEditing: () => void;
 }
 
-function EditCategories ({ categories, toggleEditing }: Props) {
+function EditCategories ({ categories, setCategories, toggleEditing }: Props) {
   const [preselectedCategories, renderPreselected, selected] = useCategories({
     allCategories: PRESELECTED_CATEGORIES,
     initialSelectedCategories: categories,
@@ -28,17 +29,22 @@ function EditCategories ({ categories, toggleEditing }: Props) {
     )
   , [categories])
 
-  const [, renderAdded] = useCategories({
+  const [, renderAdded, newCategories] = useCategories({
     allCategories: originalCategories,
     mode: 'selecting'
   })
+
+  const handleEndEditing = () => {
+    setCategories([...selected, ...newCategories])
+    toggleEditing()
+  }
 
   return (
     <Layout
       title="Edicción de categorías"
       subTitle={`${selected.length} de 12 categorías posibles`}
       onClose={console.log}
-      buttons={FOOTER_BUTTONS(toggleEditing)}
+      buttons={FOOTER_BUTTONS(handleEndEditing)}
     >
       <div className={styles.container}>
         <Card>
