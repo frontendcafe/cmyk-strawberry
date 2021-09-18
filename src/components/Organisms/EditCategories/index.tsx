@@ -9,10 +9,11 @@ import { FOOTER_BUTTONS, PRESELECTED_CATEGORIES } from './constants'
 import styles from './EditCategories.module.scss'
 
 interface Props {
-  categories: iCategory[]
+  categories: iCategory[];
+  toggleEditing: () => void;
 }
 
-function EditCategories ({ categories }: Props) {
+function EditCategories ({ categories, toggleEditing }: Props) {
   const [preselectedCategories, renderPreselected, selected] = useCategories({
     allCategories: PRESELECTED_CATEGORIES,
     initialSelectedCategories: categories,
@@ -37,7 +38,7 @@ function EditCategories ({ categories }: Props) {
       title="Edicción de categorías"
       subTitle={`${selected.length} de 12 categorías posibles`}
       onClose={console.log}
-      buttons={FOOTER_BUTTONS()}
+      buttons={FOOTER_BUTTONS(toggleEditing)}
     >
       <div className={styles.container}>
         <Card>

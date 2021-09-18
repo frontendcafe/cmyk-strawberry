@@ -36,13 +36,13 @@ export const PRESELECTED_CATEGORIES = [
   }
 ]
 
-export const FOOTER_BUTTONS = (): ButtonProps[] => [
+export const FOOTER_BUTTONS = (toggleEditing: () => void): ButtonProps[] => [
   {
     key: 'CREATE_GAME',
     type: 'button',
     theme: 'tertiary',
     size: 'large',
-    onClick: console.log,
+    onClick: toggleEditing,
     children: 'VOLVER'
   }
 ]
