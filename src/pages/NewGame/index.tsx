@@ -8,7 +8,7 @@ import { IRoom } from '../../types/room'
 import { INITIAL_STATE_GAME } from './constants'
 
 const NewGame = () => {
-  const [values, handleChange,, setValue] = useForm<IRoom>(INITIAL_STATE_GAME as any)
+  const [values, handleChange,, setValue] = useForm<IRoom>(INITIAL_STATE_GAME)
   const [editing, setEditing] = useState(false)
 
   const handleChangeCategories = (categories: iCategory[]) =>
