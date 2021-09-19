@@ -12,6 +12,11 @@ export interface IPlayer {
   host?: boolean
 }
 
+export interface IPlayerContext {
+  player: IPlayer | null
+  addPlayer: (arg0: IPlayer) => string | null
+}
+
 export interface IRoom {
   id?: string,
   name?: string,
