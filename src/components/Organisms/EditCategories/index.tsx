@@ -64,15 +64,17 @@ function EditCategories ({ categories, setCategories, toggleEditing }: Props) {
       buttons={FOOTER_BUTTONS(handleEndEditing)}
     >
       <div className={styles.container}>
-        <Card>
-          <h3>Preseleccionadas</h3>
+        <Card
+          title="Preseleccionadas"
+        >
           <div className={styles.categories}>
             {renderPreselected()}
           </div>
         </Card>
-        <Card>
-          <h3>Agregar categoría</h3>
-          <span>Incorporación de nuevas categorías</span>
+        <Card
+          title="Agregar categoría"
+          subtitle="Incorporación de nuevas categorías"
+        >
           <Input
             size="medium-size"
             name={EDIT_CATEGORY_FIELDS.NAME}

@@ -1,4 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+
+import { ReactComponent as Add } from '../../../assets/add.svg'
 import styles from './Index.module.scss'
 
 interface Props {
@@ -37,7 +39,7 @@ const Input: React.FC<Props> = ({ name, value, changeHandler, buttonHandler, siz
             addButton === true && <button onClick={ buttonHandler }> Mas </button>
           }
         </>
-        : <>
+        : <label className={styles.label}>
           <input
             type="text"
             name={name}
@@ -46,9 +48,11 @@ const Input: React.FC<Props> = ({ name, value, changeHandler, buttonHandler, siz
             onChange={handleChange}
           />
           {
-            addButton === true && <button onClick={ buttonHandler }> Mas </button>
+            addButton && (
+              <button className={styles['add-button']} onClick={ buttonHandler }><Add/></button>
+            )
           }
-        </>
+        </label>
       }
     </>
   )
