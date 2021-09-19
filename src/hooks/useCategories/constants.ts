@@ -1,7 +1,8 @@
 export const DESELECTED_STATE = {
   reviewing: 'disapproved',
   selecting: 'deselected',
-  view: 'uncheck'
+  view: 'uncheck',
+  adding: 'invisible'
 }
 
 export const APPROVED_STATE = 'approved'

@@ -12,12 +12,18 @@ import { GAME_CONFIG_FIELDS, roundOptions } from './constants'
 import styles from './GameConfigForm.module.scss'
 
 interface Props {
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  setValue: setValueType
-  values: IRoom
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  setValue: setValueType;
+  values: IRoom;
+  toggleEditing: () => void;
 }
 
-const GameConfigForm: React.FC<Props> = ({ values, handleChange, setValue }) => {
+const GameConfigForm: React.FC<Props> = ({
+  values,
+  handleChange,
+  setValue,
+  toggleEditing
+}) => {
   const [, renderCategories] = useCategories({
     allCategories: values.categories,
     mode: 'view'
@@ -50,7 +56,7 @@ const GameConfigForm: React.FC<Props> = ({ values, handleChange, setValue }) => 
           type="button"
           size="medium"
           theme="secondary"
-          onClick={console.log}
+          onClick={toggleEditing}
           className={styles['edit-btn']}
         >
           EDITAR CATEGORIAS
