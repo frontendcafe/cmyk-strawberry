@@ -6,7 +6,11 @@ import { IPlayerContext } from '../types/room'
 export const PlayerContext = createContext<IPlayerContext>({} as IPlayerContext)
 
 export const PlayerProvider: React.FC = ({ children }) => {
-  const [player, setPlayer] = useState(null)
+  const [player, setPlayer] = useState({
+    id: '',
+    name: '',
+    imageIndex: 0
+  })
   const [playerKey] = useLocalStorage('player_key', 'player1_key')
 
   useEffect(() => {

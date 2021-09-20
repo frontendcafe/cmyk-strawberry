@@ -1,6 +1,5 @@
 import IRoute from './interfaces/route'
 import HomePage from './pages/HomePage'
-import SecondPage from './pages/SecondPage'
 import AboutPage from './pages/AboutPage'
 import BoardPage from './pages/BoardPage'
 import RoomsPage from './pages/RoomsPage'
@@ -18,12 +17,6 @@ export enum paths {
 }
 
 const routes: IRoute[] = [
-  {
-    path: '/second/',
-    name: 'Segond Page',
-    component: SecondPage,
-    exact: true
-  },
   {
     path: '/about',
     name: 'About Page',
