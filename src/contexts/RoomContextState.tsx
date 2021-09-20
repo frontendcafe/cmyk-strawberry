@@ -24,7 +24,7 @@ export const RoomProvider: React.FC = ({ children }) => {
   }, [room])
 
   return (
-    <RoomContext.Provider value={ { room } }>
+    <RoomContext.Provider value={ { room, roomKey } }>
       {children}
     </RoomContext.Provider>
   )
