@@ -1,0 +1,29 @@
+$title-size: 20px;
+$description-size: 16px;
+$image-padding: 16px;
+$font-color: #f8f9fa;
+$card-color: #222;
+
+body {
+  margin: 0;
+}
+
+.slide {
+  .image {
+    height: 60vh;
+    padding: $image-padding;
+  }
+
+  .title {
+    color: $font-color;
+    font-size: $title-size;
+    height: 10vh;
+    padding-top: 7vh;
+  }
+
+  .description {
+    color: $font-color;
+    font-size: $description-size;
+    height: 10vh;
+  }
+}

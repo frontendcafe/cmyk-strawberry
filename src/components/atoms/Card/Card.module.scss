@@ -1,0 +1,38 @@
+$bg-color: #1f4459;
+$color: #fff;
+$title-size: 20px;
+$title-weight: 600;
+$subtitle-size: 16px;
+$subtitle-weight: 500;
+
+.card {
+  background-color: $bg-color;
+  border-radius: 5px;
+  box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
+  margin: auto;
+  padding: 12px;
+  width: 100%;
+
+  * {
+    display: block;
+    margin: auto;
+    text-align: center;
+  }
+
+  *:not(input) {
+    color: $color;
+  }
+
+  .title {
+    font-size: $title-size;
+    font-weight: $title-weight;
+    line-height: 28px;
+  }
+
+  .subtitle {
+    font-size: $subtitle-size;
+    font-weight: $subtitle-weight;
+    line-height: 24px;
+    margin-bottom: 20px;
+  }
+}

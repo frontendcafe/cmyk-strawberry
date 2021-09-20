@@ -10,17 +10,17 @@ interface Props extends HeaderProps{
   buttons?: ButtonProps[];
 }
 
-const Layout = ({ title, subTitle, letter, closePath, children, buttons }: Props) => {
+const Layout = ({ title, subTitle, letter, onClose, children, buttons }: Props) => {
   return (
     <div className={styles.container}>
-      <Header title={title} subTitle={subTitle} closePath={closePath} letter={letter}/>
+      <Header title={title} subTitle={subTitle} onClose={onClose} letter={letter}/>
       <main className={styles.main}>
         {children}
       </main>
       {buttons && (
         <footer className={styles.footer}>
           {
-            buttons.map(({ key, ...buttonProps }: any) => <Button key={key} {...buttonProps}/>)
+            buttons.map(({ key, ...buttonProps }: ButtonProps) => <Button key={key} {...buttonProps}/>)
           }
         </footer>
       )}

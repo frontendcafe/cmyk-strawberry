@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ToogleRoom from '../../components/molecules/ToogleRoom'
 import Rooms from '../../components/Organisms/Rooms'
 import Layout from '../../components/templates/Layout'
-import { rooms } from '../../../dummyDB'
+import { getRoomsWithSync } from '../../firebase/services/room'
+import { useHistory } from 'react-router-dom'
+import { Unsubscribe } from 'firebase/database'
 
 const labels = {
   TITLE: 'Salas creadas',
@@ -12,11 +14,23 @@ const labels = {
 
 const RoomsPage: React.FC = () => {
   const [showPrivate, setShowPrivate] = useState(false)
+  const [rooms, setRooms] = useState({})
+  const history = useHistory()
+  let unsuscribeEvent: Unsubscribe | null = null
+
+  useEffect(() => {
+    unsuscribeEvent = getRoomsWithSync(setRooms)
+    return () => unsuscribeEvent?.()
+  }, [])
+
+  console.log(rooms)
+
+  const roomsArr = Object.keys(rooms).map(roomKey => ({ id: roomKey, ...(rooms as any)[roomKey] }))
 
   return (
-    <Layout title={labels.TITLE} subTitle={labels.SUB_TITLE} closePath={labels.CLOSE_PATH}>
+    <Layout title={labels.TITLE} subTitle={labels.SUB_TITLE} onClose={() => history.push(labels.CLOSE_PATH)}>
       <ToogleRoom setShowPrivate={setShowPrivate}/>
-      <Rooms showPrivate={showPrivate} rooms={rooms}/>
+      <Rooms showPrivate={showPrivate} rooms={roomsArr}/>
     </Layout>
   )
 }

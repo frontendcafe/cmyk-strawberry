@@ -1,0 +1,17 @@
+$color-white: #f8f9fa;
+$color-neutral: #272727;
+$border: 3px solid $color-white;
+$border-radius: 10px;
+$font-size: 24px;
+$font-weight-bold: bold;
+
+.container {
+  background-color: $color-neutral;
+  border: $border;
+  border-radius: $border-radius;
+  color: $color-white;
+  font-size: $font-size;
+  font-weight: $font-weight-bold;
+  line-height: 28px;
+  padding: 4px 14px;
+}

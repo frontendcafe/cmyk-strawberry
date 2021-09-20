@@ -2,6 +2,8 @@ import React from 'react'
 import { BrowserRouter, Route, Switch, RouteComponentProps } from 'react-router-dom'
 import routes from './routes'
 
+import './styles/index.scss'
+
 const Application: React.FunctionComponent<{}> = () => {
   return (
     <div>

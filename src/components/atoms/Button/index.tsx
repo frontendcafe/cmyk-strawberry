@@ -10,6 +10,7 @@ export interface Props {
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  key?: string;
 }
 
 export const Button: React.FC<Props> = ({ type = 'button', onClick, children, theme, size, className, disabled }) => {

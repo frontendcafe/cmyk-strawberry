@@ -1,5 +1,6 @@
 $primary-color: #c74647;
 $secondary-color: #013231;
+$black-color: #272727;
 $neutral-color: #6b7278;
 $border-color: #f8f9fa;
 $shadow-color: #adb5bd;
@@ -13,8 +14,14 @@ button {
   box-sizing: border-box;
   color: $font-color;
   font-weight: $weight;
-  height: 44px;
+  min-height: 44px;
   padding: 8px 16px;
+}
+
+.basic {
+  background-color: $black-color;
+  border: 0;
+  box-shadow: 0 0;
 }
 
 .approved {
@@ -22,7 +29,7 @@ button {
 
   &::before {
     color: $font-color;
-    content: '✔';
+    content: url('../../../assets/check.svg');
     margin-right: 11px;
   }
 }

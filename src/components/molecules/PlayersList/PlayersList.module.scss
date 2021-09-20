@@ -1,0 +1,31 @@
+$background-color: #1f4459;
+$bg-color-avatar: #f15362;
+$white: #f8f9fa;
+
+.container {
+  background-color: $background-color;
+  border-radius: 8px;
+  box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
+  box-sizing: border-box;
+  color: $white;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  max-width: 100%;
+  padding: 12px;
+  text-align: center;
+  width: 100%;
+
+  p {
+    margin: 0;
+  }
+}
+
+.avatar {
+  img {
+    background-color: $bg-color-avatar;
+    border-radius: 50px;
+    height: 60px;
+    width: 60px;
+  }
+}
