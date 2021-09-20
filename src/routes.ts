@@ -7,6 +7,7 @@ import GameConfig from './pages/GameConfig'
 import RoomsPage from './pages/RoomsPage'
 import ValidationPage from './pages/ValidationPage'
 import PreviewPage from './pages/PreviewPage'
+import ProvisionalClasPage from './pages/ProvisionalClasPage'
 
 export enum paths {
   HOME = '/',
@@ -18,6 +19,12 @@ export enum paths {
 }
 
 const routes: IRoute[] = [
+  {
+    path: '/classification/',
+    name: 'Provisional Classification Page',
+    component: ProvisionalClasPage,
+    exact: true
+  },
   {
     path: '/second/',
     name: 'Segond Page',

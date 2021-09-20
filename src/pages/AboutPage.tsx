@@ -67,6 +67,7 @@ const AboutPage: React.FC = () => {
             github={'github'}
             hrefGithub={'https://github.com/9gustin'}
             twitter={'twitter'}
+            
             hrefTwitter={'https://twitter.com/9gustin'}
             web={'web'}
             hrefWeb={' https://9gustin.com/'}

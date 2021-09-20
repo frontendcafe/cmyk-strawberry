@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap");
+
+//variables
+//$font-primary: "Work Sans", sans-serif;
+$font-medium: "work sans", sans-serif;
+$white-color: #f8f9fa;
+$font-size-02: 22px;
+$font-size-03: 20px;
+$font-small: 16px;
+$black-color: #272727;
+$primary-40: #f15362;
+$secundary-60: #1f4459;
+$weight-500: 500;
+$weight-600: 600;
+$weight-700: 700;
+
+.container {
+  align-items: center;
+  background-color: $secundary-60;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  font-size: $font-small;
+  justify-content: space-between;
+  letter-spacing: 0.2;
+  line-height: 24px;
+  margin: 10px auto;
+  padding: 8px 20px 8px 16px;
+  width: 328px;
+
+  .description {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .image {
+    background-color: $primary-40;
+    border-radius: 50%;
+    height: 60px;
+    margin-right: 16px;
+    width: 60px;
+  }
+
+  .name {
+    font-weight: $weight-700;
+  }
+
+  .info {
+    display: flex;
+  }
+}
