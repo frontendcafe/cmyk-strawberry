@@ -21,7 +21,7 @@ const PreviewPage = () => {
   const userHost = room?.players.find(player => player.host)
 
   const getTextModal = () => {
-    if (userHost?.id === player.id) {
+    if (userHost?.id === player?.id) {
       return 'Volveras al inicio del juego'
     } else {
       return `Volveras a las salas ${isPrivate ? 'privadas' : 'públicas'}`
@@ -36,7 +36,7 @@ const PreviewPage = () => {
       cancelButtonText: 'No'
     }).then((result) => {
       if (result.isConfirmed) {
-        history.push(userHost?.id === player.id ? paths.HOME : paths.ROOMS)
+        history.push(userHost?.id === player?.id ? paths.HOME : paths.ROOMS)
       }
     })
   }

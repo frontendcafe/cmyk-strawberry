@@ -13,7 +13,7 @@ export interface IPlayer {
 }
 
 export interface IPlayerContext {
-  player: IPlayer | null
+  player: IPlayer,
   addPlayer: (arg0: IPlayer) => string | null
 }
 
