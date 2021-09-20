@@ -1,8 +1,8 @@
 import React from 'react'
-import Avatar from '../components/atoms/Avatars/index'
+import Home from '../components/atoms/homescreen/index'
 
 const HomePage: React.FC<any> = () => {
-  return <Avatar/>
+  return <Home/>
 }
 
 export default HomePage

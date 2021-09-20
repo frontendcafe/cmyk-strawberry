@@ -18,6 +18,7 @@ const AboutPage: React.FC<any & RouteComponentProps<any>> = props => {
     <div>
       <p>{message}</p>
       <Link to="/">Ir a home page!</Link>
+
     </div>
   )
 }
