@@ -8,7 +8,6 @@ import { paths } from '../routes'
 export const RoomContext = createContext<IRoomContext>({} as IRoomContext)
 
 export const RoomProvider: React.FC = ({ children }) => {
-  // const history = useHistory()
   const [room, setRoom] = useState<any>(null)
   const [roomKey] = useLocalStorage('room_key', '-MjKz1_1N27ZUvGxfVrA')
   let unsuscribeEvent: Unsubscribe | null = null

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import Layout from '../components/templates/Layout'
 import { paths } from '../routes'
 import { Props as ButtonProps } from '../components/atoms/Button'
@@ -17,18 +17,11 @@ const PreviewPage = () => {
   const { room, addPlayerToRoom, changeRoomStateTo } = useContext(RoomContext)
   const { player } = useContext(PlayerContext)
 
-  const [currentPlayer, setCurrentPlayer] = useState(player)
-
-  useEffect(() => {
-    setCurrentPlayer(player)
-  }, [player])
-
   const isPrivate = room?.password !== undefined
-
   const userHost = room?.players.find(player => player.host)
 
   const getTextModal = () => {
-    if (userHost?.id === currentPlayer.id) {
+    if (userHost?.id === player.id) {
       return 'Volveras al inicio del juego'
     } else {
       return `Volveras a las salas ${isPrivate ? 'privadas' : 'públicas'}`
@@ -43,7 +36,7 @@ const PreviewPage = () => {
       cancelButtonText: 'No'
     }).then((result) => {
       if (result.isConfirmed) {
-        history.push(userHost?.id === currentPlayer.id ? paths.HOME : paths.ROOMS)
+        history.push(userHost?.id === player.id ? paths.HOME : paths.ROOMS)
       }
     })
   }
@@ -83,7 +76,7 @@ const PreviewPage = () => {
       title={ isPrivate ? room.name + ' 🔒' : room?.name || '' }
       subTitle=""
       onClose={showModal}
-      buttons={ userHost?.id === currentPlayer.id ? FOOTER_BUTTONS_HOST : FOOTER_BUTTONS }
+      buttons={ userHost?.id === player.id ? FOOTER_BUTTONS_HOST : FOOTER_BUTTONS }
     >
       <PlayersList players={room?.players}/>
 
