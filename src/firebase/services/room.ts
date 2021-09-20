@@ -1,6 +1,6 @@
 import { db } from '../config'
 import { ref, set, push, onValue, update, Unsubscribe } from 'firebase/database'
-import { IRoom } from '../../types/room'
+import { IRoom, IRoundGame } from '../../types/room'
 
 const roomsRef = ref(db, 'rooms')
 
@@ -28,4 +28,8 @@ export const getRoomByKeyWithSync = (roomKey: string, callback: any): Unsubscrib
 
 export const updateRoom = (roomKey: string, playerChanges: IRoom) => {
   return update(ref(db, 'rooms/' + roomKey), playerChanges)
+}
+
+export const updateRoomPlayersAnswers = (roomKey: string, roundGame: IRoundGame) => {
+  return update(ref(db, `rooms/${roomKey}/roundGame`), roundGame)
 }

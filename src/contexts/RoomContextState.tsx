@@ -51,7 +51,7 @@ export const RoomProvider: React.FC = ({ children }) => {
   }
 
   return (
-    <RoomContext.Provider value={ { room, addPlayerToRoom, changeRoomStateTo } }>
+    <RoomContext.Provider value={ { room, addPlayerToRoom, changeRoomStateTo, roomKey } }>
       {children}
     </RoomContext.Provider>
   )
