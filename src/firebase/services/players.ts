@@ -1,16 +1,12 @@
 import { db } from '../config'
 import { ref, set, push, onValue, child, get, update, onDisconnect } from 'firebase/database'
 
-interface Player {
-  name?: string
-  online?: Boolean
-  avatar?: string
-}
+import { IPlayer } from '../../types/room'
 
 const dbRef = ref(db)
 const playersRef = ref(db, 'players')
 
-export const addPlayer = (player : Player) => {
+export const addPlayer = (player : IPlayer) => {
   const newPlayerRef = push(playersRef) // push retorna una ThenableReference
   set(newPlayerRef, player)
   return newPlayerRef.key
@@ -33,7 +29,7 @@ export const getPlayersWithSync = (callback: any) => {
   })
 }
 
-export const updatePlayer = (playerKey: string, playerChanges: Player) => {
+export const updatePlayer = (playerKey: string, playerChanges: IPlayer) => {
   return update(ref(db, 'players/' + playerKey), playerChanges)
 }
 

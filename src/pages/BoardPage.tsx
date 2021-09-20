@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button } from '../components/atoms/Button'
 import CategoryInput from '../components/atoms/CategoryInput'
 import { useForm } from '../hooks/useForm'
 import Layout from '../components/templates/Layout'
 import { paths } from '../routes'
 import { useHistory } from 'react-router'
+import { RoomContext } from '../contexts/RoomContextState'
+import { PlayerContext } from '../contexts/PlayerContextState'
 
 export interface Props {
   categories: Category[]
@@ -16,39 +18,17 @@ export interface Category {
   value: string
 }
 
-// TODO: Delete mock
-const categoriesMock: Category[] = [
-  {
-    id: 1,
-    title: 'Comidas',
-    value: ''
-  },
-  {
-    id: 2,
-    title: 'Países',
-    value: ''
-  },
-  {
-    id: 3,
-    title: 'Marcas',
-    value: ''
-  },
-  {
-    id: 4,
-    title: 'Cosas',
-    value: ''
-  },
-  {
-    id: 5,
-    title: 'Flutas/Verduras',
-    value: ''
-  }
-]
-
-const BoardPage: React.FC<Props> = ({ categories = categoriesMock }) => {
+const BoardPage: React.FC<Props> = () => {
   const [formValues, handleInputChange] = useForm<any>({})
 
+  const { room } = useContext(RoomContext)
+  const { player } = useContext(PlayerContext)
   const history = useHistory()
+
+  const handleSubmit = () => {
+    // TODO: Set the state of the room to ... ?
+    console.log({ ...formValues, _player: player }) // add player to formValues to allow validation
+  }
 
   return (
     <Layout
@@ -59,21 +39,22 @@ const BoardPage: React.FC<Props> = ({ categories = categoriesMock }) => {
     >
       <Button
         type='button'
-        onClick={() => console.log(formValues)}
+        onClick={() => handleSubmit()}
         theme='primary'
         size='large'
       >
         ¡BASTA!
       </Button>
 
-      { categories.map(category => (
+      { room?.categories.map(category => (
         <CategoryInput
           key={category.id}
-          title={category.title}
-          value={formValues[category.title] || ''}
+          title={category.name}
+          value={formValues[category.name] || ''}
           handleInputChange={handleInputChange}
         />
-      ))}
+      ))
+      }
     </Layout>
   )
 }
