@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from 'react'
-import useLocalStorage from '../hooks/useLocalStorage'
 import { getRoomByKeyWithSync, updateRoom } from '../firebase/services/room'
 import { IPlayer, IRoomContext, RoomState } from '../types/room'
 import { Unsubscribe } from 'firebase/database'
@@ -9,14 +8,15 @@ export const RoomContext = createContext<IRoomContext>({} as IRoomContext)
 
 export const RoomProvider: React.FC = ({ children }) => {
   const [room, setRoom] = useState<any>(null)
-  const [roomKey] = useLocalStorage('room_key', '-MjKz1_1N27ZUvGxfVrA')
+  const [roomKey, setRoomKey] = useState('')
   let unsuscribeEvent: Unsubscribe | null = null
 
   useEffect(() => {
-    unsuscribeEvent = getRoomByKeyWithSync(roomKey, setRoom)
+
+if(roomKey) {unsuscribeEvent = getRoomByKeyWithSync(roomKey, setRoom)}
 
     return () => unsuscribeEvent?.()
-  }, [])
+  }, [roomKey])
 
   useEffect(() => {
     if (room) {
@@ -51,7 +51,7 @@ export const RoomProvider: React.FC = ({ children }) => {
   }
 
   return (
-    <RoomContext.Provider value={ { room, addPlayerToRoom, changeRoomStateTo, roomKey } }>
+    <RoomContext.Provider value={ { room, addPlayerToRoom, changeRoomStateTo, roomKey, setRoomKey } }>
       {children}
     </RoomContext.Provider>
   )

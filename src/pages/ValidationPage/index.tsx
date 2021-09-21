@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Layout from '../../components/templates/Layout'
 import CategoryRound from '../../components/Organisms/Validation/CategoryRound'
 import { paths } from '../../routes'
 import { Props as ButtonProps } from '../../components/atoms/Button'
 import WordsValidation from '../../components/Organisms/Validation/WordsValidation'
-import { useHistory } from 'react-router'
+import { useHistory, useParams } from 'react-router'
+import { RoomContext } from '../../contexts/RoomContextState'
 
 export const FOOTER_BUTTONS: ButtonProps[] = [
   {
@@ -17,8 +18,17 @@ export const FOOTER_BUTTONS: ButtonProps[] = [
 ]
 
 const categories = ['comida']
+
 const ValidationPage = () => {
   const history = useHistory()
+  const { idRoom } = useParams<{ idRoom: string }>()
+
+  // TODO use room from context
+  const { setRoomKey } = useContext(RoomContext)
+
+  useEffect(() => {
+    setRoomKey(idRoom)
+  }, [])
 
   return (
     <Layout

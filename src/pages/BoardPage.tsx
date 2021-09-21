@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Button } from '../components/atoms/Button'
 import CategoryInput from '../components/atoms/CategoryInput'
 import { useForm } from '../hooks/useForm'
 import Layout from '../components/templates/Layout'
 import { paths } from '../routes'
-import { useHistory } from 'react-router'
+import { useHistory, useParams } from 'react-router'
 import { RoomContext } from '../contexts/RoomContextState'
 import { PlayerContext } from '../contexts/PlayerContextState'
 import { updateRoomPlayersAnswers } from '../firebase/services/room'
@@ -21,12 +21,16 @@ export interface Category {
 
 const BoardPage: React.FC<Props> = () => {
   const [formValues, handleInputChange] = useForm<any>({})
-
-  const { room, roomKey } = useContext(RoomContext)
+  const { idRoom } = useParams<{ idRoom: string }>()
+  const { room, roomKey, setRoomKey } = useContext(RoomContext)
   const { playerKey } = useContext(PlayerContext)
   const history = useHistory()
   const playingRound = 1 // TODO: GET ACTUAL ROUND
   const letter = 'P' // TODO: GET ACTUAL LETTER
+
+  useEffect(() => {
+    setRoomKey(idRoom)
+  }, [])
 
   const handleSubmit = () => {
     // TODO: Falta mucha logica de integracion aun pero tiene la esencia
@@ -60,7 +64,7 @@ const BoardPage: React.FC<Props> = () => {
         ¡BASTA!
       </Button>
 
-      { room?.categories.map(category => (
+      { room?.categories?.map(category => (
         <CategoryInput
           key={category.id}
           title={category.name}
