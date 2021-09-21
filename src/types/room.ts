@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface ICategory {
+export interface ICategory {
   id?: string,
   name: string
 }
@@ -19,11 +19,18 @@ export interface IPlayerContext {
 }
 
 export interface IRoundGame {
-  [key: number] : {
-    letter: string,
-    playersAnswer: {
-      [key: string]: {
-        [key: string]: string
+  letter: string,
+  playersAnswer: {
+    [key: string]: {
+      [key: string]: string
+    }
+  }
+  validation?: {
+    [key: string]:{
+      categories: {
+        [key: string]: {
+          [key: string]: boolean
+        }[]
       }
     }
   }
@@ -34,6 +41,7 @@ export interface IRoom {
   name?: string,
   seconds?: number,
   rounds: number,
+  roundInProgress: number,
   categories: ICategory[],
   timeout: number | null,
   password: string | null,

@@ -5,22 +5,24 @@ import Letter from '../Letter'
 import styles from './CategoryRound.module.scss'
 
 interface Props {
-  categories: string[]
+  category: string
+  categoriesTotal: number
+  categoryCount: number
   letter: string
 }
 
-const CategoryRound: React.FC<Props> = ({ categories }) => {
+const CategoryRound: React.FC<Props> = ({ category, letter, categoryCount, categoriesTotal }) => {
   return (
     <section className={styles.container}>
       <div className={styles.left}>
-        <span className={styles.title}>Categoria 1/5</span>
+        <span className={styles.title}>Categoria {categoryCount}/{categoriesTotal}</span>
         <div>
           <Category
             type='basic'
-            label={categories[0]}
+            label={category}
             onClick={() => 'TODO'}
           >
-            {categories[0]}
+            {category}
           </Category>
         </div>
       </div>
@@ -28,7 +30,7 @@ const CategoryRound: React.FC<Props> = ({ categories }) => {
       <div className={styles.right}>
         <div className={styles['right-container']}>
           <span className={styles.title}>Letra</span>
-          <div><Letter letter='M'/></div>
+          <div><Letter letter={letter}/></div>
         </div>
       </div>
     </section>
