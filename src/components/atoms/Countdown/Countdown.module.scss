@@ -1,10 +1,15 @@
 // TODO: Update that with the style-guide
 $count-font-size: 135px;
-$color: #c74647;
+$color: #32527b;
 $font-color: #fff;
+$bg-color: #272727;
 
 .wrapper {
+  align-items: center;
+  background-color: $bg-color;
+  background-image: url('../../../assets/bg-mobile-pattern.svg');
   display: flex;
+  height: 100vh;
   justify-content: center;
 
   .count {

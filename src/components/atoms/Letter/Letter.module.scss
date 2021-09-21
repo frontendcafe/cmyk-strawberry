@@ -1,4 +1,4 @@
-$bg-color: #32527b;
+$bg-color: #272727;
 $border-color: #daecf7;
 $shadow-color: #141414cc;
 $font-color: #f8f9fa;
@@ -7,6 +7,8 @@ $font-size-mini: 24px;
 $weight: bold;
 
 .container {
+  background-color: $bg-color;
+  background-image: url('../../../assets/bg-mobile-pattern.svg');
   display: grid;
   height: 100vh;
   place-items: center;
