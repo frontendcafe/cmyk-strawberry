@@ -47,7 +47,7 @@ export interface IRoomContext {
   setRoom?: React.Dispatch<React.SetStateAction<IRoom | null>>,
   roomKey: string,
   addPlayerToRoom: (player: IPlayer, history: any) => void,
-  changeRoomStateTo: (state: RoomState, history: any) => void,
+  changeRoomStateTo: (state: RoomState, history: any, idRoom: string) => void,
   setRoomKey: Dispatch<SetStateAction<string>>
 }
 

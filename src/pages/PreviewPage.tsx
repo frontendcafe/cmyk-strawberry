@@ -71,7 +71,7 @@ const PreviewPage = () => {
       type: 'submit',
       theme: 'primary',
       size: 'large',
-      onClick: () => changeRoomStateTo(RoomState.IN_PROGRESS, history),
+      onClick: () => changeRoomStateTo(RoomState.IN_PROGRESS, history, idRoom),
       children: 'COMENZAR PARTIDA'
     }
   ]

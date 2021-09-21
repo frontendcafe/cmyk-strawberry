@@ -40,13 +40,13 @@ export const RoomProvider: React.FC = ({ children }) => {
     }
   }
 
-  const changeRoomStateTo = (state: RoomState, history: any) => {
+  const changeRoomStateTo = (state: RoomState, history: any, idRoom: string) => {
     setRoom((prevState: any) => ({
       ...prevState,
       state
     }))
 
-    history.push(paths.BOARD)
+    history.push(paths.BOARD.split(':')[0] + idRoom)
   }
 
   return (
