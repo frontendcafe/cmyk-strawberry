@@ -27,8 +27,6 @@ const BoardPage: React.FC<Props> = () => {
   const { playerKey } = useContext(PlayerContext)
   const history = useHistory()
 
-  console.log('room', room)
-
   const playingRound = 1 // TODO: GET ACTUAL ROUND
   const letter = 'P' // TODO: GET ACTUAL LETTER
 
@@ -56,8 +54,8 @@ const BoardPage: React.FC<Props> = () => {
 
   return (
     <>
-      { showLetter
-        ? (<Letter setShowLetter={setShowLetter}/>)
+      { showLetter && room
+        ? (<Letter room={room} setShowLetter={setShowLetter}/>)
         : (
           <Layout
             title=""
