@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react'
 import { getRoomByKeyWithSync, updateRoom } from '../firebase/services/room'
-import { IPlayer, IRoomContext, RoomState } from '../types/room'
+import { IPlayer, IRoom, IRoomContext, RoomState } from '../types/room'
 import { Unsubscribe } from 'firebase/database'
 import { paths } from '../routes'
 
@@ -49,8 +49,35 @@ export const RoomProvider: React.FC = ({ children }) => {
     history.push(paths.BOARD.split(':')[0] + idRoom)
   }
 
+  const addRoundToRoom = () => {
+    console.log('Add ROUND')
+    setRoom((prevState: IRoom) => ({
+      ...prevState,
+      roundInProgress: prevState.roundInProgress + 1
+      // roundGame: prevState.roundGame?.concat({
+      //   [0] : {
+      //     letter: 'string',
+      //     playersAnswer: {
+      //       [0]: {
+      //         [0]: 'string'
+      //       }
+      //     }
+      //   }
+      // })
+    }))
+  }
+
   return (
-    <RoomContext.Provider value={ { room, addPlayerToRoom, changeRoomStateTo, roomKey, setRoomKey } }>
+    <RoomContext.Provider
+      value={ {
+        room,
+        addPlayerToRoom,
+        changeRoomStateTo,
+        roomKey,
+        setRoomKey,
+        addRoundToRoom
+      } }
+    >
       {children}
     </RoomContext.Provider>
   )

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Button } from '../components/atoms/Button'
 import CategoryInput from '../components/atoms/CategoryInput'
 import { useForm } from '../hooks/useForm'
@@ -8,6 +8,7 @@ import { useHistory, useParams } from 'react-router'
 import { RoomContext } from '../contexts/RoomContextState'
 import { PlayerContext } from '../contexts/PlayerContextState'
 import { updateRoomPlayersAnswers } from '../firebase/services/room'
+import Letter from '../components/atoms/Letter'
 
 export interface Props {
   categories: Category[]
@@ -25,8 +26,13 @@ const BoardPage: React.FC<Props> = () => {
   const { room, roomKey, setRoomKey } = useContext(RoomContext)
   const { playerKey } = useContext(PlayerContext)
   const history = useHistory()
+
+  console.log('room', room)
+
   const playingRound = 1 // TODO: GET ACTUAL ROUND
   const letter = 'P' // TODO: GET ACTUAL LETTER
+
+  const [showLetter, setShowLetter] = useState(true)
 
   useEffect(() => {
     setRoomKey(idRoom)
@@ -49,31 +55,39 @@ const BoardPage: React.FC<Props> = () => {
   }
 
   return (
-    <Layout
-      title=""
-      subTitle=""
-      onClose={() => history.push(paths.HOME)}
-      letter={letter} // TODO: Get current letter
-    >
-      <Button
-        type='button'
-        onClick={() => handleSubmit()}
-        theme='primary'
-        size='large'
-      >
+    <>
+      { showLetter
+        ? (<Letter setShowLetter={setShowLetter}/>)
+        : (
+          <Layout
+            title=""
+            subTitle=""
+            onClose={() => history.push(paths.HOME)}
+            letter={letter}
+          >
+            <Button
+              type='button'
+              onClick={() => handleSubmit()}
+              theme='primary'
+              size='large'
+            >
         ¡BASTA!
-      </Button>
+            </Button>
 
-      { room?.categories?.map(category => (
-        <CategoryInput
-          key={category.id}
-          title={category.name}
-          value={formValues[category.name] || ''}
-          handleInputChange={handleInputChange}
-        />
-      ))
+            { room?.categories?.map(category => (
+              <CategoryInput
+                key={category.id}
+                title={category.name}
+                value={formValues[category.name] || ''}
+                handleInputChange={handleInputChange}
+              />
+            ))
+            }
+          </Layout>
+        )
+
       }
-    </Layout>
+    </>
   )
 }
 

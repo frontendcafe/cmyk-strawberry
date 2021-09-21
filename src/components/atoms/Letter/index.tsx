@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { RoomContext } from '../../../contexts/RoomContextState'
 import styles from './Letter.module.scss'
 
-const Letter: React.FC<any> = () => {
+const Letter: React.FC<any> = ({ setShowLetter }) => {
   const [letter, setLetter] = useState('')
   const allLetters = ['A', 'Z', 'C', 'E', 'V', 'G']
+  const { addRoundToRoom } = useContext(RoomContext)
 
   const randomLetter = String.fromCharCode(
     Math.floor(Math.random() * 26) + 65
@@ -12,7 +14,12 @@ const Letter: React.FC<any> = () => {
   useEffect(() => {
     setTimeout(() => {
       setLetter(randomLetter)
+      addRoundToRoom()
     }, 3000)
+
+    setTimeout(() => {
+      setShowLetter(false)
+    }, 5800)
   }, [])
 
   const randomnumber = () => {
