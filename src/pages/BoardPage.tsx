@@ -24,10 +24,10 @@ export interface Category {
 const BoardPage: React.FC<Props> = () => {
   const [formValues, handleInputChange] = useForm<any>({})
   const { idRoom } = useParams<{ idRoom: string }>()
-  const { room, roomKey, setRoomKey } = useContext(RoomContext)
+  const { room, roomKey, setRoomKey, currentLetter } = useContext(RoomContext)
   const { playerKey } = useContext(PlayerContext)
   const history = useHistory()
-  const letter = 'P' // TODO: GET ACTUAL LETTER
+  const letter = currentLetter()
 
   const [showLetter, setShowLetter] = useState(true)
   const [showCoutdown, setShowCoutdown] = useState(false)

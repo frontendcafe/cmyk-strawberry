@@ -49,6 +49,16 @@ export const RoomProvider: React.FC = ({ children }) => {
     history.push(paths.BOARD.split(':')[0] + idRoom)
   }
 
+  const currentLetter = () => {
+    if (room && room.roundGame) {
+      const roundGame = room.roundGame[room.roundInProgress]
+      if (roundGame) {
+        return roundGame.letter
+      }
+    }
+    return ''
+  }
+
   const addRoundToRoom = (room: IRoom, letter: string) => {
     console.log('letter', letter)
 
@@ -58,12 +68,12 @@ export const RoomProvider: React.FC = ({ children }) => {
       roundGame: {
         ...prevState.roundGame,
         [prevState.roundInProgress + 1]: {
-          letter: letter,
-          playersAnswer: {
-            0: {
-              0: '2'
-            }
-          }
+          letter: letter
+          // playersAnswer: {
+          //   0: {
+          //     0: '2'
+          //   }
+          // }
         }
       }
     }))
@@ -77,7 +87,8 @@ export const RoomProvider: React.FC = ({ children }) => {
         changeRoomStateTo,
         roomKey,
         setRoomKey,
-        addRoundToRoom
+        addRoundToRoom,
+        currentLetter
       } }
     >
       {children}

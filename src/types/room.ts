@@ -51,6 +51,7 @@ export interface IRoomContext {
   changeRoomStateTo: (state: RoomState, history: any, idRoom: string) => void,
   setRoomKey: Dispatch<SetStateAction<string>>,
   addRoundToRoom: (room: IRoom, letter: string) => void,
+  currentLetter: () => string,
 }
 
 export enum RoomState {
