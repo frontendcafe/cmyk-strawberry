@@ -9,6 +9,7 @@ import { RoomContext } from '../contexts/RoomContextState'
 import { PlayerContext } from '../contexts/PlayerContextState'
 import { updateRoomPlayersAnswers } from '../firebase/services/room'
 import Letter from '../components/atoms/Letter'
+import Countdown from '../components/atoms/Countdown'
 
 export interface Props {
   categories: Category[]
@@ -26,11 +27,10 @@ const BoardPage: React.FC<Props> = () => {
   const { room, roomKey, setRoomKey } = useContext(RoomContext)
   const { playerKey } = useContext(PlayerContext)
   const history = useHistory()
-
-  const playingRound = 1 // TODO: GET ACTUAL ROUND
   const letter = 'P' // TODO: GET ACTUAL LETTER
 
   const [showLetter, setShowLetter] = useState(true)
+  const [showCoutdown, setShowCoutdown] = useState(false)
 
   useEffect(() => {
     setRoomKey(idRoom)
@@ -39,7 +39,7 @@ const BoardPage: React.FC<Props> = () => {
   const handleSubmit = () => {
     // TODO: Falta mucha logica de integracion aun pero tiene la esencia
     const roundGame = {
-      [playingRound]: {
+      [room.roundInProgress]: {
         letter,
         playersAnswer: {
           [playerKey]: {
@@ -54,9 +54,14 @@ const BoardPage: React.FC<Props> = () => {
 
   return (
     <>
-      { showLetter && room
-        ? (<Letter room={room} setShowLetter={setShowLetter}/>)
-        : (
+      { showLetter && room &&
+        (<Letter room={room} setShowLetter={setShowLetter} setShowCoutdown={setShowCoutdown}/>)
+      }
+      { showCoutdown && room &&
+        (<Countdown duration={5} handleEnd={ () => setShowCoutdown(false)}/>)
+      }
+      {
+        !showLetter && !showCoutdown && room && (
           <Layout
             title=""
             subTitle=""

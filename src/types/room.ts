@@ -50,7 +50,7 @@ export interface IRoomContext {
   addPlayerToRoom: (player: IPlayer, history: any) => void,
   changeRoomStateTo: (state: RoomState, history: any, idRoom: string) => void,
   setRoomKey: Dispatch<SetStateAction<string>>,
-  addRoundToRoom: (room: IRoom) => void,
+  addRoundToRoom: (room: IRoom, letter: string) => void,
 }
 
 export enum RoomState {

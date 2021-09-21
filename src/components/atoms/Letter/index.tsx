@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { RoomContext } from '../../../contexts/RoomContextState'
 import styles from './Letter.module.scss'
 
-const Letter: React.FC<any> = ({ room, setShowLetter }) => {
+const Letter: React.FC<any> = ({ room, setShowLetter, setShowCoutdown }) => {
   const [letter, setLetter] = useState('')
   const allLetters = ['A', 'Z', 'C', 'E', 'V', 'G']
   const { addRoundToRoom } = useContext(RoomContext)
@@ -14,11 +14,12 @@ const Letter: React.FC<any> = ({ room, setShowLetter }) => {
   useEffect(() => {
     setTimeout(() => {
       setLetter(randomLetter)
-      addRoundToRoom(room)
+      addRoundToRoom(room, randomLetter)
     }, 3000)
 
     setTimeout(() => {
       setShowLetter(false)
+      setShowCoutdown(true)
     }, 5800)
   }, [])
 

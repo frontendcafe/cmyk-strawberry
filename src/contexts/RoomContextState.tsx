@@ -49,8 +49,8 @@ export const RoomProvider: React.FC = ({ children }) => {
     history.push(paths.BOARD.split(':')[0] + idRoom)
   }
 
-  const addRoundToRoom = (room: IRoom) => {
-    console.log('room', room)
+  const addRoundToRoom = (room: IRoom, letter: string) => {
+    console.log('letter', letter)
 
     setRoom((prevState: IRoom) => ({
       ...prevState,
@@ -58,7 +58,7 @@ export const RoomProvider: React.FC = ({ children }) => {
       roundGame: {
         ...prevState.roundGame,
         [prevState.roundInProgress + 1]: {
-          letter: 'A',
+          letter: letter,
           playersAnswer: {
             0: {
               0: '2'
