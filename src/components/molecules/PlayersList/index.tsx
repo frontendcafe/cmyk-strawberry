@@ -11,20 +11,24 @@ interface Props {
 const PlayerList: React.FC<Props> = ({ players }) => {
   return (
     <div className={styles.container}>
-      <Carousel
-        itemsToShow={4}
-        isRTL={false}
-        disableArrowsOnEnd
-        pagination={false}
-        showArrows={false}
-      >
-        {players?.map((player:IPlayer) => (
-          <div key={ player.id } className={styles.avatar}>
-            <Avatar index={player.imageIndex}/>
-            <p>{player.name}</p>
-          </div>
-        ))}
-      </Carousel>
+      { players !== undefined &&
+          (
+            <Carousel
+              itemsToShow={4}
+              isRTL={false}
+              disableArrowsOnEnd
+              pagination={false}
+              showArrows={false}
+            >
+              {players?.map((player:IPlayer) => (
+                <div key={ player.id } className={styles.avatar}>
+                  <Avatar index={player.imageIndex}/>
+                  <p>{player.name}</p>
+                </div>
+              ))}
+            </Carousel>
+          )
+      }
     </div>
   )
 }
