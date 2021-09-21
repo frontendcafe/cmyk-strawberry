@@ -12,7 +12,6 @@ export const RoomProvider: React.FC = ({ children }) => {
   let unsuscribeEvent: Unsubscribe | null = null
 
   useEffect(() => {
-    console.log('roomKey', roomKey)
 
 if(roomKey) {unsuscribeEvent = getRoomByKeyWithSync(roomKey, setRoom)}
 
