@@ -10,6 +10,8 @@ import avatar4 from './assets/avatar4.svg'
 
 import avatar5 from './assets/avatar5.svg'
 
+import './assets/index.scss'
+
 interface AvatarProps {
   index?: number;
   toggle?: boolean;
@@ -33,7 +35,7 @@ function Avatar ({ index, toggle }: AvatarProps): any {
 
   const currentindex = index || random
 
-  return <img src={avatars[currentindex]} alt="perfil" width="300 px"/>
+  return <img src={avatars[currentindex]} alt="perfil" className="avatar"/>
 }
 
 export default Avatar

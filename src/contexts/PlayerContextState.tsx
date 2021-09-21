@@ -21,7 +21,7 @@ export const PlayerProvider: React.FC = ({ children }) => {
   }, [])
 
   return (
-    <PlayerContext.Provider value={ { player, addPlayer } }>
+    <PlayerContext.Provider value={ { player, addPlayer, playerKey } }>
       {children}
     </PlayerContext.Provider>
   )

@@ -7,6 +7,7 @@ import { paths } from '../routes'
 import { useHistory, useParams } from 'react-router'
 import { RoomContext } from '../contexts/RoomContextState'
 import { PlayerContext } from '../contexts/PlayerContextState'
+import { updateRoomPlayersAnswers } from '../firebase/services/room'
 
 export interface Props {
   categories: Category[]
@@ -20,19 +21,31 @@ export interface Category {
 
 const BoardPage: React.FC<Props> = () => {
   const [formValues, handleInputChange] = useForm<any>({})
-
-  const { room, setRoomKey } = useContext(RoomContext)
-  const { player } = useContext(PlayerContext)
-  const history = useHistory()
   const { idRoom } = useParams<{ idRoom: string }>()
+  const { room, roomKey, setRoomKey } = useContext(RoomContext)
+  const { playerKey } = useContext(PlayerContext)
+  const history = useHistory()
+  const playingRound = 1 // TODO: GET ACTUAL ROUND
+  const letter = 'P' // TODO: GET ACTUAL LETTER
 
   useEffect(() => {
     setRoomKey(idRoom)
   }, [])
 
   const handleSubmit = () => {
-    // TODO: Set the state of the room to ... ?
-    console.log({ ...formValues, _player: player }) // add player to formValues to allow validation
+    // TODO: Falta mucha logica de integracion aun pero tiene la esencia
+    const roundGame = {
+      [playingRound]: {
+        letter,
+        playersAnswer: {
+          [playerKey]: {
+            ...formValues
+          }
+        }
+      }
+    }
+    updateRoomPlayersAnswers(roomKey, { ...roundGame })
+    // TODO: redirection...?
   }
 
   return (
@@ -40,7 +53,7 @@ const BoardPage: React.FC<Props> = () => {
       title=""
       subTitle=""
       onClose={() => history.push(paths.HOME)}
-      letter="M" // TODO: Get current letter
+      letter={letter} // TODO: Get current letter
     >
       <Button
         type='button'

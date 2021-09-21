@@ -52,7 +52,7 @@ const PreviewPage = () => {
       type: 'submit',
       theme: 'primary',
       size: 'large',
-      onClick: () => addPlayerToRoom(player, history),
+      onClick: () => player && addPlayerToRoom(player, history),
       children: 'UNIRSE'
     }
   ]
@@ -81,7 +81,7 @@ const PreviewPage = () => {
       title={ isPrivate ? room.name + ' 🔒' : room?.name || '' }
       subTitle=""
       onClose={showModal}
-      buttons={ userHost?.id === player.id ? FOOTER_BUTTONS_HOST : FOOTER_BUTTONS }
+      buttons={ userHost?.id === player?.id ? FOOTER_BUTTONS_HOST : FOOTER_BUTTONS }
     >
       <PlayersList players={room?.players}/>
 
