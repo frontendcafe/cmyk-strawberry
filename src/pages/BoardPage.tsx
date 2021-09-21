@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Button } from '../components/atoms/Button'
 import CategoryInput from '../components/atoms/CategoryInput'
 import { useForm } from '../hooks/useForm'
 import Layout from '../components/templates/Layout'
 import { paths } from '../routes'
-import { useHistory } from 'react-router'
+import { useHistory, useParams } from 'react-router'
 import { RoomContext } from '../contexts/RoomContextState'
 import { PlayerContext } from '../contexts/PlayerContextState'
 
@@ -21,9 +21,14 @@ export interface Category {
 const BoardPage: React.FC<Props> = () => {
   const [formValues, handleInputChange] = useForm<any>({})
 
-  const { room } = useContext(RoomContext)
+  const { room, setRoomKey } = useContext(RoomContext)
   const { player } = useContext(PlayerContext)
   const history = useHistory()
+  const { idRoom } = useParams<{ idRoom: string }>()
+
+  useEffect(() => {
+    setRoomKey(idRoom)
+  }, [])
 
   const handleSubmit = () => {
     // TODO: Set the state of the room to ... ?
@@ -46,7 +51,7 @@ const BoardPage: React.FC<Props> = () => {
         ¡BASTA!
       </Button>
 
-      { room?.categories.map(category => (
+      { room?.categories?.map(category => (
         <CategoryInput
           key={category.id}
           title={category.name}
