@@ -14,7 +14,7 @@ button {
   box-sizing: border-box;
   color: $font-color;
   font-weight: $weight;
-  height: 44px;
+  min-height: 44px;
   padding: 8px 16px;
 }
 

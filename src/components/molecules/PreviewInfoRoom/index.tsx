@@ -8,7 +8,7 @@ interface Props {
 }
 
 const PreviewInfoRoom: React.FC<Props> = ({ room }) => {
-  const userHost = room?.players.find(player => player.host)
+  const userHost = room?.players.find(player => player?.host)
 
   // TODO Obtener el id del usuario logueado
   const userId = '222'

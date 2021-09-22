@@ -1,21 +1,21 @@
 import React, { createContext, useState, useEffect } from 'react'
-import useLocalStorage from '../hooks/useLocalStorage'
 import { getRoomByKeyWithSync, updateRoom } from '../firebase/services/room'
-import { IRoomContext } from '../types/room'
+import { IPlayer, IRoom, IRoomContext, RoomState } from '../types/room'
 import { Unsubscribe } from 'firebase/database'
+import { paths } from '../routes'
 
 export const RoomContext = createContext<IRoomContext>({} as IRoomContext)
 
 export const RoomProvider: React.FC = ({ children }) => {
-  const [room, setRoom] = useState(null)
-  const [roomKey] = useLocalStorage('room_key', '-MjKz1_1N27ZUvGxfVrA')
+  const [room, setRoom] = useState<any>(null)
+  const [roomKey, setRoomKey] = useState('')
   let unsuscribeEvent: Unsubscribe | null = null
 
   useEffect(() => {
-    unsuscribeEvent = getRoomByKeyWithSync(roomKey, setRoom)
+    if (roomKey) { unsuscribeEvent = getRoomByKeyWithSync(roomKey, setRoom) }
 
     return () => unsuscribeEvent?.()
-  }, [])
+  }, [roomKey])
 
   useEffect(() => {
     if (room) {
@@ -23,8 +23,74 @@ export const RoomProvider: React.FC = ({ children }) => {
     }
   }, [room])
 
+  const addPlayerToRoom = (player: IPlayer, history: any) => {
+    // check player is already in the room
+    if (room && room.players.find((p:any) => p.id === player.id) !== undefined) {
+      history.push(paths.BOARD)
+      return
+    }
+
+    // check room useState
+    if (room && room.state !== RoomState.ENDED) {
+      setRoom((prevState: any) => ({
+        ...prevState,
+        players: room.players?.concat(player)
+      }))
+      history.push(paths.BOARD)
+    }
+  }
+
+  const changeRoomStateTo = (state: RoomState, history: any, idRoom: string) => {
+    setRoom((prevState: any) => ({
+      ...prevState,
+      state
+    }))
+
+    history.push(paths.BOARD.split(':')[0] + idRoom)
+  }
+
+  const currentLetter = () => {
+    if (room && room.roundGame) {
+      const roundGame = room.roundGame[room.roundInProgress]
+      if (roundGame) {
+        return roundGame.letter
+      }
+    }
+    return ''
+  }
+
+  const addRoundToRoom = (room: IRoom, letter: string) => {
+    console.log('letter', letter)
+
+    setRoom((prevState: IRoom) => ({
+      ...prevState,
+      roundInProgress: prevState.roundInProgress + 1,
+      roundGame: {
+        ...prevState.roundGame,
+        [prevState.roundInProgress + 1]: {
+          letter: letter
+          // playersAnswer: {
+          //   0: {
+          //     0: '2'
+          //   }
+          // }
+        }
+      }
+    }))
+  }
+
   return (
-    <RoomContext.Provider value={ { room } }>
+    <RoomContext.Provider
+      value={ {
+        room,
+        addPlayerToRoom,
+        changeRoomStateTo,
+        roomKey,
+        setRoomKey,
+        addRoundToRoom,
+        currentLetter
+      } }
+    >
       {children}
     </RoomContext.Provider>
   )
