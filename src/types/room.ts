@@ -39,7 +39,8 @@ export interface IRoom {
   password: string | null,
   players: IPlayer[],
   state: RoomState.CREATED | RoomState.IN_PROGRESS | RoomState.ENDED,
-  roundGame?: IRoundGame[]
+  roundGame?: IRoundGame[],
+  roundInProgress: number,
 }
 
 export interface IRoomContext {
@@ -47,8 +48,10 @@ export interface IRoomContext {
   setRoom?: React.Dispatch<React.SetStateAction<IRoom | null>>,
   roomKey: string,
   addPlayerToRoom: (player: IPlayer, history: any) => void,
-  changeRoomStateTo: (state: RoomState, history: any) => void,
-  setRoomKey: Dispatch<SetStateAction<string>>
+  changeRoomStateTo: (state: RoomState, history: any, idRoom: string) => void,
+  setRoomKey: Dispatch<SetStateAction<string>>,
+  addRoundToRoom: (room: IRoom, letter: string) => void,
+  currentLetter: () => string,
 }
 
 export enum RoomState {

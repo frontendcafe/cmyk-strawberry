@@ -46,6 +46,10 @@ const PreviewPage = () => {
     })
   }
 
+  const generateInvitationUrl = async () => {
+    await navigator.clipboard.writeText(window.location.href)
+  }
+
   const FOOTER_BUTTONS: ButtonProps[] = [
     {
       key: 'UNIRSE',
@@ -63,7 +67,7 @@ const PreviewPage = () => {
       type: 'button',
       theme: 'tertiary',
       size: 'large',
-      onClick: () => console.log('INVITAR AMIGOS'),
+      onClick: () => generateInvitationUrl(),
       children: <><CopyIcon/>INVITAR AMIGOS</>
     },
     {
@@ -71,7 +75,7 @@ const PreviewPage = () => {
       type: 'submit',
       theme: 'primary',
       size: 'large',
-      onClick: () => changeRoomStateTo(RoomState.IN_PROGRESS, history),
+      onClick: () => changeRoomStateTo(RoomState.IN_PROGRESS, history, idRoom),
       children: 'COMENZAR PARTIDA'
     }
   ]

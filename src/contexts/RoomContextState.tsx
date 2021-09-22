@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react'
 import { getRoomByKeyWithSync, updateRoom } from '../firebase/services/room'
-import { IPlayer, IRoomContext, RoomState } from '../types/room'
+import { IPlayer, IRoom, IRoomContext, RoomState } from '../types/room'
 import { Unsubscribe } from 'firebase/database'
 import { paths } from '../routes'
 
@@ -12,8 +12,7 @@ export const RoomProvider: React.FC = ({ children }) => {
   let unsuscribeEvent: Unsubscribe | null = null
 
   useEffect(() => {
-
-if(roomKey) {unsuscribeEvent = getRoomByKeyWithSync(roomKey, setRoom)}
+    if (roomKey) { unsuscribeEvent = getRoomByKeyWithSync(roomKey, setRoom) }
 
     return () => unsuscribeEvent?.()
   }, [roomKey])
@@ -41,17 +40,57 @@ if(roomKey) {unsuscribeEvent = getRoomByKeyWithSync(roomKey, setRoom)}
     }
   }
 
-  const changeRoomStateTo = (state: RoomState, history: any) => {
+  const changeRoomStateTo = (state: RoomState, history: any, idRoom: string) => {
     setRoom((prevState: any) => ({
       ...prevState,
       state
     }))
 
-    history.push(paths.BOARD)
+    history.push(paths.BOARD.split(':')[0] + idRoom)
+  }
+
+  const currentLetter = () => {
+    if (room && room.roundGame) {
+      const roundGame = room.roundGame[room.roundInProgress]
+      if (roundGame) {
+        return roundGame.letter
+      }
+    }
+    return ''
+  }
+
+  const addRoundToRoom = (room: IRoom, letter: string) => {
+    console.log('letter', letter)
+
+    setRoom((prevState: IRoom) => ({
+      ...prevState,
+      roundInProgress: prevState.roundInProgress + 1,
+      roundGame: {
+        ...prevState.roundGame,
+        [prevState.roundInProgress + 1]: {
+          letter: letter
+          // playersAnswer: {
+          //   0: {
+          //     0: '2'
+          //   }
+          // }
+        }
+      }
+    }))
   }
 
   return (
-    <RoomContext.Provider value={ { room, addPlayerToRoom, changeRoomStateTo, roomKey, setRoomKey } }>
+    <RoomContext.Provider
+      value={ {
+        room,
+        addPlayerToRoom,
+        changeRoomStateTo,
+        roomKey,
+        setRoomKey,
+        addRoundToRoom,
+        currentLetter
+      } }
+    >
       {children}
     </RoomContext.Provider>
   )
