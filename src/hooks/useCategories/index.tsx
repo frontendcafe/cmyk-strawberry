@@ -26,6 +26,7 @@ export const useCategories:useCategoriesType = ({
   , [defaultApproved])
 
   const getInitialCategories = () => {
+    console.log(allCategories)
     return allCategories.map((category) => {
       if (initialSelectedCategories?.some(({ name }) => name === category.name)) {
         category.status = APPROVED_STATE
@@ -37,8 +38,8 @@ export const useCategories:useCategoriesType = ({
     })
   }
 
-  const [categories, setCategories] = useState(getInitialCategories)
-
+  const [categories, setCategories] = useState(getInitialCategories())
+  console.log(categories, "ALGO")
   const selectedCategories = useMemo(() =>
     categories.filter(category =>
       category.status === APPROVED_STATE)

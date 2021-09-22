@@ -1,29 +1,19 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styles from './WordsValidation.module.scss'
 import { Category } from '../../../atoms/Category'
 import ProgressBar from '../ProgressBar'
-import { PlayerContext } from '../../../../contexts/PlayerContextState'
-import Words from './Words'
+import { useCategories } from '../../../../hooks/useCategories'
 
 interface Props {
-  playersAnswers: any[]
-  categoryToEvaluate: string
+  myAnswer: {name: string}
+  answerOfOtherPlayers: any[]
 }
 
-const WordsValidation: React.FC<Props> = ({ playersAnswers, categoryToEvaluate }) => {
-  const { playerKey } = useContext(PlayerContext)
-
-  const { answerOfOtherPlayers = [], myAnswer } : any = playersAnswers
-    .reduce((acc, pa) => {
-      const [paKey, ans] = pa
-      paKey === playerKey
-        ? acc.myAnswer.name = ans[categoryToEvaluate]
-        : acc.answerOfOtherPlayers.push({ name: ans[categoryToEvaluate] })
-
-      return acc
-    }, { myAnswer: { name: '' }, answerOfOtherPlayers: [] })
-
-  console.log({ answerOfOtherPlayers, myAnswer })
+const WordsValidation: React.FC<Props> = ({ myAnswer, answerOfOtherPlayers }) => {
+  const [, renderCategories] = useCategories({
+    allCategories: answerOfOtherPlayers,
+    mode: 'reviewing'
+  })
 
   return (
     <section className={styles.container}>
@@ -35,7 +25,10 @@ const WordsValidation: React.FC<Props> = ({ playersAnswers, categoryToEvaluate }
         />
       </div>
       <h3>Las palabras de los demas</h3>
-      <Words answerOfOtherPlayers={answerOfOtherPlayers}/>
+      <div className={styles['categories-container']}>
+        {renderCategories()}
+        {answerOfOtherPlayers.map(ap => <div key={ap.name}>{ap.name}</div>)}
+      </div>
       <div className={styles['progress-container']}>
         <ProgressBar/>
       </div>
