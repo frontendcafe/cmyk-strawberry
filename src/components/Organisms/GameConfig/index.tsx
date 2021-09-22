@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import Layout from '../../templates/Layout'
 import GameConfigForm from '../GameConfigForm'
@@ -9,6 +9,7 @@ import { useHistory } from 'react-router'
 import { addRoom } from '../../../firebase/services/room'
 import { IRoom } from '../../../types/room'
 import { setValueType } from '../../../hooks/useForm'
+import { PlayerContext } from '../../../contexts/PlayerContextState'
 
 interface Props {
   values: IRoom;
@@ -19,12 +20,15 @@ interface Props {
 
 const GameConfig: React.FC<Props> = ({ values, handleChange, setValue, toggleEditing }) => {
   const history = useHistory()
+  const { player } = useContext(PlayerContext)
 
   const handleSubmit = () => {
+    values.players = [player]
+
     const roomId = addRoom(values)
 
     if (roomId) {
-      history.push(paths.PREVIEW.replace(':id', roomId))
+      history.push(paths.PREVIEW.replace(':idRoom', roomId))
     }
   }
 

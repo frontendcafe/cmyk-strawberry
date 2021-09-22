@@ -15,7 +15,7 @@ const Room: React.FC<Props> = ({ room }) => {
   const history = useHistory()
 
   return (
-    <section className={styles.container} onClick={() => history.push(paths.PREVIEW.replace(':id', room.id ?? '0'))}>
+    <section className={styles.container} onClick={() => history.push(paths.PREVIEW.replace(':idRoom', room.id ?? '0'))}>
       <div className={styles['label-wrap']}>
         <span className={styles.title}>{room.name ?? 'Sala XX'}</span>
         {room.password && <LockIcon className={styles['lock-icon']}/>}
