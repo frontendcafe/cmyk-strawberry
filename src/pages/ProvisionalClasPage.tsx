@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { paths } from '../routes'
 import close from '../assets/close.svg'
 import styles from './styles/ProvisionalClasPage.module.scss'
 import ClassificationCard from '../components/molecules/ClassificationCard'
 import { Button } from '../components/atoms/Button'
+import { useHistory, Link } from 'react-router-dom'
 
 export interface Props {
   positions: Position[]
@@ -56,10 +57,10 @@ const positionArr: Position[] = [
 
 // const mapScore = positionArr.map((position) => position.score)
 // console.log(mapScore)
-function sortJSON(data, key, orden) {
-  return data.sort(function (a, b) {
-    let x = a[key],
-    y = b[key]
+function sortJSON (data, key:string, orden:string) {
+  return data.sort(function (a:number, b:number) {
+    const x = a[key]
+    const y = b[key]
 
     if (orden === 'asc') {
       return ((x < y) ? -1 : ((x > y) ? 1 : 0))
@@ -68,13 +69,16 @@ function sortJSON(data, key, orden) {
     if (orden === 'desc') {
       return ((x > y) ? -1 : ((x < y) ? 1 : 0))
     }
+    return data
   })
 }
 
-let newPositionJSON = sortJSON(positionArr, 'score', 'desc')
+const newPositionJSON = sortJSON(positionArr, 'score', 'desc')
 console.log(JSON.stringify(newPositionJSON))
 
-const ProvisionalClasPage: React.FC<Props> = ({ positions = positionArr }) => {
+const ProvisionalClasPage: React.FC<Props> = ({ positions = newPositionJSON }) => {
+  const history = useHistory()
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -86,7 +90,7 @@ const ProvisionalClasPage: React.FC<Props> = ({ positions = positionArr }) => {
           <p>Ronda 1/5</p>
         </div>
       </header>
-      { newPositionJSON.map(position => (
+      { positions.map(position => (
         <ClassificationCard
           key={position.id}
           name={position.name}
@@ -97,7 +101,7 @@ const ProvisionalClasPage: React.FC<Props> = ({ positions = positionArr }) => {
       ))}
       <Button
         type='button'
-        onClick={() => console.log('vuelve al juego')}
+        onClick={() => history.push(paths.BOARD)}
         theme='primary'
         size='large'
       >
