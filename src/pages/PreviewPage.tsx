@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Layout from '../components/templates/Layout'
 import { paths } from '../routes'
 import { Props as ButtonProps } from '../components/atoms/Button'
@@ -6,7 +6,7 @@ import PlayersList from '../components/molecules/PlayersList'
 import PreviewInfoRoom from '../components/molecules/PreviewInfoRoom'
 import PasswordRoom from '../components/molecules/PasswordRoom'
 import { ReactComponent as CopyIcon } from '../../src/assets/copy2.svg'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { Modal } from '../components/atoms/Modal'
 import { RoomContext } from '../contexts/RoomContextState'
 import { PlayerContext } from '../contexts/PlayerContextState'
@@ -14,11 +14,16 @@ import { RoomState } from '../types/room'
 
 const PreviewPage = () => {
   const history = useHistory()
-  const { room, addPlayerToRoom, changeRoomStateTo } = useContext(RoomContext)
+  const { idRoom } = useParams<{ idRoom: string }>()
+  const { room, addPlayerToRoom, changeRoomStateTo, setRoomKey } = useContext(RoomContext)
   const { player } = useContext(PlayerContext)
 
   const isPrivate = room?.password !== undefined
-  const userHost = room?.players.find(player => player.host)
+  const userHost = room?.players.find(player => player?.host)
+
+  useEffect(() => {
+    setRoomKey(idRoom)
+  }, [])
 
   const getTextModal = () => {
     if (userHost?.id === player?.id) {
@@ -41,6 +46,10 @@ const PreviewPage = () => {
     })
   }
 
+  const generateInvitationUrl = async () => {
+    await navigator.clipboard.writeText(window.location.href)
+  }
+
   const FOOTER_BUTTONS: ButtonProps[] = [
     {
       key: 'UNIRSE',
@@ -58,7 +67,7 @@ const PreviewPage = () => {
       type: 'button',
       theme: 'tertiary',
       size: 'large',
-      onClick: () => console.log('INVITAR AMIGOS'),
+      onClick: () => generateInvitationUrl(),
       children: <><CopyIcon/>INVITAR AMIGOS</>
     },
     {
@@ -66,7 +75,7 @@ const PreviewPage = () => {
       type: 'submit',
       theme: 'primary',
       size: 'large',
-      onClick: () => changeRoomStateTo(RoomState.IN_PROGRESS, history),
+      onClick: () => changeRoomStateTo(RoomState.IN_PROGRESS, history, idRoom),
       children: 'COMENZAR PARTIDA'
     }
   ]

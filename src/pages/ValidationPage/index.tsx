@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import Layout from '../../components/templates/Layout'
 import CategoryRound from '../../components/Organisms/Validation/CategoryRound'
 import { paths } from '../../routes'
 import { Props as ButtonProps } from '../../components/atoms/Button'
 import WordsValidation from '../../components/Organisms/Validation/WordsValidation'
-import { useHistory } from 'react-router'
+import { useHistory, useParams } from 'react-router'
 import { RoomContext } from '../../contexts/RoomContextState'
 import { PlayerContext } from '../../contexts/PlayerContextState'
 
@@ -13,6 +13,14 @@ const ValidationPage = () => {
   const { room } = useContext(RoomContext)
   const { playerKey } = useContext(PlayerContext)
   const [categoryCount, setCategoryCount] = useState(0)
+  const { idRoom } = useParams<{ idRoom: string }>()
+
+  // TODO use room from context
+  const { setRoomKey } = useContext(RoomContext)
+
+  useEffect(() => {
+    setRoomKey(idRoom)
+  }, [])
 
   // ESTA CONDICION ES PARA QUE TYPESCRIPT NO SE QUEJE, TENEMOS MUCHA BASURA EN LA DB y roundGame puede venir undefined
   if (!room || !room.roundGame || !room.roundGame[room.roundInProgress]) return 'Cargando...'

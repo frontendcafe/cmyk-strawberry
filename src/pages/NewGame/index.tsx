@@ -22,17 +22,21 @@ const NewGame = () => {
   }
 
   return editing
-    ? <EditCategories
-      categories={values.categories}
-      setCategories={handleChangeCategories}
-      toggleEditing={toggleEditing}
-    />
-    : <GameConfig
-      values={values}
-      handleChange={handleChange}
-      setValue={setValue}
-      toggleEditing={toggleEditing}
-    />
+    ? (
+      <EditCategories
+        categories={values.categories}
+        setCategories={handleChangeCategories}
+        toggleEditing={toggleEditing}
+      />
+    )
+    : (
+      <GameConfig
+        values={values}
+        handleChange={handleChange}
+        setValue={setValue}
+        toggleEditing={toggleEditing}
+      />
+    )
 }
 
 export default NewGame

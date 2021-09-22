@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 
 export interface ICategory {
   id?: string,
@@ -13,7 +13,7 @@ export interface IPlayer {
 }
 
 export interface IPlayerContext {
-  player: IPlayer | null
+  player: IPlayer,
   addPlayer: (arg0: IPlayer) => string | null
   playerKey: string
 }
@@ -51,11 +51,14 @@ export interface IRoom {
 }
 
 export interface IRoomContext {
-  room: IRoom | null,
+  room: IRoom,
   setRoom?: React.Dispatch<React.SetStateAction<IRoom | null>>,
   roomKey: string,
   addPlayerToRoom: (player: IPlayer, history: any) => void,
-  changeRoomStateTo: (state: RoomState, history: any) => void
+  changeRoomStateTo: (state: RoomState, history: any, idRoom: string) => void,
+  setRoomKey: Dispatch<SetStateAction<string>>,
+  addRoundToRoom: (room: IRoom, letter: string) => void,
+  currentLetter: () => string,
 }
 
 export enum RoomState {
