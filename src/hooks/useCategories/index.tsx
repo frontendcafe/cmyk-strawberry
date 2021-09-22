@@ -39,7 +39,7 @@ export const useCategories:useCategoriesType = ({
   }
 
   const [categories, setCategories] = useState(getInitialCategories())
-  console.log(categories, "ALGO")
+  console.log(categories, 'ALGO')
   const selectedCategories = useMemo(() =>
     categories.filter(category =>
       category.status === APPROVED_STATE)
