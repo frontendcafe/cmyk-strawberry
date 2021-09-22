@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Category } from '../../components/atoms/Category'
 import { APPROVED_STATE, DESELECTED_STATE } from './constants'
 import { CATEGORY_STATUS, iCategory, useCategoriesType } from './types'
@@ -26,7 +26,6 @@ export const useCategories:useCategoriesType = ({
   , [defaultApproved])
 
   const getInitialCategories = () => {
-    console.log(allCategories)
     return allCategories.map((category) => {
       if (initialSelectedCategories?.some(({ name }) => name === category.name)) {
         category.status = APPROVED_STATE
@@ -38,8 +37,8 @@ export const useCategories:useCategoriesType = ({
     })
   }
 
-  const [categories, setCategories] = useState(getInitialCategories())
-  console.log(categories, 'ALGO')
+  const [categories, setCategories] = useState(getInitialCategories)
+
   const selectedCategories = useMemo(() =>
     categories.filter(category =>
       category.status === APPROVED_STATE)
@@ -100,6 +99,10 @@ export const useCategories:useCategoriesType = ({
       }
     </>
   ), [categories])
+
+  useEffect(() => {
+    setCategories(getInitialCategories())
+  }, [allCategories])
 
   return [categories, renderCategories, selectedCategories, addCategory]
 }

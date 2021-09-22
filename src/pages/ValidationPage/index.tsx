@@ -23,21 +23,23 @@ const ValidationPage = () => {
   }, [])
 
   // ESTA CONDICION ES PARA QUE TYPESCRIPT NO SE QUEJE, TENEMOS MUCHA BASURA EN LA DB y roundGame puede venir undefined
-  if (!room || !room.roundGame || !room.roundGame[room.roundInProgress]) return 'Cargando...'
+  const roundInProgress = room?.roundInProgress
+  if (!room?.roundGame?.[roundInProgress]?.playersAnswer) return 'Cargando...'
 
-  const roundInProgress = room.roundInProgress
   const letter = room.roundGame[roundInProgress].letter
   const categoryToEvaluate = room.categories[categoryCount].name
   const playersAnswers: any = Object.entries(room.roundGame[roundInProgress].playersAnswer)
-  const { answerOfOtherPlayers, myAnswer } = playersAnswers
-    .reduce((acc: any, pa: any) => {
-      const [paKey, ans] = pa
-      paKey === playerKey
-        ? acc.myAnswer.name = ans[categoryToEvaluate]
-        : acc.answerOfOtherPlayers.push({ name: ans[categoryToEvaluate] })
 
-      return acc
-    }, { myAnswer: { name: '' }, answerOfOtherPlayers: [] })
+  const { answerOfOtherPlayers, myAnswer } =
+    playersAnswers
+      .reduce((acc: any, pa: any) => {
+        const [paKey, ans] = pa
+        paKey === playerKey
+          ? acc.myAnswer.name = ans[categoryToEvaluate]
+          : acc.answerOfOtherPlayers.push({ name: ans[categoryToEvaluate] })
+
+        return acc
+      }, { myAnswer: { name: '' }, answerOfOtherPlayers: [] })
 
   const handleValidate = () => {
     if (categoryCount < room.categories.length - 1) {
