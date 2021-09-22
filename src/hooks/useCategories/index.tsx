@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Category } from '../../components/atoms/Category'
 import { APPROVED_STATE, DESELECTED_STATE } from './constants'
 import { CATEGORY_STATUS, iCategory, useCategoriesType } from './types'
@@ -99,6 +99,10 @@ export const useCategories:useCategoriesType = ({
       }
     </>
   ), [categories])
+
+  useEffect(() => {
+    setCategories(getInitialCategories())
+  }, [allCategories])
 
   return [categories, renderCategories, selectedCategories, addCategory]
 }
