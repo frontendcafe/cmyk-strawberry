@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import close from '../assets/close.svg'
 import styles from './styles/ProvisionalClasPage.module.scss'
 import ClassificationCard from '../components/molecules/ClassificationCard'
+import { Button } from '../components/atoms/Button'
 
 export interface Props {
   positions: Position[]
@@ -20,7 +21,7 @@ const positionArr: Position[] = [
     id: 1,
     name: 'Pepito',
     score: 25,
-    position: 2,
+    position: 3,
     image: 'avatar'
   },
   {
@@ -53,6 +54,26 @@ const positionArr: Position[] = [
   }
 ]
 
+// const mapScore = positionArr.map((position) => position.score)
+// console.log(mapScore)
+function sortJSON(data, key, orden) {
+  return data.sort(function (a, b) {
+    let x = a[key],
+    y = b[key]
+
+    if (orden === 'asc') {
+      return ((x < y) ? -1 : ((x > y) ? 1 : 0))
+    }
+
+    if (orden === 'desc') {
+      return ((x > y) ? -1 : ((x < y) ? 1 : 0))
+    }
+  })
+}
+
+let newPositionJSON = sortJSON(positionArr, 'score', 'desc')
+console.log(JSON.stringify(newPositionJSON))
+
 const ProvisionalClasPage: React.FC<Props> = ({ positions = positionArr }) => {
   return (
     <div className={styles.container}>
@@ -65,7 +86,7 @@ const ProvisionalClasPage: React.FC<Props> = ({ positions = positionArr }) => {
           <p>Ronda 1/5</p>
         </div>
       </header>
-      { positions.map(position => (
+      { newPositionJSON.map(position => (
         <ClassificationCard
           key={position.id}
           name={position.name}
@@ -74,6 +95,14 @@ const ProvisionalClasPage: React.FC<Props> = ({ positions = positionArr }) => {
           image={position.image}
         />
       ))}
+      <Button
+        type='button'
+        onClick={() => console.log('vuelve al juego')}
+        theme='primary'
+        size='large'
+      >
+        SIGUIENTE RONDA
+      </Button>
     </div>
   )
 }

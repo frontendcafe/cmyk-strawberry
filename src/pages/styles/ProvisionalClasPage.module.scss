@@ -14,9 +14,12 @@ $weight-600: 600;
 $weight-700: 700;
 
 .container {
+  align-items: center;
   background-image: url("../../assets/bgBlue.svg");
   background-size: cover;
   color: $white-color;
+  display: flex;
+  flex-direction: column;
   font-family: $font-medium;
   min-height: 600px;
   min-width: 360px;
@@ -31,7 +34,8 @@ $weight-700: 700;
     font-size: $font-size-02;
     height: 88px;
     justify-content: flex-start;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    min-width: 360px;
     padding: 24px 24px 24px 16px;
   }
 
