@@ -7,10 +7,6 @@ import ValidationPage from './pages/ValidationPage'
 import PreviewPage from './pages/PreviewPage'
 import ProvisionalClasPage from './pages/ProvisionalClasPage'
 import NewGame from './pages/NewGame'
-<<<<<<< HEAD
-=======
-
->>>>>>> e6967b38a650fc943e495e6b44270b8ceefc7cc0
 
 export enum paths {
   HOME = '/',
@@ -29,15 +25,12 @@ const routes: IRoute[] = [
     exact: true
   },
   {
-<<<<<<< HEAD
-=======
     path: '/second/',
     name: 'Segond Page',
     component: SecondPage,
     exact: true
   },
   {
->>>>>>> e6967b38a650fc943e495e6b44270b8ceefc7cc0
     path: '/about',
     name: 'About Page',
     component: AboutPage,
