@@ -3,7 +3,9 @@ import React, { useState } from 'react'
 import EditCategories from '../components/Organisms/EditCategories'
 import { iCategory } from '../hooks/useCategories/types'
 
-type withEditCategoriesType = <PropsType>(Component: React.ComponentType<PropsType>) => React.FC<PropsType & EditCategoriesProps>
+type withEditCategoriesType = <PropsType>(
+  Component: React.ComponentType<PropsType & { toggleEditing?: () => void }>
+) => React.FC<PropsType & EditCategoriesProps>;
 
 interface EditCategoriesProps {
   categories: iCategory[];
@@ -18,7 +20,7 @@ const withEditCategories: withEditCategoriesType = (Component) => {
       if (!editing) {
         window.scrollTo(0, 0)
       }
-      setEditing(prevValue => !prevValue)
+      setEditing((prevValue) => !prevValue)
     }
 
     const { categories, setCategories, ...rest } = props
@@ -32,9 +34,7 @@ const withEditCategories: withEditCategoriesType = (Component) => {
         />
       )
       : (
-        <Component
-          {...rest}
-        />
+        <Component {...(rest as any)} toggleEditing={toggleEditing}/>
       )
   }
 }

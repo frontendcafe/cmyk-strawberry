@@ -6,6 +6,7 @@ import RoomsPage from './pages/RoomsPage'
 import ValidationPage from './pages/ValidationPage'
 import PreviewPage from './pages/PreviewPage'
 import NewGame from './pages/NewGame'
+import EditGame from './pages/EditGame'
 // import EditGame from './pages/EditGame'
 
 export enum paths {
@@ -34,7 +35,7 @@ const routes: IRoute[] = [
   {
     path: paths.EDIT_CONFIG,
     name: 'Edit game',
-    component: NewGame,
+    component: EditGame,
     exact: true
   },
   {

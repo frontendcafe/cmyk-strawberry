@@ -15,7 +15,7 @@ interface Props {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   setValue: setValueType;
   values: IRoom;
-  toggleEditing: () => void;
+  toggleEditing?: () => void;
 }
 
 const GameConfigForm: React.FC<Props> = ({

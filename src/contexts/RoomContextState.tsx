@@ -87,6 +87,7 @@ export const RoomProvider: React.FC = ({ children }) => {
         changeRoomStateTo,
         roomKey,
         setRoomKey,
+        setRoom,
         addRoundToRoom,
         currentLetter
       } }
