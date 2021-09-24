@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 
-interface ICategory {
+export interface ICategory {
   id?: string,
   name: string
 }
@@ -12,6 +12,23 @@ export interface IPlayer {
   host?: boolean
 }
 
+export interface IPlayerContext {
+  player: IPlayer,
+  addPlayer: (arg0: IPlayer) => string | null
+  playerKey: string
+}
+
+export interface IRoundGame {
+  [key: number] : {
+    letter: string,
+    playersAnswer: {
+      [key: string]: {
+        [key: string]: string
+      }
+    }
+  }
+}
+
 export interface IRoom {
   id?: string,
   name?: string,
@@ -21,10 +38,24 @@ export interface IRoom {
   timeout: number | null,
   password: string | null,
   players: IPlayer[],
-  state: 'CREATED' | 'IN_PROGRESS' | 'ENDED'
+  state: RoomState.CREATED | RoomState.IN_PROGRESS | RoomState.ENDED,
+  roundGame?: IRoundGame[],
+  roundInProgress: number,
 }
 
 export interface IRoomContext {
-  room: IRoom | null,
-  setRoom?: React.Dispatch<React.SetStateAction<IRoom | null>>
+  room: IRoom,
+  setRoom?: React.Dispatch<React.SetStateAction<IRoom | null>>,
+  roomKey: string,
+  addPlayerToRoom: (player: IPlayer, history: any) => void,
+  changeRoomStateTo: (state: RoomState, history: any, idRoom: string) => void,
+  setRoomKey: Dispatch<SetStateAction<string>>,
+  addRoundToRoom: (room: IRoom, letter: string) => void,
+  currentLetter: () => string,
+}
+
+export enum RoomState {
+  CREATED,
+  IN_PROGRESS,
+  ENDED
 }

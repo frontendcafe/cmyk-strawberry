@@ -1,6 +1,5 @@
 import React from 'react'
 import { paths } from '../routes'
-import close from '../assets/close.svg'
 import styles from './styles/ProvisionalClasPage.module.scss'
 import ClassificationCard from '../components/molecules/ClassificationCard'
 import { Button } from '../components/atoms/Button'
@@ -80,7 +79,7 @@ console.log(loser)
 
 const ProvisionalClasPage: React.FC = () => {
   const history = useHistory()
-// si la partida esta terminando...
+  // si la partida esta terminando...
   const isEnd = true
   return (
     <>

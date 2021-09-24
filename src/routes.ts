@@ -1,21 +1,20 @@
 import IRoute from './interfaces/route'
 import HomePage from './pages/HomePage'
-import SecondPage from './pages/SecondPage'
 import AboutPage from './pages/AboutPage'
 import BoardPage from './pages/BoardPage'
-import GameConfig from './pages/GameConfig'
 import RoomsPage from './pages/RoomsPage'
 import ValidationPage from './pages/ValidationPage'
 import PreviewPage from './pages/PreviewPage'
 import ProvisionalClasPage from './pages/ProvisionalClasPage'
+import NewGame from './pages/NewGame'
 
 export enum paths {
   HOME = '/',
   GAME_CONFIG = '/new-room',
   ROOMS = '/rooms',
-  BOARD = '/board',
-  VALIDATION = '/validation',
-  PREVIEW = '/preview/:id'
+  BOARD = '/board/:idRoom',
+  VALIDATION = '/validation/:idRoom',
+  PREVIEW = '/preview/:idRoom'
 }
 
 const routes: IRoute[] = [
@@ -23,12 +22,6 @@ const routes: IRoute[] = [
     path: '/classification/',
     name: 'Provisional Classification Page',
     component: ProvisionalClasPage,
-    exact: true
-  },
-  {
-    path: '/second/',
-    name: 'Segond Page',
-    component: SecondPage,
     exact: true
   },
   {
@@ -45,8 +38,8 @@ const routes: IRoute[] = [
   },
   {
     path: paths.GAME_CONFIG,
-    name: 'Game config',
-    component: GameConfig,
+    name: 'New game',
+    component: NewGame,
     exact: true
   },
   {

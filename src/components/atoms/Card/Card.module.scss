@@ -14,10 +14,13 @@ $subtitle-weight: 500;
   width: 100%;
 
   * {
-    color: $color;
     display: block;
     margin: auto;
     text-align: center;
+  }
+
+  *:not(input) {
+    color: $color;
   }
 
   .title {
