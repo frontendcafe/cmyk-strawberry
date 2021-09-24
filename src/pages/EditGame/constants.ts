@@ -27,6 +27,6 @@ export const FOOTER_BUTTONS: footerButtons = (handleClick) => [
     theme: 'primary',
     size: 'large',
     onClick: handleClick,
-    children: 'CREAR SALA'
+    children: 'EDITAR SALA'
   }
 ]

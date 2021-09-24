@@ -1,4 +1,5 @@
 import React from 'react'
+import withEditCategories from '../../../hoc/withCategoryEdit'
 import { useCategories } from '../../../hooks/useCategories'
 import { setValueType } from '../../../hooks/useForm'
 import { IRoom } from '../../../types/room'
@@ -77,4 +78,4 @@ const GameConfigForm: React.FC<Props> = ({
   )
 }
 
-export default GameConfigForm
+export default withEditCategories(GameConfigForm)
