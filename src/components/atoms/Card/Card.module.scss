@@ -1,12 +1,11 @@
 @use '../../../scss/colors' as c;
 @use '../../../scss/fonts';
-@use '../../../scss/typography-movile' as f;
+@use '../../../scss/typography-mobile' as f;
 
 .card {
   background-color: c.$secondary-60;
   border-radius: 5px;
   box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
-  font-family: 'Work Sans', sans-serif;
   margin: auto;
   padding: 12px;
   width: 100%;

@@ -1,6 +1,6 @@
 @use '../../../scss/colors' as c;
 @use '../../../scss/fonts';
-@use '../../../scss/typography-movile' as f;
+@use '../../../scss/typography-mobile' as f;
 
 $input-height-small: 40px;
 $input-height: 48px;
@@ -13,7 +13,6 @@ $bg-color: #f00;
 .input {
   border-radius: $input-border-radius;
   color: c.$neutral-110;
-  font-family: 'Work Sans', sans-serif;
   font-size: f.$small-medium-size;
   font-weight: f.$small-medium-weight;
   height: $input-height-small;

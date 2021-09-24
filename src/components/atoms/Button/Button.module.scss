@@ -1,6 +1,6 @@
 @use '../../../scss/colors' as c;
 @use '../../../scss/fonts';
-@use '../../../scss/typography-movile' as f;
+@use '../../../scss/typography-mobile' as f;
 
 .button {
   align-items: center;
@@ -9,7 +9,6 @@
   color: c.$neutral-10;
   cursor: pointer;
   display: flex;
-  font-family: 'Work Sans', sans-serif;
   font-size: f.$medium-bold-button-size;
   font-weight: f.$medium-bold-button-weight;
   gap: 16px;

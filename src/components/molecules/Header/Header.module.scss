@@ -1,5 +1,5 @@
 @use '../../../scss/colors' as c;
-@use '../../../scss/typography-movile.scss' as f;
+@use '../../../scss/typography-mobile.scss' as f;
 @use '../../../scss/fonts';
 
 $size: 22px;
@@ -13,7 +13,6 @@ $font-size: 24px;
   background-color: c.$neutral-90;
   box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
   display: grid;
-  font-family: 'Work Sans', sans-serif;
   grid-template-columns: 72px 1fr;
   height: 64px;
   width: 100%;

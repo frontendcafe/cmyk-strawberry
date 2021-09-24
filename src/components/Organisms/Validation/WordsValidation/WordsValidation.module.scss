@@ -1,5 +1,5 @@
 @use '../../../../scss/colors' as c;
-@use '../../../../scss/typography-movile' as f;
+@use '../../../../scss/typography-mobile' as f;
 @use '../../../../scss/fonts';
 
 $box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
@@ -22,7 +22,6 @@ $progress-bar-padding: 16px 20px 16px 20px;
   width: 95%;
 
   .text {
-    font-family: 'Work Sans', sans-serif;
     font-size: f.$display-03-size;
     font-weight: f.$medium-bold-button-weight;
     letter-spacing: f.$medium-bold-button-spacing;

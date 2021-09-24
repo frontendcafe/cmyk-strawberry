@@ -1,6 +1,6 @@
 @use '../../../scss/colors' as c;
 @use '../../../scss/fonts';
-@use '../../../scss/typography-movile' as f;
+@use '../../../scss/typography-mobile' as f;
 
 button {
   border: 2px solid c.$neutral-10;
@@ -8,7 +8,6 @@ button {
   box-shadow: 0 1px 0 c.$neutral-50;
   box-sizing: border-box;
   color: c.$neutral-10;
-  font-family: 'Work Sans', sans-serif;
   font-size: f.$small-semibold-size;
   font-weight: f.$small-semibold-weight;
   letter-spacing: f.$small-semibold-spacing;
