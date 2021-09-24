@@ -22,7 +22,7 @@ type footerButtons = (handleClick: () => void) => ButtonProps[]
 
 export const FOOTER_BUTTONS: footerButtons = (handleClick) => [
   {
-    key: 'CREATE_GAME',
+    key: 'EDIT_GAME',
     type: 'submit',
     theme: 'primary',
     size: 'large',
