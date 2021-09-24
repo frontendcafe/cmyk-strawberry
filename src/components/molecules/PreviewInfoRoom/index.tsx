@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useHistory, useParams } from 'react-router'
+import { PlayerContext } from '../../../contexts/PlayerContextState'
+import { paths } from '../../../routes'
 import { IRoom } from '../../../types/room'
 import { Button } from '../../atoms/Button'
 import { Category } from '../../atoms/Category'
@@ -8,10 +11,12 @@ interface Props {
 }
 
 const PreviewInfoRoom: React.FC<Props> = ({ room }) => {
+  const { idRoom } = useParams<{ idRoom: string }>()
+  const { player } = useContext(PlayerContext)
+  const history = useHistory()
   const userHost = room?.players.find(player => player?.host)
 
-  // TODO Obtener el id del usuario logueado
-  const userId = '222'
+  const handleEditRoom = () => idRoom && history.push(paths.EDIT_CONFIG.replace(':idRoom', idRoom))
 
   return (
     <div className={styles.container}>
@@ -38,10 +43,10 @@ const PreviewInfoRoom: React.FC<Props> = ({ room }) => {
         }
       </div>
 
-      { userHost?.id === userId &&
+      { userHost?.id === player?.id &&
         <Button
           type="button"
-          onClick={() => {}}
+          onClick={handleEditRoom}
           size="large"
           theme="secondary"
           className={styles.editbutton}
