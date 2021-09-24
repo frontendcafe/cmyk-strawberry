@@ -11,9 +11,9 @@ export enum paths {
   HOME = '/',
   GAME_CONFIG = '/new-room',
   ROOMS = '/rooms',
-  BOARD = '/board',
-  VALIDATION = '/validation',
-  PREVIEW = '/preview/:id'
+  BOARD = '/board/:idRoom',
+  VALIDATION = '/validation/:idRoom',
+  PREVIEW = '/preview/:idRoom'
 }
 
 const routes: IRoute[] = [

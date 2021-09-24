@@ -23,8 +23,6 @@ const RoomsPage: React.FC = () => {
     return () => unsuscribeEvent?.()
   }, [])
 
-  console.log(rooms)
-
   const roomsArr = Object.keys(rooms).map(roomKey => ({ id: roomKey, ...(rooms as any)[roomKey] }))
 
   return (

@@ -12,5 +12,6 @@ export const INITIAL_STATE_GAME: IRoom = {
   ],
   password: null,
   players: [],
-  state: RoomState.CREATED
+  state: RoomState.CREATED,
+  roundInProgress: 0
 }
