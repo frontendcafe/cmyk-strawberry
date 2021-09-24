@@ -1,8 +1,5 @@
-@use './../scss/colors' as c;
+@use './../scss/colors.scss' as c;
 
-$carousel-background: #1f4459;
-$dot-color: #ced4da;
-$dot-selected-color: #6b7278;
 /* stylelint-disable */
 .carousel-slider {
   .control-dots {
@@ -12,12 +9,12 @@ $dot-selected-color: #6b7278;
       width: 12px;
       border-radius: 3px;
       border-radius: 0px;
-      background-color: $dot-color;
+      background-color: c.$neutral-40;
       opacity: 100;
       margin: 0px 4px;
     }
     .selected {
-      background: $dot-selected-color;
+      background: c.$neutral-60;
       opacity: 100;
     }
     button .control-arrow {
@@ -27,6 +24,6 @@ $dot-selected-color: #6b7278;
 }
 
 .carousel-root {
-  background: $carousel-background;
+  background: c.$secondary-60;
 }
 /* stylelint-enable */
