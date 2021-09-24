@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
 import { useHistory } from 'react-router'
-import GameConfigForm from '../../components/Organisms/GameConfigForm'
 import { GAME_CONFIG_FIELDS } from '../../components/Organisms/GameConfigForm/constants'
-import Layout from '../../components/templates/Layout'
+import GameConfigWrapper from '../../components/Organisms/GameConfigWrapper'
 import { PlayerContext } from '../../contexts/PlayerContextState'
 import { addRoom } from '../../firebase/services/room'
 import { iCategory } from '../../hooks/useCategories/types'
@@ -30,20 +29,21 @@ const NewGame = () => {
   }
 
   return (
-    <Layout
-      title="Creación de partida"
-      subTitle="Configuración de parámetros"
-      onClose={() => history.push(paths.HOME)}
-      buttons={FOOTER_BUTTONS(handleSubmit)}
-    >
-      <GameConfigForm
-        values={values}
-        handleChange={handleChange}
-        setValue={setValue}
-        categories={values.categories}
-        setCategories={handleChangeCategories}
-      />
-    </Layout>
+    <GameConfigWrapper
+      layoutProps={{
+        title: 'Creación de partida',
+        subTitle: 'Configuración de parámetros',
+        onClose: () => history.push(paths.HOME),
+        buttons: FOOTER_BUTTONS(handleSubmit)
+      }}
+      gameConfigProps={{
+        values,
+        handleChange,
+        setValue
+      }}
+      categories= {values.categories}
+      setCategories={ handleChangeCategories}
+    />
   )
 }
 

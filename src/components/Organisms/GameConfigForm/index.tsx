@@ -1,5 +1,4 @@
 import React from 'react'
-import withEditCategories from '../../../hoc/withCategoryEdit'
 import { useCategories } from '../../../hooks/useCategories'
 import { setValueType } from '../../../hooks/useForm'
 import { IRoom } from '../../../types/room'
@@ -12,7 +11,7 @@ import { GAME_CONFIG_FIELDS, roundOptions } from './constants'
 
 import styles from './GameConfigForm.module.scss'
 
-interface Props {
+export interface Props {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   setValue: setValueType;
   values: IRoom;
@@ -78,4 +77,4 @@ const GameConfigForm: React.FC<Props> = ({
   )
 }
 
-export default withEditCategories(GameConfigForm)
+export default GameConfigForm

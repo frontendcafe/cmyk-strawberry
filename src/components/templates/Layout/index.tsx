@@ -5,8 +5,8 @@ import { Button, Props as ButtonProps } from '../../atoms/Button'
 import Header, { Props as HeaderProps } from '../../molecules/Header'
 import styles from './Layout.module.scss'
 
-interface Props extends HeaderProps{
-  children: React.ReactNode;
+export interface Props extends HeaderProps{
+  children?: React.ReactNode;
   buttons?: ButtonProps[];
   loading?: boolean;
 }

@@ -7,9 +7,8 @@ import { useForm } from '../../hooks/useForm'
 import { paths } from '../../routes'
 import { IRoom } from '../../types/room'
 import { INITIAL_STATE_GAME } from '../NewGame/constants'
-import Layout from '../../components/templates/Layout'
-import GameConfigForm from '../../components/Organisms/GameConfigForm'
 import { FOOTER_BUTTONS } from './constants'
+import GameConfigWrapper from '../../components/Organisms/GameConfigWrapper'
 
 const EditGame = () => {
   const [values, handleChange,, setValue, setValues] = useForm<IRoom>(INITIAL_STATE_GAME)
@@ -39,21 +38,22 @@ const EditGame = () => {
   }, [room])
 
   return (
-    <Layout
-      title="Edición de partida"
-      subTitle="Configuración de parámetros"
-      onClose={() => history.push(paths.PREVIEW.replace(':idRoom', roomKey))}
-      buttons={FOOTER_BUTTONS(handleSubmit)}
-      loading={!room}
-    >
-      <GameConfigForm
-        values={values}
-        handleChange={handleChange}
-        setValue={setValue}
-        categories={values.categories}
-        setCategories={handleChangeCategories}
-      />
-    </Layout>
+    <GameConfigWrapper
+      layoutProps={{
+        title: 'Edición de partida"',
+        subTitle: 'Configuración de parámetros',
+        onClose: () => history.push(paths.PREVIEW.replace(':idRoom', roomKey)),
+        buttons: FOOTER_BUTTONS(handleSubmit),
+        loading: !room
+      }}
+      gameConfigProps={{
+        values,
+        handleChange,
+        setValue
+      }}
+      categories= {values.categories}
+      setCategories={ handleChangeCategories}
+    />
   )
 }
 

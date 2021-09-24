@@ -3,14 +3,16 @@ import React, { useState } from 'react'
 import EditCategories from '../components/Organisms/EditCategories'
 import { iCategory } from '../hooks/useCategories/types'
 
-type withEditCategoriesType = <PropsType>(
-  Component: React.ComponentType<PropsType & { toggleEditing?: () => void }>
-) => React.FC<PropsType & EditCategoriesProps>;
-
 interface EditCategoriesProps {
   categories: iCategory[];
   setCategories: (categories: iCategory[]) => void;
 }
+
+export type withEditCategoriesProps<PropsType> = PropsType & EditCategoriesProps
+
+type withEditCategoriesType = <PropsType>(
+  Component: React.ComponentType<PropsType & { toggleEditing?: () => void }>
+) => React.FC<withEditCategoriesProps<PropsType>>;
 
 const withEditCategories: withEditCategoriesType = (Component) => {
   return (props) => {
