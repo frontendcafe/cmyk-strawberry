@@ -1,13 +1,13 @@
-$bg-color: #32527b;
-$border-color: #daecf7;
-$shadow-color: #141414cc;
-$font-color: #f8f9fa;
+@use '../../../scss/colors' as c;
+@use '../../../scss/fonts';
+
 $font-size: 124px;
 $font-size-mini: 24px;
 $weight: bold;
 
 .container {
   display: grid;
+  font-family: 'Work Sans', sans-serif;
   height: 100vh;
   place-items: center;
 }
@@ -23,12 +23,12 @@ $weight: bold;
 }
 
 .letter {
-  background: $bg-color;
-  border: 8px solid $border-color;
+  background: c.$secondary-40;
+  border: 8px solid c.$secondary-10;
   border-radius: 24px;
-  box-shadow: -7px 6px 1px $shadow-color;
+  box-shadow: -7px 6px 1px c.$neutral-110;
   box-sizing: border-box;
-  color: $font-color;
+  color: c.$neutral-10;
   display: grid;
   font-size: $font-size;
   font-weight: $weight;
@@ -39,11 +39,11 @@ $weight: bold;
 }
 
 .lettermini {
-  background: $bg-color;
-  border: 3px solid $border-color;
+  background: c.$secondary-40;
+  border: 3px solid c.$secondary-10;
   border-radius: 10px;
-  box-shadow: -3px 2px 1px $shadow-color;
-  color: $font-color;
+  box-shadow: -3px 2px 1px c.$neutral-110;
+  color: c.$neutral-10;
   display: grid;
   font-size: $font-size-mini;
   font-weight: $weight;

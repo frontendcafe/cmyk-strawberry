@@ -1,20 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
-//variables
-$secundary-60: #1f4459;
-$font-medium: 'work sans', sans-serif;
-$weight-500: 500;
-$font-small: 16px;
-$font-size-02: 22px;
-$bold: bold;
+@use '../../../scss/colors' as c;
+@use '../../../scss/typography-movile.scss' as f;
+@use '../../../scss/fonts';
 
 .container {
   align-items: center;
-  background-color: $secundary-60;
+  background-color: c.$secondary-60;
   border-radius: 8px;
   box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
   display: flex;
   flex-direction: column;
-  font-family: $secundary-60;
+  font-family: 'Work Sans', sans-serif;
   margin: 20px auto;
   min-height: 370px;
   padding: 16px;
@@ -28,28 +23,30 @@ $bold: bold;
   }
 
   h3 {
-    font-size: $font-size-02;
+    font-size: f.$display-02-size;
     font-style: normal;
-    font-weight: $bold;
-    letter-spacing: 0.3px;
-    line-height: 30px;
+    font-weight: f.$display-02-weight;
+    letter-spacing: f.$display-02-spacing;
+    line-height: f.$display-02-height;
     margin: 10px 0 0;
     text-align: center;
   }
 
   p {
-    font-size: $font-small;
+    font-size: f.$small-medium-size;
     font-style: normal;
-    font-weight: $weight-500;
+    font-weight: f.$small-medium-weight;
     letter-spacing: 0.3px;
     line-height: 24px;
   }
 
   .job {
+    color: c.$neutral-30;
     margin: 0;
   }
 
   .description {
+    letter-spacing: f.$small-medium-spacing;
     margin: 0;
   }
 

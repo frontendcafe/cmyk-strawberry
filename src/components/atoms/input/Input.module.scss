@@ -1,19 +1,23 @@
-// TODO: Update that with the style-guide
-$font-size: 23px;
+@use '../../../scss/colors' as c;
+@use '../../../scss/fonts';
+@use '../../../scss/typography-movile' as f;
+
 $input-height-small: 40px;
 $input-height: 48px;
 $input-width: 280px;
 $input-text-indent: 16px;
 $input-box-shadow-color: #4991da;
 $input-border-radius: 2px;
-$color: #000;
 $bg-color: #f00;
 
 .input {
   border-radius: $input-border-radius;
-  color: $color;
-  font-size: $font-size;
+  color: c.$neutral-110;
+  font-family: 'Work Sans', sans-serif;
+  font-size: f.$small-medium-size;
+  font-weight: f.$small-medium-weight;
   height: $input-height-small;
+  letter-spacing: f.$small-medium-spacing;
   text-align: left;
   text-indent: $input-text-indent;
   width: $input-width;

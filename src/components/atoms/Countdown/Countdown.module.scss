@@ -1,21 +1,22 @@
-// TODO: Update that with the style-guide
+@use '../../../scss/colors' as c;
+@use '../../../scss/fonts';
+
 $count-font-size: 135px;
-$color: #c74647;
-$font-color: #fff;
 
 .wrapper {
   display: flex;
+  font-family: 'Work Sans', sans-serif;
   justify-content: center;
 
   .count {
-    color: $font-color;
+    color: c.$primary-10;
     font-size: $count-font-size;
   }
 }
 
 :export {
   defaultsize: 235;
-  linecolor: $color;
+  linecolor: c.$primary-50;
   strokelinecap: 1;
   strokewidth: 25;
   trailcolor: transparent;

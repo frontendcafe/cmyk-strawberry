@@ -1,34 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
-
-//variables
-//$font-primary: "Work Sans", sans-serif;
-$font-medium: 'work sans', sans-serif;
-$white-color: #f8f9fa;
-$font-size-02: 22px;
-$font-size-03: 20px;
-$font-small: 16px;
-$black-color: #272727;
-$secundary-60: #1f4459;
-$weight-500: 500;
-$weight-600: 600;
-$weight-700: 700;
+@use '../../scss/colors' as c;
+@use '../../scss/typography-movile' as f;
+@use '../../scss/fonts';
 
 .container {
   background-image: url('../../assets/bg-mobile-blue.png');
   background-size: cover;
-  color: $white-color;
-  font-family: $font-medium;
+  color: c.$neutral-10;
+  font-family: 'Work Sans', sans-serif;
   min-height: 600px;
   padding-bottom: 30px;
 
   .header {
     align-items: center;
-    background-color: $black-color;
+    background-color: c.$neutral-90;
     box-shadow: 0 1px 0 #6b7278;
     display: flex;
     flex-direction: row;
-    font-size: $font-size-02;
-    height: 88px;
+    font-size: f.$display-02-size;
+    height: 20px;
     justify-content: flex-start;
     margin-bottom: 30px;
     padding: 24px 24px 24px 16px;
@@ -40,28 +29,33 @@ $weight-700: 700;
 }
 
 .project {
-  background-color: $secundary-60;
+  background-color: c.$secondary-60;
   border-radius: 8px;
+  font-size: f.$small-medium-size;
   height: 336px;
   margin: auto;
   padding: 12px 16px 16px;
   width: 328px;
 
   h4 {
-    font-size: $font-size-03;
-    font-weight: $weight-600;
-    line-height: 28px;
+    font-size: f.$display-03-size;
+    font-weight: f.$display-03-weight;
+    line-height: f.$display-03-height;
     margin: 0;
   }
 
   p {
-    font-size: $font-small;
-    font-weight: $weight-500;
-    letter-spacing: 0.3px;
+    font-size: f.$small-medium-size;
+    font-weight: f.$small-medium-weight;
+    letter-spacing: 0.2px;
     line-height: 24px;
   }
 
   span {
-    font-weight: $weight-700;
+    font-weight: f.$small-bold-weight;
+  }
+
+  .stop {
+    text-transform: uppercase;
   }
 }

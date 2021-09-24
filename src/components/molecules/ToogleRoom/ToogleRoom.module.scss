@@ -1,21 +1,19 @@
-$bg-color: #272727;
-$bg-color-active: #1f4459;
-$color: #f8f9fa;
-$box-shadow: 0 1px 1px $color;
-$box-shadow-active: 0 3px 1px $color;
+@use '../../../scss/colors' as c;
+@use '../../../scss/typography-movile' as f;
+
+$box-shadow: 0 1px 1px c.$neutral-10;
+$box-shadow-active: 0 3px 1px c.$neutral-10;
 $label-padding: 1rem;
 $margin-top: 3px;
-$font-bold: bold;
-$font-size: 18px;
 
 .toogle-buttoms {
   align-items: center;
-  background-color: $bg-color;
+  background-color: c.$neutral-90;
   box-shadow: $box-shadow;
-  color: $color;
+  color: c.$neutral-10;
   display: inline-flex;
-  font-size: $font-size;
-  font-weight: $font-bold;
+  font-size: f.$medium-bold-button-size;
+  font-weight: f.$medium-bold-button-weight;
   margin: -11px -16px 8px;
   text-align: center;
   width: calc(100% + 32px);
@@ -32,6 +30,6 @@ $font-size: 18px;
 }
 
 .active {
-  background-color: $bg-color-active;
+  background-color: c.$neutral-90;
   box-shadow: $box-shadow-active;
 }

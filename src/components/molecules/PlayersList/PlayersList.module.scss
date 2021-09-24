@@ -1,13 +1,11 @@
-$background-color: #1f4459;
-$bg-color-avatar: #f15362;
-$white: #f8f9fa;
+@use '../../../scss/colors' as c;
 
 .container {
-  background-color: $background-color;
+  background-color: c.$secondary-60;
   border-radius: 8px;
   box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
   box-sizing: border-box;
-  color: $white;
+  color: c.$neutral-10;
   display: flex;
   flex-wrap: nowrap;
   gap: 20px;
@@ -23,7 +21,7 @@ $white: #f8f9fa;
 
 .avatar {
   img {
-    background-color: $bg-color-avatar;
+    background-color: c.$primary-40;
     border-radius: 50px;
     height: 60px;
     width: 60px;

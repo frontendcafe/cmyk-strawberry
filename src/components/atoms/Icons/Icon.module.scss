@@ -1,7 +1,7 @@
-$color: #f8f9fa;
+@use '../../../scss/colors' as c;
 
 .container {
-  background-color: $color;
+  background-color: c.$neutral-10;
   border-radius: 12px;
   box-shadow: 0 4px 0 0 rgb(0 0 0 / 54%);
   height: 40px;

@@ -1,25 +1,16 @@
-$neutral: #f8f9fa;
-$secondary: #1f4459;
-$background-variant: #32527b;
-$terciary: #dee2e6;
+@use '../../../scss/colors' as c;
+@use '../../../scss/typography-movile' as f;
+
 $box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
 $border-radius: 4px;
-$font-size-normal: 16px;
-$font-size-medium: 18px;
-$font-size-small: 14px;
-$font-weight-bold: bold;
-$font-weight-700: 700;
-$font-weight-600: 600;
-$line-height-normal: 24px;
-$line-height-medium: 26px;
 
 .container {
   align-items: center;
-  background-color: $secondary;
+  background-color: c.$secondary-60;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
   box-sizing: border-box;
-  color: $neutral;
+  color: c.$neutral-10;
   cursor: pointer;
   display: flex;
   justify-content: space-around;
@@ -28,7 +19,7 @@ $line-height-medium: 26px;
   width: 80%;
 
   &:hover {
-    background-color: $background-variant;
+    background-color: c.$secondary-40;
   }
 }
 
@@ -37,9 +28,9 @@ $line-height-medium: 26px;
 }
 
 .title {
-  font-size: $font-size-medium;
-  font-weight: $font-weight-bold;
-  line-height: $line-height-medium;
+  font-size: f.$medium-bold-button-size;
+  font-weight: f.$medium-bold-button-weight;
+  line-height: f.$medium-bold-button-height;
 }
 
 .lock-icon {
@@ -50,7 +41,7 @@ $line-height-medium: 26px;
 
 .user-icon {
   display: flex;
-  font-weight: $font-weight-bold;
+  font-weight: f.$medium-bold-button-weight;
   justify-content: space-between;
 
   .user-label {
@@ -62,12 +53,12 @@ $line-height-medium: 26px;
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-size: $font-size-normal;
-  font-weight: $font-weight-bold;
-  line-height: $line-height-normal;
+  font-size: f.$small-bold-size;
+  font-weight: f.$small-bold-weight;
+  line-height: f.$medium-medium-height;
 
   .round-label {
-    color: $terciary;
-    font-weight: $font-weight-600;
+    color: c.$neutral-30;
+    font-weight: f.$medium-semibold-weight;
   }
 }

@@ -1,8 +1,9 @@
+@use '../../../scss/colors' as c;
+@use '../../../scss/fonts';
+
 $title-size: 20px;
 $description-size: 16px;
 $image-padding: 16px;
-$font-color: #f8f9fa;
-$card-color: #222;
 
 body {
   margin: 0;
@@ -10,19 +11,20 @@ body {
 
 .slide {
   .image {
+    font-family: 'Work Sans', sans-serif;
     height: 60vh;
     padding: $image-padding;
   }
 
   .title {
-    color: $font-color;
+    color: c.$neutral-10;
     font-size: $title-size;
     height: 10vh;
     padding-top: 7vh;
   }
 
   .description {
-    color: $font-color;
+    color: c.$neutral-10;
     font-size: $description-size;
     height: 10vh;
   }

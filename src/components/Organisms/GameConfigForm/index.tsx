@@ -54,8 +54,8 @@ const GameConfigForm: React.FC<Props> = ({
         </div>
         <Button
           type="button"
-          size="medium"
-          theme="secondary"
+          size="small"
+          theme="tertiary"
           onClick={toggleEditing}
           className={styles['edit-btn']}
         >

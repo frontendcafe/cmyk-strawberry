@@ -1,6 +1,7 @@
-// TODO: use style-guide
-$bg-color: #272727;
-$color: #f8f9fa;
+@use '../../../scss/colors' as c;
+@use '../../../scss/typography-movile.scss' as f;
+@use '../../../scss/fonts';
+
 $size: 22px;
 $weight-bold: 700;
 $size-sub: 18px;
@@ -9,9 +10,10 @@ $font-size: 24px;
 
 .header {
   align-items: center;
-  background-color: $bg-color;
+  background-color: c.$neutral-90;
   box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
   display: grid;
+  font-family: 'Work Sans', sans-serif;
   grid-template-columns: 72px 1fr;
   height: 64px;
   width: 100%;
@@ -21,18 +23,18 @@ $font-size: 24px;
   }
 
   .title {
-    color: $color;
-    font-size: $size;
-    font-weight: $weight-bold;
-    line-height: 30px;
+    color: c.$neutral-10;
+    font-size: f.$display-02-size;
+    font-weight: f.$display-02-weight;
+    line-height: f.$display-02-height;
     margin: 0;
   }
 
   .subtitle {
-    color: $color;
-    font-size: $size-sub;
-    font-weight: $weight-medium;
-    line-height: 26px;
+    color: c.$neutral-10;
+    font-size: f.$medium-medium-size;
+    font-weight: f.$medium-medium-weight;
+    line-height: f.$medium-medium-height;
   }
 }
 
@@ -42,11 +44,11 @@ $font-size: 24px;
   transform: translateX(-37px);
 
   .letter {
-    background: $bg-color;
-    border: 3px solid $color;
+    background: c.$neutral-90;
+    border: 3px solid c.$neutral-10;
     border-radius: 10px;
     box-sizing: border-box;
-    color: $color;
+    color: c.$neutral-10;
     display: grid;
     font-size: $font-size;
     font-weight: $weight-bold;

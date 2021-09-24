@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
 
-$colours: #fff;
+@use '../../../scss/colors' as c;
+
 $size: 60px;
 $weight: 400;
 $coloursred: #f00;
 $spacing: -0.05em;
-$shadow: -11px 15px 4px #3e3e3e;
+$shadow: -11px 15px 4px c.$neutral-110;
 
 .letra {
   align-items: center;
-  color: $colours;
+  color: c.$primary-10;
   display: flex;
   font-family: 'Titan One', cursive;
   font-size: $size;
@@ -25,7 +25,7 @@ $shadow: -11px 15px 4px #3e3e3e;
   /* Neutral/10 */
 
   &:hover {
-    color: $colours;
+    color: c.$primary-10;
     text-shadow: $shadow;
     -webkit-text-stroke: 4px $coloursred;
   }

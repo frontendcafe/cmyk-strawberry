@@ -1,16 +1,15 @@
-$background-skeleton: #6c86a8;
+@use '../../../scss/colors' as c;
+
 $border-radius: 4px;
-$secondary: #1f4459;
 $box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
-$neutral: #f8f9fa;
 
 .dummy-container {
   align-items: center;
-  background-color: $secondary;
+  background-color: c.$secondary-60;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
   box-sizing: border-box;
-  color: $neutral;
+  color: c.$neutral-10;
   cursor: not-allowed;
   display: flex;
   height: 68px;
@@ -20,7 +19,7 @@ $neutral: #f8f9fa;
   width: 80%;
 
   .skeleton {
-    background-color: $background-skeleton;
+    background-color: c.$secondary-30;
     border-radius: $border-radius;
     height: 70%;
     width: 15%;
@@ -36,14 +35,14 @@ $neutral: #f8f9fa;
   width: 11%;
 
   .skeleton-small {
-    background-color: $background-skeleton;
+    background-color: c.$secondary-30;
     border-radius: $border-radius;
     height: 30%;
     width: 60%;
   }
 
   .skeleton-medium {
-    background-color: $background-skeleton;
+    background-color: c.$secondary-30;
     border-radius: $border-radius;
     height: 30%;
     width: 80%;

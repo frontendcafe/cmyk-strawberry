@@ -1,32 +1,31 @@
-$font-size: 0.9em;
-$weight: 600;
-$white-color: #f8f9fa;
-$black-color: #272727;
-$shadow-primary-color: #672829;
-$shadow-secondary-color: #f8f9fa;
-$shadow-tertiary-color: #6b7278;
-$primary-color: #c74647;
-$secondary-color: #272727;
-$tertiary-color: #f8f9fa;
-$font-color: #f8f9fa;
+@use '../../../scss/colors' as c;
+@use '../../../scss/fonts';
+@use '../../../scss/typography-movile' as f;
 
 .button {
   align-items: center;
   border-radius: 12px;
   box-sizing: border-box;
-  color: $font-color;
+  color: c.$neutral-10;
   cursor: pointer;
   display: flex;
-  font-size: $font-size;
-  font-weight: $weight;
+  font-family: 'Work Sans', sans-serif;
+  font-size: f.$medium-bold-button-size;
+  font-weight: f.$medium-bold-button-weight;
   gap: 16px;
   justify-content: center;
+  letter-spacing: f.$medium-bold-button-spacing;
+  line-height: f.$medium-bold-button-height;
   outline: none;
   text-transform: uppercase;
 }
 
 /* Size */
 .small {
+  font-size: f.$small-bold-button-small-size;
+  font-weight: f.$small-bold-button-small-weight;
+  letter-spacing: f.$small-bold-button-small-spacing;
+  line-height: f.$small-bold-button-small-height;
   padding: 1em 1.3em;
 }
 
@@ -43,35 +42,35 @@ $font-color: #f8f9fa;
 
 /* Theme */
 .primary {
-  background: $primary-color;
-  border: 2px solid $shadow-primary-color;
-  box-shadow: 0 4px $shadow-primary-color;
+  background: c.$primary-50;
+  border: 2px solid c.$primary-80;
+  box-shadow: 0 4px c.$primary-80;
 
   &:active {
-    box-shadow: 0 1px $shadow-primary-color;
+    box-shadow: 0 1px c.$primary-80;
     transform: translateY(4px);
   }
 }
 
 .secondary {
-  background: $secondary-color;
-  border: 2px solid $shadow-secondary-color;
-  box-shadow: 0 4px 0 $shadow-secondary-color;
+  background: c.$neutral-90;
+  border: 2px solid c.$neutral-10;
+  box-shadow: 0 4px 0 c.$neutral-10;
 
   &:active {
-    box-shadow: 0 1px $shadow-secondary-color;
+    box-shadow: 0 1px c.$neutral-10;
     transform: translateY(4px);
   }
 }
 
 .tertiary {
-  background: $tertiary-color;
-  border: 2px solid $white-color;
-  box-shadow: 0 4px 0 $shadow-tertiary-color;
-  color: $black-color;
+  background: c.$neutral-10;
+  border: 2px solid c.$neutral-10;
+  box-shadow: 0 4px 0 c.$neutral-60;
+  color: c.$neutral-90;
 
   &:active {
-    box-shadow: 0 1px $shadow-tertiary-color;
+    box-shadow: 0 1px c.$neutral-60;
     transform: translateY(4px);
   }
 }
