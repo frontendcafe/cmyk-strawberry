@@ -1,6 +1,10 @@
 @use '../../../scss/colors' as c;
 @use '../../../scss/fonts';
 
+$bg-color: #272727;
+$border-color: #daecf7;
+$shadow-color: #141414cc;
+
 $font-size: 124px;
 $font-size-mini: 24px;
 $weight: bold;

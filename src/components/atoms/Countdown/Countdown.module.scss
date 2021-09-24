@@ -4,8 +4,10 @@
 $count-font-size: 135px;
 
 .wrapper {
+  align-items: center;
   display: flex;
   font-family: 'Work Sans', sans-serif;
+  height: 100vh;
   justify-content: center;
 
   .count {
