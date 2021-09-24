@@ -39,8 +39,7 @@ function Home () {
 
         </main>
       </div>
-      <footer>
-
+      <footer className="footer">
         <Link to='/about/:number'>Sobre nosotros</Link>
       </footer>
     </div>
