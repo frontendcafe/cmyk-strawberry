@@ -7,7 +7,6 @@ import ValidationPage from './pages/ValidationPage'
 import PreviewPage from './pages/PreviewPage'
 import NewGame from './pages/NewGame'
 import EditGame from './pages/EditGame'
-// import EditGame from './pages/EditGame'
 
 export enum paths {
   HOME = '/',
