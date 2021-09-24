@@ -21,7 +21,7 @@ const Layout = ({ title, subTitle, letter, onClose, children, buttons, loading }
       {buttons && (
         <footer className={styles.footer}>
           {
-            buttons.map(({ key, ...buttonProps }: ButtonProps) => <Button key={key} {...buttonProps}/>)
+            buttons.map(({ key, ...buttonProps }) => <Button key={key} {...buttonProps}/>)
           }
         </footer>
       )}
