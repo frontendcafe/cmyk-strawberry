@@ -27,7 +27,6 @@ const WordsValidation: React.FC<Props> = ({ myAnswer, answerOfOtherPlayers }) =>
       <h3>Las palabras de los demas</h3>
       <div className={styles['categories-container']}>
         {renderCategories()}
-        {answerOfOtherPlayers.map(ap => <div key={ap.name}>{ap.name}</div>)}
       </div>
       <div className={styles['progress-container']}>
         <ProgressBar/>
