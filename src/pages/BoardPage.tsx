@@ -38,6 +38,7 @@ const BoardPage: React.FC<Props> = () => {
 
   const handleSubmit = () => {
     // TODO: Falta mucha logica de integracion aun pero tiene la esencia
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const roundGame = {
       [room.roundInProgress]: {
         letter,
@@ -48,7 +49,7 @@ const BoardPage: React.FC<Props> = () => {
         }
       }
     }
-    updateRoomPlayersAnswers(roomKey, { ...roundGame })
+    // updateRoomPlayersAnswers(roomKey, { ...roundGame })
     // TODO: redirection...?
   }
 
