@@ -47,11 +47,12 @@ export const STATE_MAP = [
   {
     state: RoomState.RESULTS,
     action: actions.CLASIFICATION,
-    path: paths.VALIDATION,
+    path: paths.CLASIFICATION,
     nextState: (isEnd?: boolean) => isEnd ? RoomState.ENDED : RoomState.PLAYING
   },
   {
     state: RoomState.ENDED,
+    path: paths.HOME,
     actions: actions.ENDED
   }
 ]
