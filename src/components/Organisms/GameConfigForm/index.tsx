@@ -11,11 +11,11 @@ import { GAME_CONFIG_FIELDS, roundOptions } from './constants'
 
 import styles from './GameConfigForm.module.scss'
 
-interface Props {
+export interface Props {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   setValue: setValueType;
   values: IRoom;
-  toggleEditing: () => void;
+  toggleEditing?: () => void;
 }
 
 const GameConfigForm: React.FC<Props> = ({
@@ -54,8 +54,8 @@ const GameConfigForm: React.FC<Props> = ({
         </div>
         <Button
           type="button"
-          size="medium"
-          theme="secondary"
+          size="small"
+          theme="tertiary"
           onClick={toggleEditing}
           className={styles['edit-btn']}
         >

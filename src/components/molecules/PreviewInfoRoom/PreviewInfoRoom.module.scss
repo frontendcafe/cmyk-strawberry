@@ -1,12 +1,11 @@
-$bg-color: #1f4459;
-$white: #f8f9fa;
+@use '../../../scss/colors' as c;
 
 .container {
-  background-color: $bg-color;
+  background-color: c.$secondary-60;
   border-radius: 8px;
   box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
   box-sizing: border-box;
-  color: $white;
+  color: c.$neutral-10;
   margin-top: 20px;
   padding: 12px 37px;
   text-align: center;
@@ -34,6 +33,6 @@ $white: #f8f9fa;
 }
 
 .editbutton {
-  background-color: $bg-color;
+  background-color: c.$secondary-60;
   box-shadow: 0 0;
 }

@@ -17,14 +17,14 @@ const WordsValidation: React.FC<Props> = ({ myAnswer, answerOfOtherPlayers }) =>
 
   return (
     <section className={styles.container}>
-      <h3>Tu palabra fue</h3>
+      <h3 className={styles.text}>Tu palabra fue</h3>
       <div>
         <Category
           type='uncheck'
           label={myAnswer.name}
         />
       </div>
-      <h3>Las palabras de los demas</h3>
+      <h3 className={styles.text}>Las palabras de los demás</h3>
       <div className={styles['categories-container']}>
         {renderCategories()}
       </div>

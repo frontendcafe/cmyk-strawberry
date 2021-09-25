@@ -1,19 +1,18 @@
-$background-color: #1f4459;
-$background-secondary: #243138;
-$color: #fff;
+@use '../../../../scss/colors' as c;
+@use '../../../../scss/typography-mobile' as f;
+@use '../../../../scss/fonts';
+
 $box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
 $border-radius: 8px;
 $padding: 10px 16px;
-$separator: 2px solid #adb5bd;
-$font-weight-700: 700;
-$font-size-20: 20px;
+$separator: 2px solid c.$neutral-50;
 $progress-bar-padding: 16px 20px 16px 20px;
 
 .container {
-  background: $background-color;
+  background: c.$secondary-60;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
-  color: $color;
+  color: c.$primary-10;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -21,6 +20,12 @@ $progress-bar-padding: 16px 20px 16px 20px;
   padding: $padding;
   text-align: center;
   width: 95%;
+
+  .text {
+    font-size: f.$display-03-size;
+    font-weight: f.$medium-bold-button-weight;
+    letter-spacing: f.$medium-bold-button-spacing;
+  }
 }
 
 .categories-container {
@@ -32,7 +37,7 @@ $progress-bar-padding: 16px 20px 16px 20px;
 }
 
 .progress-container {
-  background-color: $background-secondary;
+  background-color: c.$secondary-70;
   border-radius: 0 0 $border-radius $border-radius;
   margin: 0 -16px -10px;
   padding: $progress-bar-padding;

@@ -11,6 +11,7 @@
   "rules": { 
     "order/properties-alphabetical-order": true,
     "selector-max-class": 4,
-    "sh-waqar/declaration-use-variable": [["/color/", "z-index", "font-size", "font-weight", { "ignoreValues": ["transparent", "inherit", "/regexForspecialFunc/"] }]]
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true
   }
 }
