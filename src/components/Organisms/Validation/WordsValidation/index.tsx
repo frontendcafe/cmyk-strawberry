@@ -8,7 +8,7 @@ const MOCK_WORDS = [
   { name: 'Mabel' },
   { name: 'Mi' },
   { name: 'Martin' },
-  { name: 'Mexico' },
+  { name: 'México' },
   { name: 'Ma' }
 ]
 
@@ -20,14 +20,14 @@ const WordsValidation = () => {
 
   return (
     <section className={styles.container}>
-      <h3>Tu palabra fue</h3>
+      <h3 className={styles.text}>Tu palabra fue</h3>
       <div>
         <Category
           type='uncheck'
           label='MiPalabra'
         />
       </div>
-      <h3>Las palabras de los demas</h3>
+      <h3 className={styles.text}>Las palabras de los demás</h3>
       <div className={styles['categories-container']}>
         {renderCategories()}
       </div>

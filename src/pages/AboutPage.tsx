@@ -16,7 +16,7 @@ const AboutPage: React.FC = () => {
       <div className={styles.info}>
         <div className={styles.project}>
           <h4>Contexto del proyecto</h4>
-          <p>Frutti <span>¡Stop!</span> es un juego de lápiz y papel que consiste en
+          <p>Frutti <span className={styles.stop}>¡Stop!</span> es un juego de lápiz y papel que consiste en
             escribir palabras a partir de una letra y de una serie de categorias definidas
             previamente. En esta oportunidad lo vamos a llevar a lo digital.</p>
           <p>Las tecnologías que utilizamos para desarrollarlo

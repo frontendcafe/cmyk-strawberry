@@ -1,17 +1,17 @@
-$color-white: #f8f9fa;
-$color-neutral: #272727;
-$border: 3px solid $color-white;
+@use '../../../../scss/colors' as c;
+@use '../../../../scss/typography-mobile' as f;
+
+$border: 3px solid c.$neutral-10;
 $border-radius: 10px;
 $font-size: 24px;
-$font-weight-bold: bold;
 
 .container {
-  background-color: $color-neutral;
+  background-color: c.$neutral-90;
   border: $border;
   border-radius: $border-radius;
-  color: $color-white;
+  color: c.$neutral-10;
   font-size: $font-size;
-  font-weight: $font-weight-bold;
+  font-weight: f.$medium-bold-button-weight;
   line-height: 28px;
   padding: 4px 14px;
 }

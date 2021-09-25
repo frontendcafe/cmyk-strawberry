@@ -1,8 +1,7 @@
-$background-color: #c74647;
-$color-white: #f8f9fa;
+@use '../../../../scss/colors' as c;
 
 .container {
-  background-color: $color-white;
+  background-color: c.$neutral-10;
   border-radius: 50px;
   height: 8px;
   margin: 50;
@@ -10,7 +9,7 @@ $color-white: #f8f9fa;
 }
 
 .filler {
-  background-color: $background-color;
+  background-color: c.$primary-50;
   border-radius: inherit;
   height: 100%;
   text-align: right;
