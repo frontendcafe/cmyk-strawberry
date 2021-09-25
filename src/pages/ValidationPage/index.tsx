@@ -7,7 +7,6 @@ import WordsValidation from '../../components/Organisms/Validation/WordsValidati
 import { useHistory, useParams } from 'react-router'
 import { RoomContext } from '../../contexts/RoomContextState'
 import { PlayerContext } from '../../contexts/PlayerContextState'
-import { useCategories } from '../../hooks/useCategories'
 
 const ValidationPage = () => {
   const history = useHistory()
