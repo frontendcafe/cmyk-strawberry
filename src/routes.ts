@@ -16,12 +16,13 @@ export enum paths {
   ROOMS = '/rooms',
   BOARD = '/board/:idRoom',
   VALIDATION = '/validation/:idRoom',
-  PREVIEW = '/preview/:idRoom'
+  PREVIEW = '/preview/:idRoom',
+  CLASIFICATION = '/classification'
 }
 
 const routes: IRoute[] = [
   {
-    path: '/classification/',
+    path: paths.CLASIFICATION,
     name: 'Provisional Classification Page',
     component: ProvisionalClasPage,
     exact: true

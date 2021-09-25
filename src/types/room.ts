@@ -46,7 +46,7 @@ export interface IRoom {
   timeout: number | null,
   password: string | null,
   players: IPlayer[],
-  state: RoomState.CREATED | RoomState.IN_PROGRESS | RoomState.ENDED,
+  state: RoomState,
   roundGame?: IRoundGame[]
 }
 
