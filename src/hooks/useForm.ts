@@ -6,7 +6,8 @@ type useFormType = <DataType>(initialState: DataType) => [
   DataType,
   (e:React.ChangeEvent<HTMLInputElement>) => void,
   () => void,
-  setValueType
+  setValueType,
+  (data: DataType) => void
 ]
 
 export const useForm: useFormType = (initialState) => {
@@ -30,5 +31,5 @@ export const useForm: useFormType = (initialState) => {
     })
   }
 
-  return [values, handleInputChange, reset, setValue]
+  return [values, handleInputChange, reset, setValue, setValues]
 }
