@@ -19,11 +19,18 @@ export interface IPlayerContext {
 }
 
 export interface IRoundGame {
-  [key: number] : {
-    letter: string,
-    playersAnswer: {
-      [key: string]: {
-        [key: string]: string
+  letter: string,
+  playersAnswer: {
+    [key: string]: {
+      [key: string]: string
+    }
+  }
+  validation?: {
+    [key: string]:{
+      categories: {
+        [key: string]: {
+          [key: string]: boolean
+        }[]
       }
     }
   }
@@ -34,13 +41,13 @@ export interface IRoom {
   name?: string,
   seconds?: number,
   rounds: number,
+  roundInProgress: number,
   categories: ICategory[],
   timeout: number | null,
   password: string | null,
   players: IPlayer[],
   state: RoomState.CREATED | RoomState.IN_PROGRESS | RoomState.ENDED,
-  roundGame?: IRoundGame[],
-  roundInProgress: number,
+  roundGame?: IRoundGame[]
 }
 
 export interface IRoomContext {
