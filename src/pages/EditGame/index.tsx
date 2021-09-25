@@ -40,7 +40,7 @@ const EditGame = () => {
   return (
     <GameConfigWrapper
       layoutProps={{
-        title: 'Edición de partida"',
+        title: 'Edición de partida',
         subTitle: 'Configuración de parámetros',
         onClose: () => history.push(paths.PREVIEW.replace(':idRoom', roomKey)),
         buttons: FOOTER_BUTTONS(handleSubmit),
