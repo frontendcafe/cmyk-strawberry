@@ -50,32 +50,28 @@ const positionArr: Position[] = [
   }
 ]
 
-// const mapScore = positionArr.map((position) => position.score)
-// console.log(mapScore)
-function sortJSON (data, key:string, orden:string) {
-  return data.sort(function (a:number, b:number) {
-    const x = a[key]
-    const y = b[key]
+function sortJSON<DataType> (data: DataType[], key:string, orden:'asc' | 'desc') {
+  return data.sort(function (a:DataType, b:DataType) {
+    if (key in a && key in b) {
+      const x = (a as any)[key]
+      const y = (b as any)[key]
 
-    if (orden === 'asc') {
-      return ((x < y) ? -1 : ((x > y) ? 1 : 0))
+      if (orden === 'desc') {
+        return ((x > y) ? -1 : ((x < y) ? 1 : 0))
+      } else {
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0))
+      }
     }
 
-    if (orden === 'desc') {
-      return ((x > y) ? -1 : ((x < y) ? 1 : 0))
-    }
-    return data
+    return -1
   })
 }
 
 const newPositionJSON = sortJSON(positionArr, 'score', 'desc')
-console.log(JSON.stringify(newPositionJSON))
 
 const winner = newPositionJSON[0]
-console.log(winner)
 
 const loser = newPositionJSON.filter((_item, index) => index !== 0)
-console.log(loser)
 
 const ProvisionalClasPage: React.FC = () => {
   const history = useHistory()
@@ -90,7 +86,7 @@ const ProvisionalClasPage: React.FC = () => {
             onClose={() => history.push(paths.BOARD)}
           />
           <Winner
-            image={winner.image}
+            image={(winner.image as any)}
             name={winner.name}
             score={winner.score}
           />
@@ -100,7 +96,7 @@ const ProvisionalClasPage: React.FC = () => {
               name={position.name}
               score={position.score}
               position={index + 2}
-              image={position.image}
+              image={(position.image as any)}
             />
           ))}
           <Button
@@ -124,7 +120,7 @@ const ProvisionalClasPage: React.FC = () => {
               name={position.name}
               score={position.score}
               position={index + 1}
-              image={position.image}
+              image={(position.image as any)}
             />
           ))}
           <Button

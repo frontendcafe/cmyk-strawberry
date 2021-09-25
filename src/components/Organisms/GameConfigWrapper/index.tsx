@@ -6,7 +6,7 @@ import GameConfigForm, { Props as GameConfigFormProps } from '../GameConfigForm'
 interface Props {
   layoutProps: LayoutProps;
   gameConfigProps: GameConfigFormProps;
-  toggleEditing: () => void;
+  toggleEditing?: () => void;
 }
 
 const GameConfigWrapper: React.FC<Props> = ({
