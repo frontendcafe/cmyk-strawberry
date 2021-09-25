@@ -16,7 +16,7 @@ const AVATAR_ARRAY_LENGTH = 5 // TODO: pasarlo a avatar component
 const randomAvatarIndex = Math.floor(Math.random() * AVATAR_ARRAY_LENGTH)
 
 function Home () {
-  const { player, addPlayerToContext } = useContext(PlayerContext)
+  const { player, addPlayerToContext, updatePlayerInContext } = useContext(PlayerContext)
   const [avatarIndex, setAvatarIndex] = useState(randomAvatarIndex)
   const [playerName, setPlayerName] = useState('')
   const [playerKeyFromLS]: any = useLocalStorage('player_key', null)
@@ -49,17 +49,42 @@ function Home () {
     }
   }
 
+  function updatePlayer (host: boolean) {
+    const selectedPlayerName = playerName === ''
+      ? getRandomName()
+      : playerName
+
+    const newPlayer = {
+      name: selectedPlayerName,
+      imageIndex: avatarIndex,
+      host,
+      online: true
+    }
+    try {
+      updatePlayerInContext(newPlayer)
+    } catch (err) {
+      console.log('From Home Screen on updating to DB')
+      console.log(err)
+    }
+  }
+
   const handleNewRoom = () => {
     const host = true
-    // Se esta craendo nuevo player, hay q chequear si es el mismo player hacer update del nombre y no save en la DB
-    saveNewPlayer(host)
+    if (playerKeyFromLS) { // Update name and avatar
+      updatePlayer(host)
+    } else {
+      saveNewPlayer(host)
+    }
     history.push(paths.GAME_CONFIG)
   }
 
   const handleFindRoom = () => {
     const host = false
-    // Se esta craendo nuevo player, hay q chequear si es el mismo player hacer update del nombre y no save en la DB
-    saveNewPlayer(host)
+    if (playerKeyFromLS) {
+      updatePlayer(host)
+    } else {
+      saveNewPlayer(host)
+    }
     history.push(paths.ROOMS)
   }
 

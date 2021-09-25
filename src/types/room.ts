@@ -16,6 +16,7 @@ export interface IPlayerContext {
   playerKey: string
   addPlayer?: (arg0: IPlayer) => string | null
   addPlayerToContext: (arg0: IPlayer) => void
+  updatePlayerInContext: (arg0: IPlayer) => void
 }
 
 export interface IRoundGame {

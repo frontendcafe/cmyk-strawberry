@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react'
 import useLocalStorage from '../hooks/useLocalStorage'
-import { addPlayer, getPlayerByKeyWithSync, subscribePlayerOnlineStatus } from '../firebase/services/players'
+import { addPlayer, getPlayerByKeyWithSync, subscribePlayerOnlineStatus, updatePlayer } from '../firebase/services/players'
 import { IPlayerContext, IPlayer } from '../types/room'
 
 export const namesPool = [
@@ -50,8 +50,13 @@ export const PlayerProvider: React.FC = ({ children }) => {
     setPlayer(player)
   }
 
+  const updatePlayerInContext = (playerChange: IPlayer) => {
+    updatePlayer(playerKey, playerChange)
+    setPlayer(player)
+  }
+
   return (
-    <PlayerContext.Provider value={ { player, playerKey, addPlayerToContext } }>
+    <PlayerContext.Provider value={ { player, playerKey, addPlayerToContext, updatePlayerInContext } }>
       {children}
     </PlayerContext.Provider>
   )
