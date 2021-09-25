@@ -10,7 +10,7 @@ interface Props {
 }
 
 const WordsValidation: React.FC<Props> = ({ myAnswer, answerOfOtherPlayers }) => {
-  const [, renderCategories] = useCategories({
+  const [, renderAnswers] = useCategories({
     allCategories: answerOfOtherPlayers,
     mode: 'reviewing'
   })
@@ -26,7 +26,7 @@ const WordsValidation: React.FC<Props> = ({ myAnswer, answerOfOtherPlayers }) =>
       </div>
       <h3 className={styles.text}>Las palabras de los demás</h3>
       <div className={styles['categories-container']}>
-        {renderCategories()}
+        {renderAnswers()}
       </div>
       <div className={styles['progress-container']}>
         <ProgressBar/>

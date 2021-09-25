@@ -7,6 +7,7 @@ import WordsValidation from '../../components/Organisms/Validation/WordsValidati
 import { useHistory, useParams } from 'react-router'
 import { RoomContext } from '../../contexts/RoomContextState'
 import { PlayerContext } from '../../contexts/PlayerContextState'
+import { useCategories } from '../../hooks/useCategories'
 
 const ValidationPage = () => {
   const history = useHistory()
@@ -22,9 +23,9 @@ const ValidationPage = () => {
     setRoomKey(idRoom)
   }, [])
 
-  // ESTA CONDICION ES PARA QUE TYPESCRIPT NO SE QUEJE, TENEMOS MUCHA BASURA EN LA DB y roundGame puede venir undefined
+  // ESTA VALIDACION SE PUEDE ELIMINAR EN PRODUCCION
   const roundInProgress = room?.roundInProgress
-  if (!room?.roundGame?.[roundInProgress]?.playersAnswer) return 'Cargando...'
+  if (!room?.roundGame?.[roundInProgress]?.playersAnswer) return 'No Hay PlayersAnswers para esta ronda, debe setearse en Board...'
 
   const letter = room.roundGame[roundInProgress].letter
   const categoryToEvaluate = room.categories[categoryCount].name
