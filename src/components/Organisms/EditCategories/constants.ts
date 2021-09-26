@@ -26,10 +26,10 @@ export const PRESELECTED_CATEGORIES = [
     name: 'Cosas'
   },
   {
-    name: 'Bandas/Artistas'
+    name: 'Bandas o Artistas'
   },
   {
-    name: 'Frutas/Verduras'
+    name: 'Frutas o Verduras'
   },
   {
     name: 'Comidas'

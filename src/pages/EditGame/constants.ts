@@ -10,7 +10,7 @@ export const INITIAL_STATE_GAME: IRoom = {
     { name: 'Países' },
     { name: 'Marcas' },
     { name: 'Cosas' },
-    { name: 'Frutas/Verduras' }
+    { name: 'Frutas o Verduras' }
   ],
   password: null,
   players: [],
