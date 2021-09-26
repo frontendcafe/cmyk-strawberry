@@ -45,13 +45,11 @@ export const RoomProvider: React.FC = ({ children }) => {
     }
   }
 
-  const changeRoomStateTo = (state: RoomState, history: any) => {
+  const changeRoomStateTo = (state: RoomState) => {
     setRoom((prevState: any) => ({
       ...prevState,
       state
     }))
-
-    history && history.push(paths.BOARD.split(':')[0] + roomKey)
   }
 
   const currentLetter = () => {
