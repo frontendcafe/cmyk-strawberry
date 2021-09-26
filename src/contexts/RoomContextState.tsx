@@ -2,7 +2,6 @@ import React, { createContext, useState, useEffect, useMemo, useCallback } from 
 import { getRoomByKeyWithSync, updateRoom } from '../firebase/services/room'
 import { IPlayer, IRoom, IRoomContext } from '../types/room'
 import { Unsubscribe } from 'firebase/database'
-import { paths } from '../routes'
 import { RoomState } from '../hooks/useRoomState/types'
 
 export const RoomContext = createContext<IRoomContext>({} as IRoomContext)

@@ -1,5 +1,4 @@
 import React, { Dispatch, SetStateAction } from 'react'
-import { RouteComponentProps } from 'react-router'
 import { RoomState } from '../hooks/useRoomState/types'
 
 export interface ICategory {
