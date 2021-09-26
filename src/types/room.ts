@@ -8,16 +8,17 @@ export interface ICategory {
 }
 
 export interface IPlayer {
-  id: string,
   name: string,
   imageIndex: number,
   host?: boolean
 }
 
 export interface IPlayerContext {
-  player: IPlayer,
-  addPlayer: (arg0: IPlayer) => string | null
+  player: IPlayer
   playerKey: string
+  addPlayer?: (arg0: IPlayer) => string | null
+  addPlayerToContext: (arg0: IPlayer) => void
+  updatePlayerInContext: (arg0: IPlayer) => void
 }
 
 export interface IRoundGame {

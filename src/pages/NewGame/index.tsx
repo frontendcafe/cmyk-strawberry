@@ -3,7 +3,7 @@ import { useHistory } from 'react-router'
 import { GAME_CONFIG_FIELDS } from '../../components/Organisms/GameConfigForm/constants'
 import GameConfigWrapper from '../../components/Organisms/GameConfigWrapper'
 import { PlayerContext } from '../../contexts/PlayerContextState'
-import { addRoom } from '../../firebase/services/room'
+import { addRoom, getRoomNumber } from '../../firebase/services/room'
 import { iCategory } from '../../hooks/useCategories/types'
 import { useForm } from '../../hooks/useForm'
 import { paths } from '../../routes'
@@ -18,8 +18,9 @@ const NewGame = () => {
   const handleChangeCategories = (categories: iCategory[]) =>
     setValue(GAME_CONFIG_FIELDS.CATEGORIES, categories)
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     values.players = [player]
+    values.name = 'Sala ' + await getRoomNumber()
 
     const roomId = addRoom(values)
 

@@ -1,5 +1,5 @@
 import { db } from '../config'
-import { ref, set, push, onValue, update, Unsubscribe } from 'firebase/database'
+import { get, child, ref, set, push, onValue, update, Unsubscribe } from 'firebase/database'
 import { IRoom, IRoundGame } from '../../types/room'
 
 const roomsRef = ref(db, 'rooms')
@@ -32,4 +32,10 @@ export const updateRoom = (roomKey: string, playerChanges: IRoom) => {
 
 export const updateRoomPlayersAnswers = (roomKey: string, roundGame: IRoundGame) => {
   return update(ref(db, `rooms/${roomKey}/roundGame`), roundGame)
+}
+
+export const getRoomNumber = async () => {
+  const roomCount = await get(child(ref(db), 'roomCounter'))
+  set(ref(db, 'roomCounter'), roomCount.val() + 1)
+  return roomCount.val()
 }
