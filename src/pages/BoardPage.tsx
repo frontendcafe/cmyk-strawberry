@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useContext, useEffect, useState } from 'react'
 import { Button } from '../components/atoms/Button'
 import CategoryInput from '../components/atoms/CategoryInput'
@@ -8,9 +7,9 @@ import { paths } from '../routes'
 import { useHistory, useParams } from 'react-router'
 import { RoomContext } from '../contexts/RoomContextState'
 import { PlayerContext } from '../contexts/PlayerContextState'
-import { updateRoomPlayersAnswers } from '../firebase/services/room'
 import Letter from '../components/atoms/Letter'
 import Countdown from '../components/atoms/Countdown'
+import useRoomState from '../hooks/useRoomState'
 
 export interface Props {
   categories: Category[]
@@ -25,20 +24,12 @@ export interface Category {
 const BoardPage: React.FC<Props> = () => {
   const [formValues, handleInputChange] = useForm<any>({})
   const { idRoom } = useParams<{ idRoom: string }>()
-  const { room, roomKey, setRoomKey, currentLetter } = useContext(RoomContext)
+  const { room, setRoomKey, currentLetter } = useContext(RoomContext)
   const { playerKey } = useContext(PlayerContext)
   const history = useHistory()
   const letter = currentLetter()
 
-  const [showLetter, setShowLetter] = useState(true)
-  const [showCoutdown, setShowCoutdown] = useState(false)
-
-  useEffect(() => {
-    setRoomKey(idRoom)
-  }, [])
-
-  const handleSubmit = () => {
-    // TODO: Falta mucha logica de integracion aun pero tiene la esencia
+  const stopRound = () => {
     const roundGame = {
       [room.roundInProgress]: {
         letter,
@@ -49,9 +40,18 @@ const BoardPage: React.FC<Props> = () => {
         }
       }
     }
-    // updateRoomPlayersAnswers(roomKey, { ...roundGame })
-    // TODO: redirection...?
+    // TODO: Save this data in db
+    console.log(playerKey, roundGame)
   }
+
+  const [next] = useRoomState({ nextSuscribers: [stopRound] })
+
+  const [showLetter, setShowLetter] = useState(true)
+  const [showCoutdown, setShowCoutdown] = useState(false)
+
+  useEffect(() => {
+    setRoomKey(idRoom)
+  }, [])
 
   return (
     <>
@@ -71,7 +71,7 @@ const BoardPage: React.FC<Props> = () => {
           >
             <Button
               type='button'
-              onClick={() => handleSubmit()}
+              onClick={next}
               theme='primary'
               size='large'
             >

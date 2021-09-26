@@ -1,11 +1,11 @@
 import { paths } from '../../routes'
 
-export enum actions{
+export enum actions {
   PREVIEW = 'PREVIEW',
   BOARD = 'BOARD',
   VALIDATION = 'VALIDATION',
   CLASIFICATION = 'CLASIFICATION',
-  ENDED = 'ENDED'
+  ENDED = 'ENDED',
 }
 
 export enum RoomState {
@@ -13,17 +13,21 @@ export enum RoomState {
   PLAYING = 'PLAYING',
   VALIDATING = 'VALIDATING',
   RESULTS = 'RESULTS',
-  ENDED = 'ENDED'
+  ENDED = 'ENDED',
 }
 
-export type useRoomStateType = () => [() => void]
+export type useRoomStateType = ({
+  nextSuscribers
+}: {
+  nextSuscribers?: (() => Promise<void>) | (() => void)[];
+}) => [() => void];
 
 export type StateMapItem = {
-  state: RoomState,
-  action: actions,
-  path: paths,
-  nextState?: (isEnd?: boolean) => RoomState
-}
+  state: RoomState;
+  action: actions;
+  path: paths;
+  nextState?: (isEnd?: boolean) => RoomState;
+};
 
 export const STATE_MAP: StateMapItem[] = [
   {
@@ -48,7 +52,8 @@ export const STATE_MAP: StateMapItem[] = [
     state: RoomState.RESULTS,
     action: actions.CLASIFICATION,
     path: paths && paths.CLASIFICATION,
-    nextState: (isEnd?: boolean) => isEnd ? RoomState.ENDED : RoomState.PLAYING
+    nextState: (isEnd?: boolean) =>
+      isEnd ? RoomState.ENDED : RoomState.PLAYING
   },
   {
     state: RoomState.ENDED,
