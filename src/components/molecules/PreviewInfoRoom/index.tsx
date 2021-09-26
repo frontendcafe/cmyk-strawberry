@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { useHistory, useParams } from 'react-router'
 import { PlayerContext } from '../../../contexts/PlayerContextState'
+import { RoomContext } from '../../../contexts/RoomContextState'
 import { paths } from '../../../routes'
 import { IRoom } from '../../../types/room'
 import { Button } from '../../atoms/Button'
@@ -13,8 +14,8 @@ interface Props {
 const PreviewInfoRoom: React.FC<Props> = ({ room }) => {
   const { idRoom } = useParams<{ idRoom: string }>()
   const { player } = useContext(PlayerContext)
+  const { isHost } = useContext(RoomContext)
   const history = useHistory()
-  const userHost = room?.players.find(player => player?.host)
 
   const handleEditRoom = () => idRoom && history.push(paths.EDIT_CONFIG.replace(':idRoom', idRoom))
 
@@ -43,7 +44,7 @@ const PreviewInfoRoom: React.FC<Props> = ({ room }) => {
         }
       </div>
 
-      { userHost?.id === player?.id &&
+      { isHost(player) &&
         <Button
           type="button"
           onClick={handleEditRoom}

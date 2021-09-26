@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useMemo } from 'react'
 import Layout from '../components/templates/Layout'
 import { paths } from '../routes'
 import { Props as ButtonProps } from '../components/atoms/Button'
@@ -10,23 +10,23 @@ import { useHistory, useParams } from 'react-router-dom'
 import { Modal } from '../components/atoms/Modal'
 import { RoomContext } from '../contexts/RoomContextState'
 import { PlayerContext } from '../contexts/PlayerContextState'
-import { RoomState } from '../types/room'
+import useRoomState from '../hooks/useRoomState'
 
 const PreviewPage = () => {
   const history = useHistory()
   const { idRoom } = useParams<{ idRoom: string }>()
-  const { room, addPlayerToRoom, changeRoomStateTo, setRoomKey } = useContext(RoomContext)
+  const { room, addPlayerToRoom, setRoomKey, alreadyInTheGame, isHost } = useContext(RoomContext)
+  const [next] = useRoomState()
   const { player } = useContext(PlayerContext)
 
   const isPrivate = room?.password !== undefined
-  const userHost = room?.players.find(player => player?.host)
 
   useEffect(() => {
     setRoomKey(idRoom)
   }, [])
 
   const getTextModal = () => {
-    if (userHost?.id === player?.id) {
+    if (isHost(player)) {
       return 'Volveras al inicio del juego'
     } else {
       return `Volveras a las salas ${isPrivate ? 'privadas' : 'públicas'}`
@@ -41,7 +41,7 @@ const PreviewPage = () => {
       cancelButtonText: 'No'
     }).then((result) => {
       if (result.isConfirmed) {
-        history.push(userHost?.id === player?.id ? paths.HOME : paths.ROOMS)
+        history.push(isHost(player) ? paths.HOME : paths.ROOMS)
       }
     })
   }
@@ -56,7 +56,7 @@ const PreviewPage = () => {
       type: 'submit',
       theme: 'primary',
       size: 'large',
-      onClick: () => player && addPlayerToRoom(player, history),
+      onClick: () => addPlayerToRoom(player),
       children: 'UNIRSE'
     }
   ]
@@ -75,17 +75,26 @@ const PreviewPage = () => {
       type: 'submit',
       theme: 'primary',
       size: 'large',
-      onClick: () => changeRoomStateTo(RoomState.IN_PROGRESS, history, idRoom),
+      onClick: next,
       children: 'COMENZAR PARTIDA'
     }
   ]
+
+  const footerButtons = useMemo(() => {
+    if (isHost(player)) return FOOTER_BUTTONS_HOST
+
+    // TODO: Show blue message that says "waiting to the admin starts the game"
+    if (alreadyInTheGame(player)) return
+
+    return FOOTER_BUTTONS
+  }, [player, room])
 
   return (
     <Layout
       title={ isPrivate ? room.name + ' 🔒' : room?.name || '' }
       subTitle=""
       onClose={showModal}
-      buttons={ userHost?.id === player?.id ? FOOTER_BUTTONS_HOST : FOOTER_BUTTONS }
+      buttons={footerButtons}
     >
       <PlayersList players={room?.players}/>
 

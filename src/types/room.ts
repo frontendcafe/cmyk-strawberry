@@ -1,4 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react'
+import { RoomState } from '../hooks/useRoomState/types'
 
 export interface ICategory {
   id?: string,
@@ -47,7 +48,7 @@ export interface IRoom {
   timeout: number | null,
   password: string | null,
   players: IPlayer[],
-  state: RoomState.CREATED | RoomState.IN_PROGRESS | RoomState.ENDED,
+  state: RoomState,
   roundGame?: IRoundGame[]
 }
 
@@ -55,15 +56,12 @@ export interface IRoomContext {
   room: IRoom,
   setRoom: React.Dispatch<React.SetStateAction<IRoom | null>>,
   roomKey: string,
-  addPlayerToRoom: (player: IPlayer, history: any) => void,
-  changeRoomStateTo: (state: RoomState, history: any, idRoom: string) => void,
+  addPlayerToRoom: (player: IPlayer) => void,
+  changeRoomStateTo: (state: RoomState) => void,
   setRoomKey: Dispatch<SetStateAction<string>>,
   addRoundToRoom: (room: IRoom, letter: string) => void,
   currentLetter: () => string,
-}
-
-export enum RoomState {
-  CREATED,
-  IN_PROGRESS,
-  ENDED
+  isLastRound: boolean,
+  alreadyInTheGame: (player: IPlayer) => boolean
+  isHost: (player: IPlayer) => boolean
 }
