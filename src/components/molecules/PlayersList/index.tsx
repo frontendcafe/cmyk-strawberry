@@ -21,7 +21,7 @@ const PlayerList: React.FC<Props> = ({ players }) => {
               showArrows={false}
             >
               {players?.map((player:IPlayer) => (
-                <div key={ player.id } className={styles.avatar}>
+                <div key={ player.name } className={styles.avatar}>
                   <Avatar index={player.imageIndex}/>
                   <p>{player.name}</p>
                 </div>
