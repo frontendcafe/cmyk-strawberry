@@ -68,15 +68,9 @@ const BoardPage: React.FC<Props> = () => {
             subTitle=""
             onClose={() => history.push(paths.HOME)}
             letter={letter}
+            boardStyle
+            handleSubmit={handleSubmit}
           >
-            <Button
-              type='button'
-              onClick={() => handleSubmit()}
-              theme='primary'
-              size='large'
-            >
-        ¡BASTA!
-            </Button>
 
             { room?.categories?.map(category => (
               <CategoryInput
@@ -89,7 +83,6 @@ const BoardPage: React.FC<Props> = () => {
             }
           </Layout>
         )
-
       }
     </>
   )
