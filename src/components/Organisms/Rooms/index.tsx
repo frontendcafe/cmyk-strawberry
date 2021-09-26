@@ -1,9 +1,10 @@
 import React from 'react'
 import Room from '../../molecules/Room'
 import { ReactComponent as EmptyStateIcon } from '../../../assets/empty-state.svg'
-import { IRoom, RoomState } from '../../../types/room'
+import { IRoom } from '../../../types/room'
 
 import styles from './Rooms.module.scss'
+import { RoomState } from '../../../hooks/useRoomState/types'
 
 type Props = {
   rooms: IRoom[]
