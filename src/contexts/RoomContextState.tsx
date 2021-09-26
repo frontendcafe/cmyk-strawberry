@@ -1,8 +1,9 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState, useEffect, useMemo, useCallback } from 'react'
 import { getRoomByKeyWithSync, updateRoom } from '../firebase/services/room'
-import { IPlayer, IRoom, IRoomContext, RoomState } from '../types/room'
+import { IPlayer, IRoom, IRoomContext } from '../types/room'
 import { Unsubscribe } from 'firebase/database'
 import { paths } from '../routes'
+import { RoomState } from '../hooks/useRoomState/types'
 
 export const RoomContext = createContext<IRoomContext>({} as IRoomContext)
 
@@ -23,30 +24,34 @@ export const RoomProvider: React.FC = ({ children }) => {
     }
   }, [room])
 
-  const addPlayerToRoom = (player: IPlayer, history: any) => {
-    // check player is already in the room
-    if (room && room.players.find((p:any) => p.id === player.id) !== undefined) {
-      history.push(paths.BOARD)
+  // TODO: Review user check, maybe it must be for id or playerKey
+  const alreadyInTheGame = useCallback((player: IPlayer) =>
+    room && room.players.find((p:IPlayer) => p.name === player.name)
+  , [room])
+
+  const addPlayerToRoom = (player: IPlayer) => {
+    if (!room) return
+
+    if (alreadyInTheGame(player)) {
       return
     }
 
     // check room useState
-    if (room && room.state !== RoomState.ENDED) {
+    if (room.state !== RoomState.ENDED) {
       setRoom((prevState: any) => ({
         ...prevState,
         players: room.players?.concat(player)
       }))
-      history.push(paths.BOARD)
     }
   }
 
-  const changeRoomStateTo = (state: RoomState, history: any, idRoom: string) => {
+  const changeRoomStateTo = (state: RoomState, history: any) => {
     setRoom((prevState: any) => ({
       ...prevState,
       state
     }))
 
-    history.push(paths.BOARD.split(':')[0] + idRoom)
+    history && history.push(paths.BOARD.split(':')[0] + roomKey)
   }
 
   const currentLetter = () => {
@@ -79,6 +84,13 @@ export const RoomProvider: React.FC = ({ children }) => {
     }))
   }
 
+  const isHost = (player: IPlayer) =>
+    room && player.name === room?.players.find(({ host }: IPlayer) => host)?.name
+
+  const isLastRound = useMemo(() =>
+    room?.roundGame?.length && (room.roundInProgress === room.roundGame.length)
+  , [room])
+
   return (
     <RoomContext.Provider
       value={ {
@@ -89,7 +101,10 @@ export const RoomProvider: React.FC = ({ children }) => {
         setRoomKey,
         setRoom,
         addRoundToRoom,
-        currentLetter
+        currentLetter,
+        isLastRound,
+        alreadyInTheGame,
+        isHost
       } }
     >
       {children}
