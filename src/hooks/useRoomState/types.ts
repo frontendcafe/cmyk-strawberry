@@ -19,7 +19,7 @@ export enum RoomState {
 export type useRoomStateType = ({
   nextSuscribers
 }: {
-  nextSuscribers?: (() => Promise<void>) | (() => void)[];
+  nextSuscribers?: (() => Promise<void>)[] | (() => void)[];
 }) => [() => void];
 
 export type StateMapItem = {
