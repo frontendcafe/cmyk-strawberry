@@ -1,10 +1,12 @@
 import { useContext, useEffect, useRef } from 'react'
+import { PlayerContext } from '../../contexts/PlayerContextState'
 import { RoomContext } from '../../contexts/RoomContextState'
 import { paths } from '../../routes'
 import { StateMapItem, STATE_MAP, useRoomStateType } from './types'
 
 const useRoomState: useRoomStateType = () => {
-  const { room, isLastRound, changeRoomStateTo, roomKey } = useContext(RoomContext)
+  const { room, isLastRound, changeRoomStateTo, roomKey, alreadyInTheGame } = useContext(RoomContext)
+  const { player } = useContext(PlayerContext)
   const actualState = useRef<StateMapItem>()
 
   const next = () => {
@@ -14,7 +16,7 @@ const useRoomState: useRoomStateType = () => {
   }
 
   const validateRedirection = () => {
-    if (roomKey && actualState.current?.action) {
+    if (roomKey && actualState.current?.action && alreadyInTheGame(player)) {
       const actualPath = actualState.current.path ?? (paths as any)[actualState.current.action]
       const replacedPath = actualPath.replace(':idRoom', roomKey)
 
@@ -37,7 +39,7 @@ const useRoomState: useRoomStateType = () => {
       actualState.current = STATE_MAP.find(({ state }) => state === room.state)
       validateRedirection()
     }
-  }, [room?.state])
+  }, [room?.state, player])
 
   return [next]
 }
