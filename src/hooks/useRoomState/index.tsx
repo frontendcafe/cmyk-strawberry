@@ -33,11 +33,9 @@ const useRoomState: useRoomStateType = ({
       state === actualState?.current?.nextState?.(isLastRound)
     )
     if (nextState && actualState?.current?.state !== room.state) {
-      Promise.all(nextSuscribers?.map(async callback => await callback()) ?? [])
-        .then(() => {
-          const path = nextState.path ?? (paths as any)[nextState.action]
-          window.location.href = path.replace(':idRoom', roomKey)
-        })
+      nextSuscribers?.forEach(callback => callback())
+      const path = nextState.path ?? (paths as any)[nextState.action]
+      window.location.href = path.replace(':idRoom', roomKey)
     }
 
     if (room?.state) {

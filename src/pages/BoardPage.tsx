@@ -10,6 +10,7 @@ import { PlayerContext } from '../contexts/PlayerContextState'
 import Letter from '../components/atoms/Letter'
 import Countdown from '../components/atoms/Countdown'
 import useRoomState from '../hooks/useRoomState'
+import { addRoundGame } from '../firebase/services/roundsGame'
 
 export interface Props {
   categories: Category[]
@@ -24,24 +25,20 @@ export interface Category {
 const BoardPage: React.FC<Props> = () => {
   const [formValues, handleInputChange] = useForm<any>({})
   const { idRoom } = useParams<{ idRoom: string }>()
-  const { room, setRoomKey, currentLetter } = useContext(RoomContext)
+  const { room, roomKey, setRoomKey, currentLetter } = useContext(RoomContext)
   const { playerKey } = useContext(PlayerContext)
   const history = useHistory()
   const letter = currentLetter()
 
   const stopRound = () => {
     const roundGame = {
-      [room.roundInProgress]: {
-        letter,
-        playersAnswer: {
-          [playerKey]: {
-            ...formValues
-          }
-        }
-      }
+      roomKey,
+      round: room.roundInProgress,
+      playerKey,
+      values: formValues
     }
-    // TODO: Save this data in db
-    console.log(playerKey, roundGame)
+
+    addRoundGame(roundGame)
   }
 
   const [next] = useRoomState({ nextSuscribers: [stopRound] })
