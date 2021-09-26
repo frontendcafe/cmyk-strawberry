@@ -35,7 +35,7 @@ const PreviewInfoRoom: React.FC<Props> = ({ room }) => {
         {
           room?.categories.map(category => (
             <Category
-              key={category.id}
+              key={category.name}
               type="basic"
               label={category.name}
               onClick={() => {}}

@@ -4,7 +4,9 @@ import { RoomContext } from '../../contexts/RoomContextState'
 import { paths } from '../../routes'
 import { StateMapItem, STATE_MAP, useRoomStateType } from './types'
 
-const useRoomState: useRoomStateType = () => {
+const useRoomState: useRoomStateType = ({
+  nextSuscribers
+}) => {
   const { room, isLastRound, changeRoomStateTo, roomKey, alreadyInTheGame } = useContext(RoomContext)
   const { player } = useContext(PlayerContext)
   const actualState = useRef<StateMapItem>()
@@ -31,6 +33,7 @@ const useRoomState: useRoomStateType = () => {
       state === actualState?.current?.nextState?.(isLastRound)
     )
     if (nextState && actualState?.current?.state !== room.state) {
+      nextSuscribers?.forEach(callback => callback())
       const path = nextState.path ?? (paths as any)[nextState.action]
       window.location.href = path.replace(':idRoom', roomKey)
     }

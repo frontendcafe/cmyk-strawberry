@@ -16,7 +16,7 @@ const PreviewPage = () => {
   const history = useHistory()
   const { idRoom } = useParams<{ idRoom: string }>()
   const { room, addPlayerToRoom, setRoomKey, alreadyInTheGame, isHost } = useContext(RoomContext)
-  const [next] = useRoomState()
+  const [next] = useRoomState({})
   const { player } = useContext(PlayerContext)
 
   const isPrivate = room?.password !== undefined

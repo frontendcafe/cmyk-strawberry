@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
+import { PlayerContext } from '../../../contexts/PlayerContextState'
 import { RoomContext } from '../../../contexts/RoomContextState'
 import { paths } from '../../../routes'
 import Layout from '../../templates/Layout'
 import styles from './Letter.module.scss'
 
 const Letter: React.FC<any> = ({ room, setShowLetter, setShowCoutdown }) => {
-  const [letter, setLetter] = useState('')
+  const [hasLetter, setHasLetter] = useState(false)
   const allLetters = ['A', 'Z', 'C', 'E', 'V', 'G']
-  const { addRoundToRoom } = useContext(RoomContext)
+  const { addRoundToRoom, currentLetter, isHost } = useContext(RoomContext)
+  const { player } = useContext(PlayerContext)
   const history = useHistory()
 
   const randomLetter = String.fromCharCode(
@@ -17,8 +19,12 @@ const Letter: React.FC<any> = ({ room, setShowLetter, setShowCoutdown }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      setLetter(randomLetter)
-      addRoundToRoom(room, randomLetter)
+      setHasLetter(true)
+
+      // TODO: Validate if exists a previous round already created
+      if (isHost(player)) {
+        addRoundToRoom(room, randomLetter)
+      }
     }, 3000)
 
     setTimeout(() => {
@@ -40,7 +46,7 @@ const Letter: React.FC<any> = ({ room, setShowLetter, setShowCoutdown }) => {
       <div className={`${styles.container}`}>
         {/* <div className={`${styles.containerletters} animate__animated animate__fadeOutDownBig animate__slow`}> */}
 
-        { letter === ''
+        { !hasLetter
           ? (
             <div className={`${styles.containerletters}`}>
               <div className="animate__animated animate__slideOutDown animate__slow">
@@ -84,7 +90,7 @@ const Letter: React.FC<any> = ({ room, setShowLetter, setShowCoutdown }) => {
             <div
               className={`${styles.letter} animate__animated animate__backInUp animate__slow`}
             >
-              {letter}
+              {currentLetter()}
             </div>
           )
         }

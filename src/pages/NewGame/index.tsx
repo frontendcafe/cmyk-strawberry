@@ -19,7 +19,7 @@ const NewGame = () => {
     setValue(GAME_CONFIG_FIELDS.CATEGORIES, categories)
 
   const handleSubmit = async () => {
-    values.players = [player]
+    values.players = [{ ...player, host: true }]
     values.name = 'Sala ' + await getRoomNumber()
 
     const roomId = addRoom(values)
