@@ -1,4 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useHistory, useParams } from 'react-router'
+import { PlayerContext } from '../../../contexts/PlayerContextState'
+import { RoomContext } from '../../../contexts/RoomContextState'
+import { paths } from '../../../routes'
 import { IRoom } from '../../../types/room'
 import { Button } from '../../atoms/Button'
 import { Category } from '../../atoms/Category'
@@ -8,10 +12,12 @@ interface Props {
 }
 
 const PreviewInfoRoom: React.FC<Props> = ({ room }) => {
-  const userHost = room?.players.find(player => player?.host)
+  const { idRoom } = useParams<{ idRoom: string }>()
+  const { player } = useContext(PlayerContext)
+  const { isHost } = useContext(RoomContext)
+  const history = useHistory()
 
-  // TODO Obtener el id del usuario logueado
-  const userId = '222'
+  const handleEditRoom = () => idRoom && history.push(paths.EDIT_CONFIG.replace(':idRoom', idRoom))
 
   return (
     <div className={styles.container}>
@@ -29,7 +35,7 @@ const PreviewInfoRoom: React.FC<Props> = ({ room }) => {
         {
           room?.categories.map(category => (
             <Category
-              key={category.id}
+              key={category.name}
               type="basic"
               label={category.name}
               onClick={() => {}}
@@ -38,10 +44,10 @@ const PreviewInfoRoom: React.FC<Props> = ({ room }) => {
         }
       </div>
 
-      { userHost?.id === userId &&
+      { isHost(player) &&
         <Button
           type="button"
-          onClick={() => {}}
+          onClick={handleEditRoom}
           size="large"
           theme="secondary"
           className={styles.editbutton}

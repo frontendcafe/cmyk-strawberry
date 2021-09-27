@@ -1,23 +1,23 @@
-$background-color: #1f4459;
-$color: #fff;
+@use '../../../../scss/colors' as c;
+@use '../../../../scss/fonts';
+@use '../../../../scss/typography-mobile' as f;
+
 $box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
 $border-radius: 8px;
 $padding: 16px;
-$separator: 2px solid #adb5bd;
-$font-weight-700: 700;
-$font-size-20: 20px;
+$separator: 2px solid c.$neutral-50;
 
 .title {
-  font-size: $font-size-20;
-  font-weight: $font-weight-700;
+  font-size: f.$display-03-size;
+  font-weight: f.$display-03-weight;
   margin-bottom: 12px;
 }
 
 .container {
-  background: $background-color;
+  background: c.$secondary-60;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
-  color: $color;
+  color: c.$primary-10;
   display: flex;
   justify-content: space-around;
   padding: $padding;

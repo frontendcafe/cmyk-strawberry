@@ -1,5 +1,4 @@
-// TODO: use style-guide
-$bg-color: #272727;
+@use '../../../scss/colors' as c;
 
 body {
   margin: 0;
@@ -7,7 +6,7 @@ body {
 }
 
 .container {
-  background-color: $bg-color;
+  background-color: c.$neutral-90;
   background-image: url('../../../assets/bg-mobile-pattern.svg');
   min-height: 100vh;
 

@@ -6,7 +6,7 @@ import styles from './Header.module.scss'
 
 export interface Props {
   title: string;
-  subTitle: string;
+  subTitle?: string;
   onClose: () => void;
   letter?: string;
 }

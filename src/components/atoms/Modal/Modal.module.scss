@@ -1,23 +1,22 @@
-$white: #f8f9fa;
-$border-confirm-color: #672829;
+@use '../../../scss/colors' as c;
 
 .fontcolor {
-  color: $white;
+  color: c.$neutral-10;
 }
 
 .title {
-  color: $white;
+  color: c.$neutral-10;
   padding: 48px 23.5px 0;
 }
 
 .cancelbutton {
-  border: 2px solid $white !important;
+  border: 2px solid c.$neutral-10 !important;
   border-radius: 16px !important;
   padding: 12px 28px;
 }
 
 .confirmbutton {
-  border: 2px solid $border-confirm-color !important;
+  border: 2px solid c.$primary-80 !important;
   border-radius: 16px !important;
   padding: 12px 28px;
 }

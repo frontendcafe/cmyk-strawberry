@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ReactComponent as Add } from '../../../assets/add.svg'
-import styles from './Index.module.scss'
+import styles from './Input.module.scss'
 
 interface Props {
     changeHandler?: (value:string) => void;

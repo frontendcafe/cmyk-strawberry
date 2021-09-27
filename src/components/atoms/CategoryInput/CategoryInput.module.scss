@@ -1,16 +1,17 @@
-// TODO: use style-guide
-$white: #f8f9fa;
-$bold: bold;
+@use '../../../scss/colors' as c;
+@use '../../../scss/typography-mobile.scss' as f;
+@use '../../../scss/fonts';
+
 $outline-color: #4991da;
 
 .container {
   align-items: flex-start;
-  background: #343a40;
-  border: 1px solid $white;
+  background: c.$neutral-80;
+  border: 1px solid c.$neutral-10;
   border-radius: 8px;
   box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
   box-sizing: border-box;
-  color: $white;
+  color: c.$neutral-10;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,7 +25,7 @@ $outline-color: #4991da;
   }
 
   .title {
-    font-weight: $bold;
+    font-weight: f.$small-bold-weight;
     margin: 0 0 10px;
   }
 }

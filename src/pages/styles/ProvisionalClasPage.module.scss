@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap");
+
+//variables
+//$font-primary: "Work Sans", sans-serif;
+$font-medium: "work sans", sans-serif;
+$white-color: #f8f9fa;
+$font-size-02: 22px;
+$font-size-03: 20px;
+$font-small: 16px;
+$black-color: #272727;
+$secundary-60: #1f4459;
+$weight-500: 500;
+$weight-600: 600;
+$weight-700: 700;
+
+.container {
+  align-items: center;
+  background-image: url("../../assets/bgBlue.svg");
+  background-size: cover;
+  color: $white-color;
+  display: flex;
+  flex-direction: column;
+  font-family: $font-medium;
+  min-height: 600px;
+  min-width: 360px;
+  padding-bottom: 30px;
+}
+
+.header {
+  align-items: center;
+  background-color: $black-color;
+  box-shadow: 0 1px 0 #6b7278;
+  display: flex;
+  flex-direction: row;
+  font-size: $font-size-02;
+  height: 88px;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  padding: 24px 24px 24px 16px;
+  width: 92%;
+}
+
+.round {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 28px;
+}
+
+.title {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.containerwin {
+  align-items: center;
+  background-image: url("../../assets/bgGold.svg");
+  background-size: cover;
+  color: $white-color;
+  display: flex;
+  flex-direction: column;
+  font-family: $font-medium;
+  min-height: 600px;
+  min-width: 360px;
+  padding-bottom: 30px;
+}

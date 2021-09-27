@@ -1,21 +1,18 @@
+@use './../scss/colors' as c;
 /* stylelint-disable */
 
-$primary-color: #c74647;
-$white-color: #F8F9FA;
-$black-color: #495057;
-
 .react-select-container {
-  color: $white-color;
+  color: c.$neutral-10;
   margin: 0 30px;
 
   .react-select__control {
-    background-color: $primary-color;
-    border: 2.5px solid $white-color;
+    background-color: c.$primary-50;
+    border: 2.5px solid c.$neutral-10;
     border-radius: 12px;
     padding: 2px 30px;
 
     .react-select__single-value {
-      color: $white-color;
+      color: c.$neutral-10;
       font-weight: 700;
     }
     .react-select__indicators > .react-select__indicator-separator {
@@ -28,8 +25,8 @@ $black-color: #495057;
 
     .react-select__menu-list {
       .react-select__option {
-        background-color: $white-color;
-        color: $black-color;
+        background-color: c.$neutral-10;
+        color: c.$neutral-70;
         font-weight: 700;
         padding: 10px 45px;
         text-align: left;

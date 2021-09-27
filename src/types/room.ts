@@ -1,4 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react'
+import { RoomState } from '../hooks/useRoomState/types'
 
 export interface ICategory {
   id?: string,
@@ -6,24 +7,32 @@ export interface ICategory {
 }
 
 export interface IPlayer {
-  id: string,
   name: string,
   imageIndex: number,
   host?: boolean
 }
 
 export interface IPlayerContext {
-  player: IPlayer,
-  addPlayer: (arg0: IPlayer) => string | null
+  player: IPlayer
   playerKey: string
+  addPlayer?: (arg0: IPlayer) => string | null
+  addPlayerToContext: (arg0: IPlayer) => void
+  updatePlayerInContext: (arg0: IPlayer) => void
 }
 
 export interface IRoundGame {
-  [key: number] : {
-    letter: string,
-    playersAnswer: {
-      [key: string]: {
-        [key: string]: string
+  letter: string,
+  playersAnswer: {
+    [key: string]: {
+      [key: string]: string
+    }
+  }
+  validation?: {
+    [key: string]:{
+      categories: {
+        [key: string]: {
+          [key: string]: boolean
+        }[]
       }
     }
   }
@@ -34,28 +43,25 @@ export interface IRoom {
   name?: string,
   seconds?: number,
   rounds: number,
+  roundInProgress: number,
   categories: ICategory[],
   timeout: number | null,
   password: string | null,
   players: IPlayer[],
-  state: RoomState.CREATED | RoomState.IN_PROGRESS | RoomState.ENDED,
-  roundGame?: IRoundGame[],
-  roundInProgress: number,
+  state: RoomState,
+  roundGame?: IRoundGame[]
 }
 
 export interface IRoomContext {
   room: IRoom,
-  setRoom?: React.Dispatch<React.SetStateAction<IRoom | null>>,
+  setRoom: React.Dispatch<React.SetStateAction<IRoom | null>>,
   roomKey: string,
-  addPlayerToRoom: (player: IPlayer, history: any) => void,
-  changeRoomStateTo: (state: RoomState, history: any, idRoom: string) => void,
+  addPlayerToRoom: (player: IPlayer) => void,
+  changeRoomStateTo: (state: RoomState) => void,
   setRoomKey: Dispatch<SetStateAction<string>>,
   addRoundToRoom: (room: IRoom, letter: string) => void,
   currentLetter: () => string,
-}
-
-export enum RoomState {
-  CREATED,
-  IN_PROGRESS,
-  ENDED
+  isLastRound: boolean,
+  alreadyInTheGame: (player: IPlayer) => boolean
+  isHost: (player: IPlayer) => boolean
 }

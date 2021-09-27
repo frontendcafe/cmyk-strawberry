@@ -6,7 +6,7 @@ export interface Props {
   type: 'submit' | 'reset' | 'button';
   theme: 'primary' | 'secondary' | 'tertiary';
   size: 'small' | 'medium' | 'large';
-  onClick: () => void;
+  onClick?: () => void;
   children: React.ReactNode;
   className?: string;
   disabled?: boolean;
