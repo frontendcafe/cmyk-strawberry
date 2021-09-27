@@ -39,7 +39,6 @@ const ValidationPage = () => {
   const [next] = useRoomState({})
 
   const generateData = (data: any, callback: (data: any) => void) => {
-    console.log('data', data)
     const parsedData = Object.keys(data).map((key) => data[key])
     const inProgressValidation = parsedData.filter(
       ({ roomKey, round }) =>
@@ -119,7 +118,6 @@ const ValidationPage = () => {
   }, [room])
 
   useEffect(() => {
-    console.log(savedValidations, onlinePlayers)
     if (savedValidations &&
       onlinePlayers &&
       savedValidations.length >= onlinePlayers.length &&
