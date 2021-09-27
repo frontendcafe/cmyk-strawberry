@@ -6,8 +6,10 @@ import RoomsPage from './pages/RoomsPage'
 import ValidationPage from './pages/ValidationPage'
 import PreviewPage from './pages/PreviewPage'
 import NewGame from './pages/NewGame'
+import Rules from './pages/rules'
 
 export enum paths {
+  RULES= '/rules',
   HOME = '/',
   GAME_CONFIG = '/new-room',
   ROOMS = '/rooms',
@@ -17,6 +19,13 @@ export enum paths {
 }
 
 const routes: IRoute[] = [
+  {
+    path: paths.RULES,
+    name: '/rules',
+    exact: true,
+    component: Rules
+  },
+
   {
     path: '/about',
     name: 'About Page',

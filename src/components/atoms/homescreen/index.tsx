@@ -7,18 +7,20 @@ import Subtract from './assets/Subtract.svg'
 import Input from './../input/index'
 import Avatar from './../Avatars/index'
 import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router'
+import { paths } from '../../../routes'
 
 function Home () {
+  const history = useHistory()
   const [toggleAvatar, setToggleAvatar] = useState(false)
 
   return (
     <div className="background">
       <div className="content">
-        <Button className="subtract" theme="tertiary" size="small" type="button" onClick={console.log}><img src={Subtract} alt=""/></Button>
+        <Button className="subtract" theme="tertiary" size="small" type="button" onClick={() => history.push(paths.RULES)}><img src={Subtract} alt=""/></Button>
         <div className="title">
 
           <Logotype1/>
-
         </div>
         <main>
           <Button className="vector" theme="tertiary" size="small" type="reset" onClick={() => setToggleAvatar(!toggleAvatar)}>
