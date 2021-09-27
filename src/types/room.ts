@@ -10,6 +10,7 @@ export interface IPlayer {
   name: string,
   imageIndex: number,
   host?: boolean
+  online?: boolean
 }
 
 export interface IPlayerContext {
@@ -27,12 +28,10 @@ export interface IRoundGame {
       [key: string]: string
     }
   }
-  validation?: {
-    [key: string]:{
-      categories: {
-        [key: string]: {
-          [key: string]: boolean
-        }[]
+  validations: {
+    [key: string]: {
+      [key: string]: {
+        [key: string]: boolean
       }
     }
   }
@@ -65,4 +64,5 @@ export interface IRoomContext {
   alreadyInTheGame: (player: IPlayer) => boolean
   isHost: (player: IPlayer) => boolean
   addValidation: (data: any, playerKey: string) => void
+  onlinePlayers: IPlayer[]
 }

@@ -83,6 +83,10 @@ export const RoomProvider: React.FC = ({ children }) => {
     room?.roundGame?.length && (room.roundInProgress === room.roundGame.length)
   , [room])
 
+  const onlinePlayers = useMemo(() =>
+    room?.players.filter(({ online }: IPlayer) => online)
+  , [room])
+
   const addValidation = (data: any, playerKey: string) => {
     setRoom((prevValue: any) => ({
       ...prevValue,
@@ -112,7 +116,8 @@ export const RoomProvider: React.FC = ({ children }) => {
         isLastRound,
         alreadyInTheGame,
         isHost,
-        addValidation
+        addValidation,
+        onlinePlayers
       } }
     >
       {children}
