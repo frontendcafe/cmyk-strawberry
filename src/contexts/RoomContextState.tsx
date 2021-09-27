@@ -87,21 +87,6 @@ export const RoomProvider: React.FC = ({ children }) => {
     room?.players.filter(({ online }: IPlayer) => online)
   , [room])
 
-  const addValidation = (data: any, playerKey: string) => {
-    setRoom((prevValue: any) => ({
-      ...prevValue,
-      roundGame: {
-        [prevValue.roundInProgress]: {
-          ...(prevValue.roundGame[prevValue.roundInProgress] ? prevValue.roundGame[prevValue.roundInProgress] : {}),
-          validations: {
-            ...(prevValue.roundGame[prevValue.roundInProgress].validations ? prevValue.roundGame[prevValue.roundInProgress].validations : {}),
-            [playerKey]: data
-          }
-        }
-      }
-    }))
-  }
-
   return (
     <RoomContext.Provider
       value={ {
@@ -116,7 +101,6 @@ export const RoomProvider: React.FC = ({ children }) => {
         isLastRound,
         alreadyInTheGame,
         isHost,
-        addValidation,
         onlinePlayers
       } }
     >

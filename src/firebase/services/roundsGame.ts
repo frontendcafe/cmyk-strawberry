@@ -7,7 +7,7 @@ export const addRoundGame = (data : any) => {
   push(roundGameRef, data)
 }
 
-export const getValidations = (callback: (data: any) => void) => {
+export const getRoundsGame = (callback: (data: any) => void) => {
   onValue(roundGameRef, (snapshot) => {
     callback(snapshot.val())
   }, {
