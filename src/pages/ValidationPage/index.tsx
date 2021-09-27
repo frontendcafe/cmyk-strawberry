@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useContext, useState, useEffect, useMemo } from 'react'
 import Layout from '../../components/templates/Layout'
 import CategoryRound from '../../components/Organisms/Validation/CategoryRound'
@@ -9,6 +8,7 @@ import { useHistory, useParams } from 'react-router'
 import { RoomContext } from '../../contexts/RoomContextState'
 import { PlayerContext } from '../../contexts/PlayerContextState'
 import { getValidations } from '../../firebase/services/roundsGame'
+import { useCategories } from '../../hooks/useCategories'
 
 interface Validation {
   roomKey: string;
@@ -19,10 +19,12 @@ interface Validation {
 
 const ValidationPage = () => {
   const history = useHistory()
-  const { room, setRoomKey, currentLetter } = useContext(RoomContext)
+  const { room, setRoomKey, currentLetter, addValidation } = useContext(RoomContext)
   const { playerKey } = useContext(PlayerContext)
   const [categoryCount, setCategoryCount] = useState(0)
   const [validations, setValidations] = useState<Validation[] | null>(null)
+  const [myValidation, setMyValidation] = useState<Record<string, boolean>>()
+  const [sended, setSended] = useState(false)
   const { idRoom } = useParams<{ idRoom: string }>()
 
   const generateValidations = (data: Record<string, Validation>) => {
@@ -35,6 +37,9 @@ const ValidationPage = () => {
 
   useEffect(() => {
     setRoomKey(idRoom)
+  }, [])
+
+  useEffect(() => {
     getValidations(generateValidations)
   }, [room])
 
@@ -48,7 +53,7 @@ const ValidationPage = () => {
             ?.values[room?.categories[categoryCount].name] ?? '-'
         },
         answers: validations
-          .filter(val => val.playerKey !== playerKey && Boolean(val.values[room?.categories[categoryCount].name]))
+          .filter(val => val.playerKey !== playerKey && Boolean(val.values?.[room?.categories[categoryCount].name]))
           .map(({ values }) => (
             { name: values[room?.categories[categoryCount].name] }
           ))
@@ -56,11 +61,23 @@ const ValidationPage = () => {
     }
 
     return null
-  }, [validations, categoryCount])
+  }, [validations, categoryCount, playerKey])
+
+  const [, renderAnswers, selectedAnswers] = useCategories({
+    allCategories: validating?.answers ?? [],
+    mode: 'reviewing'
+  })
 
   const handleValidate = () => {
     if (categoryCount < room?.categories.length - 1) {
+      setMyValidation(prevValue => ({
+        ...prevValue,
+        ...Object.fromEntries(selectedAnswers.map(({ name }) => [name, true]))
+      }))
       setCategoryCount(categoryCount + 1)
+    } else if (myValidation) {
+      addValidation(myValidation, playerKey)
+      setSended(true)
     }
   }
 
@@ -79,7 +96,7 @@ const ValidationPage = () => {
       title='Validación'
       subTitle='Aprueba o no las palabras'
       onClose={() => history.push(paths.BOARD)}
-      buttons={ FOOTER_BUTTONS }
+      buttons={ sended ? undefined : FOOTER_BUTTONS }
       loading={!validating}
     >
       {
@@ -93,7 +110,7 @@ const ValidationPage = () => {
             />
             <WordsValidation
               myAnswer={validating.myAnswer}
-              answerOfOtherPlayers={validating.answers}
+              renderAnswers={renderAnswers()}
             />
           </>
         )
