@@ -10,15 +10,14 @@ export interface Props {
   subTitle?: string;
   onClose: () => void;
   letter?: string;
-  boardStyle?: boolean;
-  handleSubmit?: () => void;
+  handleButtonClick?: () => void;
 }
 
-const Header = ({ title, subTitle, onClose, letter = '', boardStyle, handleSubmit }: Props) => {
+const Header = ({ title, subTitle, onClose, letter = '', handleButtonClick }: Props) => {
   return (
     <header className={styles.header}>
       {
-        !boardStyle &&
+        !handleButtonClick &&
         (
           <a className={styles.close} onClick={onClose}><CloseIcon/></a>
         )
@@ -26,7 +25,7 @@ const Header = ({ title, subTitle, onClose, letter = '', boardStyle, handleSubmi
       {
         letter !== ''
           ? (
-            <div className={styles.lettercontainer}>
+            <div className={`${styles.lettercontainer} ${handleButtonClick ? styles.letterboard : ''}`}>
               <div className={styles.letter}>
                 {letter}
 
@@ -34,21 +33,21 @@ const Header = ({ title, subTitle, onClose, letter = '', boardStyle, handleSubmi
             </div>
           )
           : (
-            <div className={styles.titlecontainer}>
+            <div className={styles.lettercontainer}>
               <h1 className={styles.title}>{title}</h1>
               <span className={styles.subtitle}>{subTitle}</span>
             </div>
           )
       }
       {
-        boardStyle &&
+        handleButtonClick &&
         (
           <Button
             type='button'
-            onClick={handleSubmit}
+            onClick={handleButtonClick}
             theme='primary'
             size='medium'
-            className='board'
+            className={styles.board}
           >
                 ¡STOP!
           </Button>

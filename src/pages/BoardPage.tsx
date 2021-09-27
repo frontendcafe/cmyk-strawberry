@@ -64,8 +64,7 @@ const BoardPage: React.FC<Props> = () => {
             subTitle=""
             onClose={() => history.push(paths.HOME)}
             letter={letter}
-            boardStyle
-            handleSubmit={next}
+            handleButtonClick={next}
           >
             { room?.categories?.map(category => (
               <CategoryInput

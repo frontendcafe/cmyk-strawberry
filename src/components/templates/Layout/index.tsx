@@ -9,15 +9,14 @@ export interface Props extends HeaderProps{
   children?: React.ReactNode;
   buttons?: ButtonProps[];
   loading?: boolean;
-  handleSubmit?: () => void;
-  boardStyle?: boolean;
+  handleButtonClick?: () => void;
 }
 
-const Layout = ({ title, subTitle, letter, onClose, children, buttons, loading, handleSubmit, boardStyle }: Props) => {
+const Layout = ({ title, subTitle, letter, onClose, children, buttons, loading, handleButtonClick }: Props) => {
   return (
     <div className={styles.container}>
       <div>
-        <Header title={title} subTitle={subTitle} onClose={onClose} letter={letter} boardStyle={boardStyle} handleSubmit={handleSubmit}/>
+        <Header title={title} subTitle={subTitle} onClose={onClose} letter={letter} handleButtonClick={handleButtonClick}/>
         {/* <Button
           type='button'
           onClick={() => handleSubmit()}
