@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useContext, useState, useEffect, useMemo } from 'react'
 import Layout from '../../components/templates/Layout'
 import CategoryRound from '../../components/Organisms/Validation/CategoryRound'
@@ -7,9 +8,10 @@ import WordsValidation from '../../components/Organisms/Validation/WordsValidati
 import { useHistory, useParams } from 'react-router'
 import { RoomContext } from '../../contexts/RoomContextState'
 import { PlayerContext } from '../../contexts/PlayerContextState'
-import { getValidations } from '../../firebase/services/roundsGame'
+import { getRoundsGame } from '../../firebase/services/roundsGame'
 import { useCategories } from '../../hooks/useCategories'
 import useRoomState from '../../hooks/useRoomState'
+import { getValidationsWithSync, saveValidation } from '../../firebase/services/validations'
 
 interface Validation {
   roomKey: string;
@@ -22,36 +24,30 @@ const ValidationPage = () => {
   const history = useHistory()
   const {
     room,
+    roomKey,
     setRoomKey,
     currentLetter,
-    addValidation,
     onlinePlayers,
     isHost
   } = useContext(RoomContext)
   const { player, playerKey } = useContext(PlayerContext)
   const [categoryCount, setCategoryCount] = useState(0)
   const [validations, setValidations] = useState<Validation[] | null>(null)
+  const [savedValidations, setSavedValidations] = useState<any>(null)
   const [myValidation, setMyValidation] = useState<Record<string, boolean>>()
   const [sended, setSended] = useState(false)
   const { idRoom } = useParams<{ idRoom: string }>()
   const [next] = useRoomState({})
 
-  const generateValidations = (data: Record<string, Validation>) => {
+  const generateData = (data: any, callback: (data: any) => void) => {
+    console.log('data', data)
     const parsedData = Object.keys(data).map((key) => data[key])
     const inProgressValidation = parsedData.filter(
       ({ roomKey, round }) =>
         roomKey === idRoom && round === room?.roundInProgress
     )
-    setValidations(inProgressValidation)
+    callback(inProgressValidation)
   }
-
-  useEffect(() => {
-    setRoomKey(idRoom)
-  }, [])
-
-  useEffect(() => {
-    getValidations(generateValidations)
-  }, [room])
 
   const validating = useMemo(() => {
     if (validations) {
@@ -91,7 +87,13 @@ const ValidationPage = () => {
       }))
       setCategoryCount(categoryCount + 1)
     } else if (myValidation) {
-      addValidation(myValidation, playerKey)
+      const validation = {
+        roomKey,
+        playerKey,
+        round: room.roundInProgress,
+        values: myValidation
+      }
+      saveValidation(validation)
       setSended(true)
     }
   }
@@ -107,14 +109,26 @@ const ValidationPage = () => {
   ]
 
   useEffect(() => {
-    const validations = room?.roundGame?.[room.roundInProgress]?.validations
-    if (validations &&
-      Object.keys(validations).length >= onlinePlayers.length &&
+    setRoomKey(idRoom)
+    const unsuscribe = getValidationsWithSync((data) => generateData(data, setSavedValidations))
+
+    return () => unsuscribe()
+  }, [])
+
+  useEffect(() => {
+    getRoundsGame((data) => generateData(data, setValidations))
+  }, [room])
+
+  useEffect(() => {
+    console.log(savedValidations, onlinePlayers)
+    if (savedValidations &&
+      onlinePlayers &&
+      savedValidations.length >= onlinePlayers.length &&
       isHost(player)
     ) {
       next()
     }
-  }, [room?.roundGame])
+  }, [onlinePlayers, savedValidations])
 
   return (
     <Layout

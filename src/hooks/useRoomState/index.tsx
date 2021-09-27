@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useContext, useEffect, useRef } from 'react'
 import { PlayerContext } from '../../contexts/PlayerContextState'
 import { RoomContext } from '../../contexts/RoomContextState'
@@ -13,6 +14,7 @@ const useRoomState: useRoomStateType = ({
 
   const next = () => {
     if (actualState?.current?.nextState) {
+      console.log(actualState.current.nextState(isLastRound))
       changeRoomStateTo(actualState.current.nextState(isLastRound))
     }
   }

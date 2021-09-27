@@ -63,6 +63,5 @@ export interface IRoomContext {
   isLastRound: boolean,
   alreadyInTheGame: (player: IPlayer) => boolean
   isHost: (player: IPlayer) => boolean
-  addValidation: (data: any, playerKey: string) => void
   onlinePlayers: IPlayer[]
 }
