@@ -35,6 +35,14 @@ $font-size: 24px;
     font-weight: f.$medium-medium-weight;
     line-height: f.$medium-medium-height;
   }
+
+  .board {
+    border-radius: 16px;
+    margin-left: 7px;
+    margin-right: 13px;
+    margin-top: 16px;
+    padding: 16px;
+  }
 }
 
 .lettercontainer {
@@ -54,4 +62,9 @@ $font-size: 24px;
     padding: 10.0024px 14px;
     place-items: center;
   }
+}
+
+.letterboard {
+  padding-left: 75px;
+  padding-top: 20px;
 }

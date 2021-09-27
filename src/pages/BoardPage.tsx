@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Button } from '../components/atoms/Button'
 import CategoryInput from '../components/atoms/CategoryInput'
 import { useForm } from '../hooks/useForm'
 import Layout from '../components/templates/Layout'
@@ -65,16 +64,8 @@ const BoardPage: React.FC<Props> = () => {
             subTitle=""
             onClose={() => history.push(paths.HOME)}
             letter={letter}
+            handleButtonClick={next}
           >
-            <Button
-              type='button'
-              onClick={next}
-              theme='primary'
-              size='large'
-            >
-        ¡BASTA!
-            </Button>
-
             { room?.categories?.map(category => (
               <CategoryInput
                 key={category.id}
@@ -86,7 +77,6 @@ const BoardPage: React.FC<Props> = () => {
             }
           </Layout>
         )
-
       }
     </>
   )
