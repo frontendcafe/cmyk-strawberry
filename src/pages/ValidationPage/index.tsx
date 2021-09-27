@@ -1,4 +1,5 @@
-import React, { useContext, useState, useEffect } from 'react'
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useContext, useState, useEffect, useMemo } from 'react'
 import Layout from '../../components/templates/Layout'
 import CategoryRound from '../../components/Organisms/Validation/CategoryRound'
 import { paths } from '../../routes'
@@ -7,42 +8,58 @@ import WordsValidation from '../../components/Organisms/Validation/WordsValidati
 import { useHistory, useParams } from 'react-router'
 import { RoomContext } from '../../contexts/RoomContextState'
 import { PlayerContext } from '../../contexts/PlayerContextState'
+import { getValidations } from '../../firebase/services/roundsGame'
+
+interface Validation {
+  roomKey: string;
+  playerKey: string;
+  round: number;
+  values: Record<string, string>
+}
 
 const ValidationPage = () => {
   const history = useHistory()
-  const { room } = useContext(RoomContext)
+  const { room, setRoomKey, currentLetter } = useContext(RoomContext)
   const { playerKey } = useContext(PlayerContext)
   const [categoryCount, setCategoryCount] = useState(0)
+  const [validations, setValidations] = useState<Validation[] | null>(null)
   const { idRoom } = useParams<{ idRoom: string }>()
 
-  // TODO use room from context
-  const { setRoomKey } = useContext(RoomContext)
+  const generateValidations = (data: Record<string, Validation>) => {
+    const parsedData = Object.keys(data).map(key => data[key])
+    const inProgressValidation = parsedData.filter(({ roomKey, round }) =>
+      roomKey === idRoom && round === room?.roundInProgress
+    )
+    setValidations(inProgressValidation)
+  }
 
   useEffect(() => {
     setRoomKey(idRoom)
-  }, [])
+    getValidations(generateValidations)
+  }, [room])
 
-  // ESTA VALIDACION SE PUEDE ELIMINAR EN PRODUCCION
-  const roundInProgress = room?.roundInProgress
-  if (!room?.roundGame?.[roundInProgress]?.playersAnswer) return 'No Hay PlayersAnswers para esta ronda, debe setearse en Board...'
+  const validating = useMemo(() => {
+    if (validations) {
+      return {
+        word: room?.categories[categoryCount].name,
+        myAnswer: {
+          name: validations
+            .find(val => val.playerKey === playerKey)
+            ?.values[room?.categories[categoryCount].name] ?? '-'
+        },
+        answers: validations
+          .filter(val => val.playerKey !== playerKey && Boolean(val.values[room?.categories[categoryCount].name]))
+          .map(({ values }) => (
+            { name: values[room?.categories[categoryCount].name] }
+          ))
+      }
+    }
 
-  const letter = room.roundGame[roundInProgress].letter
-  const categoryToEvaluate = room.categories[categoryCount].name
-  const playersAnswers: any = Object.entries(room.roundGame[roundInProgress].playersAnswer)
-
-  const { answerOfOtherPlayers, myAnswer } =
-    playersAnswers
-      .reduce((acc: any, pa: any) => {
-        const [paKey, ans] = pa
-        paKey === playerKey
-          ? acc.myAnswer.name = ans[categoryToEvaluate]
-          : acc.answerOfOtherPlayers.push({ name: ans[categoryToEvaluate] })
-
-        return acc
-      }, { myAnswer: { name: '' }, answerOfOtherPlayers: [] })
+    return null
+  }, [validations, categoryCount])
 
   const handleValidate = () => {
-    if (categoryCount < room.categories.length - 1) {
+    if (categoryCount < room?.categories.length - 1) {
       setCategoryCount(categoryCount + 1)
     }
   }
@@ -63,17 +80,25 @@ const ValidationPage = () => {
       subTitle='Aprueba o no las palabras'
       onClose={() => history.push(paths.BOARD)}
       buttons={ FOOTER_BUTTONS }
+      loading={!validating}
     >
-      <CategoryRound
-        category={categoryToEvaluate}
-        letter={letter}
-        categoryCount={categoryCount + 1}
-        categoriesTotal={room.categories.length}
-      />
-      <WordsValidation
-        answerOfOtherPlayers={answerOfOtherPlayers}
-        myAnswer={myAnswer}
-      />
+      {
+        validating && (
+          <>
+            <CategoryRound
+              category={validating.word}
+              letter={currentLetter()}
+              categoryCount={categoryCount + 1}
+              categoriesTotal={room?.categories.length}
+            />
+            <WordsValidation
+              myAnswer={validating.myAnswer}
+              answerOfOtherPlayers={validating.answers}
+            />
+          </>
+        )
+      }
+
     </Layout>
   )
 }

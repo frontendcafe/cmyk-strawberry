@@ -3,10 +3,11 @@ import styles from './WordsValidation.module.scss'
 import { Category } from '../../../atoms/Category'
 import ProgressBar from '../ProgressBar'
 import { useCategories } from '../../../../hooks/useCategories'
+import { iCategory } from '../../../../hooks/useCategories/types'
 
 interface Props {
-  myAnswer: {name: string}
-  answerOfOtherPlayers: any[]
+  myAnswer: iCategory
+  answerOfOtherPlayers: iCategory[]
 }
 
 const WordsValidation: React.FC<Props> = ({ myAnswer, answerOfOtherPlayers }) => {
