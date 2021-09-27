@@ -143,7 +143,7 @@ function Home () {
         </main>
       </div>
       <footer className="footer">
-        <Link to='/about/:number'>Sobre nosotros</Link>
+        <Link to='/about'>Sobre nosotros</Link>
       </footer>
     </div>
 
