@@ -1,5 +1,4 @@
 import React from 'react'
-
 import styles from './ProgressBar.module.scss'
 
 const ProgressBar = ({ duration = 5, onComplete = () => {} }) => {
