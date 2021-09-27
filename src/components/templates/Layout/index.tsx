@@ -17,15 +17,6 @@ const Layout = ({ title, subTitle, letter, onClose, children, buttons, loading, 
     <div className={styles.container}>
       <div>
         <Header title={title} subTitle={subTitle} onClose={onClose} letter={letter} handleButtonClick={handleButtonClick}/>
-        {/* <Button
-          type='button'
-          onClick={() => handleSubmit()}
-          theme='primary'
-          size='large'
-          handleButtonClick
-        >
-        ¡BASTA!
-        </Button> */}
       </div>
 
       <main className={styles.main}>
