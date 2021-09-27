@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useContext, useState, useEffect, useMemo } from 'react'
 import Layout from '../../components/templates/Layout'
 import CategoryRound from '../../components/Organisms/Validation/CategoryRound'
