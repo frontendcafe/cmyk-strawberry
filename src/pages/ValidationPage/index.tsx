@@ -110,13 +110,13 @@ const ValidationPage = () => {
 
   useEffect(() => {
     setRoomKey(idRoom)
-    const unsuscribe = getValidationsWithSync((data) => generateData(data, setSavedValidations))
-
-    return () => unsuscribe()
   }, [])
 
   useEffect(() => {
     getRoundsGame((data) => generateData(data, setValidations))
+    const unsuscribe = getValidationsWithSync((data) => generateData(data, setSavedValidations))
+
+    return () => unsuscribe()
   }, [room])
 
   useEffect(() => {
