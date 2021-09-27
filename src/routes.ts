@@ -7,9 +7,11 @@ import ValidationPage from './pages/ValidationPage'
 import PreviewPage from './pages/PreviewPage'
 import ProvisionalClasPage from './pages/ProvisionalClasPage'
 import NewGame from './pages/NewGame'
+import Rules from './pages/rules'
 import EditGame from './pages/EditGame'
 
 export enum paths {
+  RULES= '/rules',
   HOME = '/',
   GAME_CONFIG = '/new-room',
   EDIT_CONFIG = '/edit-room/:idRoom',
@@ -21,6 +23,12 @@ export enum paths {
 }
 
 const routes: IRoute[] = [
+  {
+    path: paths.RULES,
+    name: '/rules',
+    exact: true,
+    component: Rules
+  },
   {
     path: paths.CLASIFICATION,
     name: 'Provisional Classification Page',

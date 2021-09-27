@@ -9,8 +9,8 @@ import Avatar from './../Avatars/index'
 import { Link } from 'react-router-dom'
 import { PlayerContext, getRandomName } from '../../../contexts/PlayerContextState'
 import useLocalStorage from '../../../hooks/useLocalStorage'
-import { useHistory } from 'react-router'
 import { paths } from '../../../routes'
+import { useHistory } from 'react-router'
 
 const AVATAR_ARRAY_LENGTH = 5 // TODO: pasarlo a avatar component
 const randomAvatarIndex = Math.floor(Math.random() * AVATAR_ARRAY_LENGTH)
@@ -104,12 +104,11 @@ function Home () {
           theme="tertiary"
           size="small"
           type="button"
-          onClick={console.log}
+          onClick={() => history.push(paths.RULES)}
         ><img src={Subtract} alt=""/></Button>
         <div className="title">
 
           <Logotype1/>
-
         </div>
         <main>
           <Button
@@ -144,7 +143,7 @@ function Home () {
         </main>
       </div>
       <footer className="footer">
-        <Link to='/about/:number'>Sobre nosotros</Link>
+        <Link to='/about'>Sobre nosotros</Link>
       </footer>
     </div>
 
