@@ -71,11 +71,6 @@ export const RoomProvider: React.FC = ({ children }) => {
         ...prevState.roundGame,
         [prevState.roundInProgress + 1]: {
           letter: letter
-          // playersAnswer: {
-          //   0: {
-          //     0: '2'
-          //   }
-          // }
         }
       }
     }))
@@ -87,6 +82,25 @@ export const RoomProvider: React.FC = ({ children }) => {
   const isLastRound = useMemo(() =>
     room?.roundGame?.length && (room.roundInProgress === room.roundGame.length)
   , [room])
+
+  const onlinePlayers = useMemo(() =>
+    room?.players.filter(({ online }: IPlayer) => online)
+  , [room])
+
+  const addValidation = (data: any, playerKey: string) => {
+    setRoom((prevValue: any) => ({
+      ...prevValue,
+      roundGame: {
+        [prevValue.roundInProgress]: {
+          ...(prevValue.roundGame[prevValue.roundInProgress] ? prevValue.roundGame[prevValue.roundInProgress] : {}),
+          validations: {
+            ...(prevValue.roundGame[prevValue.roundInProgress].validations ? prevValue.roundGame[prevValue.roundInProgress].validations : {}),
+            [playerKey]: data
+          }
+        }
+      }
+    }))
+  }
 
   return (
     <RoomContext.Provider
@@ -101,7 +115,9 @@ export const RoomProvider: React.FC = ({ children }) => {
         currentLetter,
         isLastRound,
         alreadyInTheGame,
-        isHost
+        isHost,
+        addValidation,
+        onlinePlayers
       } }
     >
       {children}

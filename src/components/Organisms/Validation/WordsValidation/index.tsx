@@ -2,19 +2,14 @@ import React from 'react'
 import styles from './WordsValidation.module.scss'
 import { Category } from '../../../atoms/Category'
 import ProgressBar from '../ProgressBar'
-import { useCategories } from '../../../../hooks/useCategories'
+import { iCategory } from '../../../../hooks/useCategories/types'
 
 interface Props {
-  myAnswer: {name: string}
-  answerOfOtherPlayers: any[]
+  myAnswer: iCategory
+  renderAnswers: React.ReactNode
 }
 
-const WordsValidation: React.FC<Props> = ({ myAnswer, answerOfOtherPlayers }) => {
-  const [, renderAnswers] = useCategories({
-    allCategories: answerOfOtherPlayers,
-    mode: 'reviewing'
-  })
-
+const WordsValidation: React.FC<Props> = ({ myAnswer, renderAnswers }) => {
   return (
     <section className={styles.container}>
       <h3 className={styles.text}>Tu palabra fue</h3>
@@ -26,7 +21,7 @@ const WordsValidation: React.FC<Props> = ({ myAnswer, answerOfOtherPlayers }) =>
       </div>
       <h3 className={styles.text}>Las palabras de los demás</h3>
       <div className={styles['categories-container']}>
-        {renderAnswers()}
+        {renderAnswers}
       </div>
       <div className={styles['progress-container']}>
         <ProgressBar/>
