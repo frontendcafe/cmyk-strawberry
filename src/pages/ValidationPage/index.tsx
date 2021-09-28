@@ -107,7 +107,6 @@ const ValidationPage = () => {
   ]
 
   useEffect(() => {
-    console.log(room)
     setRoomKey(idRoom)
   }, [])
 
