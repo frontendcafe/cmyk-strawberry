@@ -46,8 +46,11 @@ $font-size: 24px;
 }
 
 .lettercontainer {
+  align-items: flex-start;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  padding-left: 30px;
   transform: translateX(-37px);
 
   .letter {
