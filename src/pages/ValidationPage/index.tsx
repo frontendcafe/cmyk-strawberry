@@ -129,7 +129,6 @@ const ValidationPage = () => {
 
   const getDurationProgress = () => {
     const cantPlayers = room?.players.length
-    console.log('cantPlayers', cantPlayers)
     return cantPlayers > 4 ? (5 * ((cantPlayers - 4) * 2.5)) : 5
   }
 
