@@ -5,7 +5,7 @@ export enum actions {
   BOARD = 'BOARD',
   VALIDATION = 'VALIDATION',
   CLASIFICATION = 'CLASIFICATION',
-  ENDED = 'ENDED',
+  ENDED = 'HOME',
 }
 
 export enum RoomState {

@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { paths } from '../routes'
 import styles from './styles/ProvisionalClasPage.module.scss'
 import ClassificationCard from '../components/molecules/ClassificationCard'
 import { Button } from '../components/atoms/Button'
 import Header from '../components/molecules/Header'
 import Winner from '../components/molecules/Winner'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
+import { RoomContext } from '../contexts/RoomContextState'
+import useRoomState from '../hooks/useRoomState'
 
 export interface Props {
   positions: Position[]
@@ -75,11 +77,17 @@ const loser = newPositionJSON.filter((_item, index) => index !== 0)
 
 const ProvisionalClasPage: React.FC = () => {
   const history = useHistory()
-  // si la partida esta terminando...
-  const isEnd = true
+  const { isLastRound, setRoomKey } = useContext(RoomContext)
+  const [next] = useRoomState({})
+  const { idRoom } = useParams<{ idRoom: string }>()
+
+  useEffect(() => {
+    setRoomKey(idRoom)
+  }, [])
+
   return (
     <>
-      { isEnd
+      { isLastRound
         ? <div className={styles.containerwin}>
           <Header
             title='Clasificación Final'
@@ -101,7 +109,7 @@ const ProvisionalClasPage: React.FC = () => {
           ))}
           <Button
             type='button'
-            onClick={() => history.push(paths.BOARD)}
+            onClick={next}
             theme='primary'
             size='large'
           >
@@ -125,7 +133,7 @@ const ProvisionalClasPage: React.FC = () => {
           ))}
           <Button
             type='button'
-            onClick={() => history.push(paths.BOARD)}
+            onClick={next}
             theme='primary'
             size='large'
           >

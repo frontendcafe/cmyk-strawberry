@@ -35,6 +35,7 @@ const ValidationPage = () => {
   const [savedValidations, setSavedValidations] = useState<any>(null)
   const [myValidation, setMyValidation] = useState<Record<string, boolean>>()
   const [sended, setSended] = useState(false)
+  const [nextSended, setNextSended] = useState(false)
   const { idRoom } = useParams<{ idRoom: string }>()
   const [next] = useRoomState({})
 
@@ -53,7 +54,7 @@ const ValidationPage = () => {
         word: room?.categories[categoryCount].name,
         myAnswer: {
           name:
-            validations.find((val) => val.playerKey === playerKey)?.values[
+            validations.find((val) => val.playerKey === playerKey)?.values?.[
               room?.categories[categoryCount].name
             ] ?? '-'
         },
@@ -85,6 +86,7 @@ const ValidationPage = () => {
       }))
       setCategoryCount(categoryCount + 1)
     } else if (myValidation) {
+      setSended(true)
       const validation = {
         roomKey,
         playerKey,
@@ -92,7 +94,6 @@ const ValidationPage = () => {
         values: myValidation
       }
       saveValidation(validation)
-      setSended(true)
     }
   }
 
@@ -121,8 +122,10 @@ const ValidationPage = () => {
     if (savedValidations &&
       onlinePlayers &&
       savedValidations.length >= onlinePlayers.length &&
-      isHost(player)
+      isHost(player) &&
+      !nextSended
     ) {
+      setNextSended(true)
       next()
     }
   }, [onlinePlayers, savedValidations])

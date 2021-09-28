@@ -78,9 +78,8 @@ export const RoomProvider: React.FC = ({ children }) => {
 
   const isHost = (player: IPlayer) =>
     room && player.name === room?.players.find(({ host }: IPlayer) => host)?.name
-
   const isLastRound = useMemo(() =>
-    room?.roundGame?.length && (room.roundInProgress === room.roundGame.length)
+    room?.roundGame && (room.roundInProgress >= Object.keys(room.roundGame).length)
   , [room])
 
   const onlinePlayers = useMemo(() =>

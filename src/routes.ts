@@ -19,7 +19,7 @@ export enum paths {
   BOARD = '/board/:idRoom',
   VALIDATION = '/validation/:idRoom',
   PREVIEW = '/preview/:idRoom',
-  CLASIFICATION = '/classification'
+  CLASIFICATION = '/classification/:idRoom'
 }
 
 const routes: IRoute[] = [
