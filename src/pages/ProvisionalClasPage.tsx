@@ -113,7 +113,7 @@ const ProvisionalClasPage: React.FC = () => {
             theme='primary'
             size='large'
           >
-            REINICIAR PARTIDA
+            SALIR DE LA PARTIDA
           </Button>
         </div>
         : <div className={styles.container}>
