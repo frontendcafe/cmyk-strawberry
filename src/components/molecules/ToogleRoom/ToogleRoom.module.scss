@@ -1,5 +1,5 @@
-@use '../../../scss/colors' as c;
-@use '../../../scss/typography-mobile' as f;
+@use "../../../scss/colors" as c;
+@use "../../../scss/typography-mobile" as f;
 
 $box-shadow: 0 1px 1px c.$neutral-10;
 $box-shadow-active: 0 3px 1px c.$neutral-10;
@@ -30,6 +30,6 @@ $margin-top: 3px;
 }
 
 .active {
-  background-color: c.$neutral-90;
+  background-color: c.$secondary-60;
   box-shadow: $box-shadow-active;
 }

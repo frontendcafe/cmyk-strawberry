@@ -1,5 +1,5 @@
-@use '../../../scss/colors' as c;
-@use '../../../scss/typography-mobile' as f;
+@use "../../../scss/colors" as c;
+@use "../../../scss/typography-mobile" as f;
 
 $box-shadow: 0 4px 1px rgba(20, 20, 20, 0.5);
 $border-radius: 4px;
@@ -13,10 +13,10 @@ $border-radius: 4px;
   color: c.$neutral-10;
   cursor: pointer;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 0.5rem;
   padding: 10px 20px;
-  width: 80%;
+  width: 95%;
 
   &:hover {
     background-color: c.$secondary-40;
