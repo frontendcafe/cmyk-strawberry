@@ -23,13 +23,18 @@ const PreviewInfoRoom: React.FC<Props> = ({ room }) => {
     <div className={styles.container}>
       <h2>Información de la sala</h2>
 
-      <div>Se esta jugando la ronda 2 de { room?.rounds }</div>
+      {
+        room?.roundInProgress === 0
+          ? <div>Se jugarán { room?.rounds } rondas en total </div>
+          : <div>Se está jugando la ronda { room?.roundInProgress } de { room?.rounds }</div>
+      }
+
       <hr className={styles.divider}/>
 
-      <div className={styles.endmethod}>La ronda finalizara al presional ¡STOP!</div>
+      <div className={styles.endmethod}>La ronda finalizara al presionar ¡STOP!</div>
       <hr/>
 
-      <div>{ room?.categories.length } categorias para completas</div>
+      <div>{ room?.categories.length } categorías para completar</div>
 
       <div className={styles.categoriescontainer}>
         {

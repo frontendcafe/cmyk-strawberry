@@ -28,15 +28,15 @@ const PreviewPage = () => {
 
   const getTextModal = () => {
     if (isHost(player)) {
-      return 'Volveras al inicio del juego'
+      return 'Volverás al inicio del juego'
     } else {
-      return `Volveras a las salas ${isPrivate ? 'privadas' : 'públicas'}`
+      return `Volverás a las salas ${isPrivate ? 'privadas' : 'públicas'}`
     }
   }
 
   const showModal = () => {
     Modal.fire({
-      title: '¿Estas seguro que quieres salir de la sala?',
+      title: '¿Estás seguro que quieres salir de la sala?',
       text: getTextModal(),
       confirmButtonText: 'Si',
       cancelButtonText: 'No'
