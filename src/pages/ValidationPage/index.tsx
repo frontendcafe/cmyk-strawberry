@@ -130,6 +130,11 @@ const ValidationPage = () => {
     }
   }, [onlinePlayers, savedValidations])
 
+  const getDurationProgress = () => {
+    const cantPlayers = room?.players.length
+    return cantPlayers > 4 ? (5 * ((cantPlayers - 4) * 2.5)) : 5
+  }
+
   return (
     <Layout
       title="Validación"
@@ -138,7 +143,7 @@ const ValidationPage = () => {
       buttons={sended ? undefined : FOOTER_BUTTONS}
       loading={!validating}
     >
-      {validating && (
+      {validating && room && (
         <>
           <CategoryRound
             category={validating.word}
@@ -149,6 +154,8 @@ const ValidationPage = () => {
           <WordsValidation
             myAnswer={validating.myAnswer}
             renderAnswers={renderAnswers()}
+            durationProgress={ getDurationProgress() }
+            onCompleteProgress={ handleValidate }
           />
         </>
       )}

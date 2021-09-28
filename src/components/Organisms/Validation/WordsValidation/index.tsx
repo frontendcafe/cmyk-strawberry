@@ -6,10 +6,12 @@ import { iCategory } from '../../../../hooks/useCategories/types'
 
 interface Props {
   myAnswer: iCategory
-  renderAnswers: React.ReactNode
+  renderAnswers: React.ReactNode,
+  durationProgress: number,
+  onCompleteProgress: () => void
 }
 
-const WordsValidation: React.FC<Props> = ({ myAnswer, renderAnswers }) => {
+const WordsValidation: React.FC<Props> = ({ myAnswer, renderAnswers, durationProgress, onCompleteProgress }) => {
   return (
     <section className={styles.container}>
       <h3 className={styles.text}>Tu palabra fue</h3>
@@ -24,7 +26,7 @@ const WordsValidation: React.FC<Props> = ({ myAnswer, renderAnswers }) => {
         {renderAnswers}
       </div>
       <div className={styles['progress-container']}>
-        <ProgressBar/>
+        <ProgressBar duration={ durationProgress } onComplete={ onCompleteProgress }/>
       </div>
     </section>
   )
