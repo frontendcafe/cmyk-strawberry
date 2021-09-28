@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo } from 'react'
+import React, { useContext, useEffect, useMemo, useRef } from 'react'
 import Layout from '../components/templates/Layout'
 import { paths } from '../routes'
 import { Props as ButtonProps } from '../components/atoms/Button'
@@ -18,6 +18,7 @@ const PreviewPage = () => {
   const { room, addPlayerToRoom, setRoomKey, alreadyInTheGame, isHost } = useContext(RoomContext)
   const [next] = useRoomState({})
   const { player } = useContext(PlayerContext)
+  const refInputPassword = useRef<string>('')
 
   const isPrivate = room?.password !== undefined
 
@@ -50,13 +51,23 @@ const PreviewPage = () => {
     await navigator.clipboard.writeText(window.location.href)
   }
 
+  const addPlayer = () => {
+    if (isPrivate && refInputPassword.current === room?.password) {
+      addPlayerToRoom(player)
+    }
+
+    if (!isPrivate) {
+      addPlayerToRoom(player)
+    }
+  }
+
   const FOOTER_BUTTONS: ButtonProps[] = [
     {
       key: 'UNIRSE',
       type: 'submit',
       theme: 'primary',
       size: 'large',
-      onClick: () => addPlayerToRoom(player),
+      onClick: () => addPlayer(),
       children: 'UNIRSE'
     }
   ]
@@ -89,6 +100,10 @@ const PreviewPage = () => {
     return FOOTER_BUTTONS
   }, [player, room])
 
+  const setPassword = (pass: string) => {
+    refInputPassword.current = pass
+  }
+
   return (
     <Layout
       title={ isPrivate ? room.name + ' 🔒' : room?.name || '' }
@@ -101,7 +116,7 @@ const PreviewPage = () => {
       <PreviewInfoRoom room={room}/>
 
       {
-        isPrivate && <PasswordRoom/>
+        isPrivate && <PasswordRoom setPassword={setPassword}/>
       }
 
     </Layout>
