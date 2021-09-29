@@ -1,147 +1,113 @@
-import React, { useContext, useEffect } from 'react'
-import { paths } from '../routes'
-import styles from './styles/ProvisionalClasPage.module.scss'
+import React, { useContext, useEffect, useMemo } from 'react'
 import ClassificationCard from '../components/molecules/ClassificationCard'
-import { Button } from '../components/atoms/Button'
-import Header from '../components/molecules/Header'
+import { Props as ButtonProps } from '../components/atoms/Button'
 import Winner from '../components/molecules/Winner'
-import { useHistory, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { RoomContext } from '../contexts/RoomContextState'
 import useRoomState from '../hooks/useRoomState'
+import Layout from '../components/templates/Layout'
+import { PlayerContext } from '../contexts/PlayerContextState'
 
-export interface Props {
-  positions: Position[]
-}
+const LABELS = (isEnd: boolean, roundInProgress: number, rounds: number) => isEnd
+  ? { title: 'Clasificación Final' }
+  : { title: 'Clasificación temporal', subTitle: `Ronda ${roundInProgress}/${rounds}` }
 
-export interface Position {
-  id: number,
-  name: string,
-  score: number,
-  image: string // ?
-}
-const positionArr: Position[] = [
-  {
-    id: 1,
-    name: 'Pepito',
-    score: 25,
-    image: 'avatar'
-  },
-  {
-    id: 2,
-    name: 'Pepito',
-    score: 35,
-    image: 'avatar4'
-  },
-  {
-    id: 3,
-    name: 'Mengano',
-    score: 45,
-    image: 'avatar2'
-  },
-  {
-    id: 4,
-    name: 'Sultano',
-    score: 18,
-    image: 'avatar3'
-  },
-  {
-    id: 5,
-    name: 'Pepito2',
-    score: 5,
-    image: 'avatar5'
-  }
-]
-
-function sortJSON<DataType> (data: DataType[], key:string, orden:'asc' | 'desc') {
-  return data.sort(function (a:DataType, b:DataType) {
-    if (key in a && key in b) {
-      const x = (a as any)[key]
-      const y = (b as any)[key]
-
-      if (orden === 'desc') {
-        return ((x > y) ? -1 : ((x < y) ? 1 : 0))
-      } else {
-        return ((x < y) ? -1 : ((x > y) ? 1 : 0))
-      }
-    }
-
-    return -1
-  })
-}
-
-const newPositionJSON = sortJSON(positionArr, 'score', 'desc')
-
-const winner = newPositionJSON[0]
-
-const loser = newPositionJSON.filter((_item, index) => index !== 0)
+const BUTTONS = (isEnd: boolean, next: () => void): ButtonProps[] => isEnd
+  ? [{
+    key: 'END_GAME',
+    type: 'submit',
+    theme: 'primary',
+    size: 'large',
+    onClick: next,
+    children: 'VOLVER AL INICIO'
+  }]
+  : [{
+    key: 'NEXT_ROUND',
+    type: 'submit',
+    theme: 'primary',
+    size: 'large',
+    onClick: next,
+    children: 'SIGUIENTE RONDA'
+  }]
 
 const ProvisionalClasPage: React.FC = () => {
-  const history = useHistory()
-  const { isLastRound, setRoomKey } = useContext(RoomContext)
+  const { isLastRound, setRoomKey, room } = useContext(RoomContext)
+  const { player } = useContext(PlayerContext)
   const [next] = useRoomState({})
   const { idRoom } = useParams<{ idRoom: string }>()
+
+  // TODO: In the future must check by another property that name
+  const results = useMemo(() => {
+    if (!room?.players) return null
+
+    const winner = !isLastRound
+      ? {
+        name: room.players[0].name,
+        image: room.players[0].imageIndex,
+        score: 0,
+        isCurrentUser: player.name === room.players[0].name
+      }
+      : null
+
+    return {
+      winner,
+      positions: room.players.filter(({ name }) => winner?.name !== name).map(({ name, imageIndex }) => ({
+        name,
+        image: imageIndex,
+        score: 0,
+        isCurrentUser: player.name === name
+      }))
+    }
+  }, [room])
 
   useEffect(() => {
     setRoomKey(idRoom)
   }, [])
 
   return (
-    <>
-      { isLastRound
-        ? <div className={styles.containerwin}>
-          <Header
-            title='Clasificación Final'
-            onClose={() => history.push(paths.BOARD)}
-          />
-          <Winner
-            image={(winner.image as any)}
-            name={winner.name}
-            score={winner.score}
-          />
-          { loser.sort((paramA, paramB) => paramA.score + paramB.score).map((position, index) => (
-            <ClassificationCard
-              key={position.id}
-              name={position.name}
-              score={position.score}
-              position={index + 2}
-              image={(position.image as any)}
-            />
-          ))}
-          <Button
-            type='button'
-            onClick={next}
-            theme='primary'
-            size='large'
-          >
-            SALIR DE LA PARTIDA
-          </Button>
-        </div>
-        : <div className={styles.container}>
-          <Header
-            title='Clasificación temporal'
-            onClose={() => history.push(paths.BOARD)}
-            subTitle='Ronda 1/5'
-          />
-          { newPositionJSON.sort((paramA, paramB) => paramA.score + paramB.score).map((position, index) => (
-            <ClassificationCard
-              key={position.id}
-              name={position.name}
-              score={position.score}
-              position={index + 1}
-              image={(position.image as any)}
-            />
-          ))}
-          <Button
-            type='button'
-            onClick={next}
-            theme='primary'
-            size='large'
-          >
-            SIGUIENTE RONDA
-          </Button>
-        </div>
+    <Layout
+      loading={!results}
+      onClose={next}
+      buttons={BUTTONS(!isLastRound, next)}
+      isEnded={!isLastRound}
+      {...LABELS(!isLastRound, room?.roundInProgress, room?.rounds)}
+    >
+      {
+        results?.winner
+          ? (
+            <>
+              <Winner
+                avatarIndex={results.winner.image}
+                name={results.winner.name}
+                score={results.winner.score}
+                isCurrentPlayer={results.winner.isCurrentUser}
+              />
+              { results.positions.sort((paramA, paramB) => paramA.score + paramB.score).map((position, index) => (
+                <ClassificationCard
+                  key={position.name}
+                  name={position.name}
+                  score={position.score}
+                  position={index + 2}
+                  avatarIndex={position.image}
+                  isCurrentPlayer={position.isCurrentUser}
+                />
+              ))}
+            </>
+          )
+          : (
+            results?.positions.sort((paramA, paramB) => paramA.score + paramB.score).map((position, index) => (
+              <ClassificationCard
+                key={position.name}
+                name={position.name}
+                score={position.score}
+                position={index + 1}
+                avatarIndex={position.image}
+                isCurrentPlayer={position.isCurrentUser}
+              />
+            ))
+          )
       }
-    </>
+    </Layout>
   )
 }
 
