@@ -15,6 +15,7 @@ import {
   saveValidation
 } from '../../firebase/services/validations'
 import { generateData } from '../../utils/generateData'
+import { Unsubscribe } from '@firebase/database'
 
 interface Validation {
   roomKey: string;
@@ -101,14 +102,17 @@ const ValidationPage = () => {
   }, [])
 
   useEffect(() => {
-    getRoundsGame((data) =>
-      generateData(data, setValidations, idRoom, room?.roundInProgress)
-    )
-    const unsuscribe = getValidationsWithSync((data) =>
-      generateData(data, setSavedValidations, idRoom, room?.roundInProgress)
-    )
+    let unsuscribe: Unsubscribe | null = null
+    if (room?.roundInProgress) {
+      getRoundsGame((data) =>
+        generateData(data, setValidations, idRoom, room?.roundInProgress)
+      )
+      unsuscribe = getValidationsWithSync((data) =>
+        generateData(data, setSavedValidations, idRoom, room?.roundInProgress)
+      )
+    }
 
-    return () => unsuscribe()
+    return () => unsuscribe?.()
   }, [room])
 
   useEffect(() => {
