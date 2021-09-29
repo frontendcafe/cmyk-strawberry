@@ -52,3 +52,8 @@
     font-size: t.$display-02-size;
   }
 }
+
+.selected {
+  background: colors.$secondary-40;
+  border: 2px solid colors.$neutral-10;
+}

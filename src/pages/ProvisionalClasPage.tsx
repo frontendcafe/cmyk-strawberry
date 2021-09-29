@@ -147,6 +147,7 @@ const ProvisionalClasPage: React.FC = () => {
                 avatarIndex={results.winner.image}
                 name={results.winner.name}
                 score={results.winner.score}
+                isCurrentPlayer={results.winner.isCurrentUser}
               />
               { results.positions.sort((paramA, paramB) => paramA.score + paramB.score).map((position, index) => (
                 <ClassificationCard
@@ -155,6 +156,7 @@ const ProvisionalClasPage: React.FC = () => {
                   score={position.score}
                   position={index + 2}
                   avatarIndex={position.image}
+                  isCurrentPlayer={position.isCurrentUser}
                 />
               ))}
             </>
@@ -167,6 +169,7 @@ const ProvisionalClasPage: React.FC = () => {
                 score={position.score}
                 position={index + 1}
                 avatarIndex={position.image}
+                isCurrentPlayer={position.isCurrentUser}
               />
             ))
           )

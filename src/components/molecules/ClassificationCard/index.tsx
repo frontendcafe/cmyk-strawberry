@@ -3,15 +3,16 @@ import Avatar from '../../atoms/Avatars'
 import styles from './ClassificationCard.module.scss'
 
 export interface Props {
-    name: string,
-    score: number,
-    position: number,
-    avatarIndex: number
+    name: string;
+    score: number;
+    position: number;
+    avatarIndex: number;
+    isCurrentPlayer?: boolean;
   }
 
-function ClassificationCard ({ name, score, position, avatarIndex }: Props) {
+function ClassificationCard ({ name, score, position, avatarIndex, isCurrentPlayer }: Props) {
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${isCurrentPlayer ? styles.selected : ''}`}>
       <div className={styles.info}>
         <Avatar index={avatarIndex} className={styles.image}/>
         <div className={styles.description}>

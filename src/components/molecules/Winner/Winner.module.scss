@@ -58,6 +58,11 @@
     width: 200px;
   }
 
+  .info.selected {
+    background: colors.$secondary-40;
+    border: 2px solid colors.$neutral-10;
+  }
+
   .name {
     font-weight: t.$small-bold-weight;
   }
