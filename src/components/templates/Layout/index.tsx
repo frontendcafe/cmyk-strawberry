@@ -15,7 +15,7 @@ export interface Props extends HeaderProps{
 const Layout = ({ title, subTitle, letter, onClose, children, buttons, loading, handleButtonClick }: Props) => {
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.header}>
         <Header title={title} subTitle={subTitle} onClose={onClose} letter={letter} handleButtonClick={handleButtonClick}/>
       </div>
 
