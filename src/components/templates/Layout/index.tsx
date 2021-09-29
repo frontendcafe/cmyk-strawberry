@@ -10,15 +10,27 @@ export interface Props extends HeaderProps{
   buttons?: ButtonProps[];
   loading?: boolean;
   handleButtonClick?: () => void;
+  className?: string;
+  isEnded?: boolean;
 }
 
-const Layout = ({ title, subTitle, letter, onClose, children, buttons, loading, handleButtonClick }: Props) => {
+const Layout = ({
+  className,
+  title,
+  subTitle,
+  letter,
+  onClose,
+  children,
+  buttons,
+  loading,
+  handleButtonClick,
+  isEnded
+}: Props) => {
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${isEnded ? styles.ended : ''}${className ?? ''}`}>
       <div className={styles.header}>
         <Header title={title} subTitle={subTitle} onClose={onClose} letter={letter} handleButtonClick={handleButtonClick}/>
       </div>
-
       <main className={styles.main}>
         {loading ? 'Cargando...' : children}
       </main>

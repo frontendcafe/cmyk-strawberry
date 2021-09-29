@@ -1,24 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
-
-//variables
-//$font-primary: "Work Sans", sans-serif;
-$font-medium: 'work sans', sans-serif;
-$white-color: #f8f9fa;
-$font-size-02: 22px;
-$font-size-03: 20px;
-$font-small: 16px;
-$black-color: #272727;
-$secundary-60: #1f4459;
-$primary-40: #f15362;
-$weight-500: 500;
-$weight-600: 600;
-$weight-700: 700;
+@use './../../../scss/colors' as colors;
+@use './../../../scss/typography-mobile' as t;
 
 .container {
   align-items: center;
+  color: colors.$neutral-30;
   display: flex;
   flex-direction: column;
+  font-size: t.$medium-medium-size;
+  font-weight: t.$medium-medium-weight;
+  line-height: 26px;
   padding: 20px 0;
+
+  p,
+  span {
+    margin: 0;
+  }
+
+  div {
+    text-align: center;
+  }
 
   .imgcontainer {
     height: 150px;
@@ -27,7 +27,7 @@ $weight-700: 700;
   }
 
   .image {
-    background-color: $primary-40;
+    background-color: colors.$primary-40;
     border-radius: 50%;
     bottom: 0%;
     height: 120px;
@@ -45,11 +45,11 @@ $weight-700: 700;
 
   .info {
     align-items: center;
-    background-color: $secundary-60;
+    background-color: colors.$secondary-60;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    font-size: $font-small;
+    font-size: t.$small-bold-size;
     justify-content: space-between;
     letter-spacing: 0.2;
     line-height: 24px;
@@ -58,7 +58,12 @@ $weight-700: 700;
     width: 200px;
   }
 
+  .info.selected {
+    background: colors.$secondary-40;
+    border: 2px solid colors.$neutral-10;
+  }
+
   .name {
-    font-weight: $weight-700;
+    font-weight: t.$small-bold-weight;
   }
 }
