@@ -1,25 +1,13 @@
-@use '../../scss/colors' as c;
-@use '../../scss/typography-mobile' as f;
-@use '../../scss/fonts';
+@use "../../scss/colors" as c;
+@use "../../scss/typography-mobile" as f;
+@use "../../scss/fonts";
 
-.container {
-  background-image: url('../../assets/bg-mobile-blue.png');
-  background-size: cover;
+.info {
   color: c.$neutral-10;
-  min-height: 600px;
-  padding-bottom: 30px;
 
-  .header {
-    align-items: center;
-    background-color: c.$neutral-90;
-    box-shadow: 0 1px 0 #6b7278;
+  .team {
     display: flex;
-    flex-direction: row;
-    font-size: f.$display-02-size;
-    height: 20px;
-    justify-content: flex-start;
-    margin-bottom: 30px;
-    padding: 24px 24px 24px 16px;
+    flex-wrap: wrap;
   }
 }
 
@@ -41,6 +29,7 @@
     font-weight: f.$display-03-weight;
     line-height: f.$display-03-height;
     margin: 0;
+    padding-bottom: 10px;
   }
 
   p {
