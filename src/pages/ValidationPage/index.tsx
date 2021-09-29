@@ -10,7 +10,12 @@ import { PlayerContext } from '../../contexts/PlayerContextState'
 import { getRoundsGame } from '../../firebase/services/roundsGame'
 import { useCategories } from '../../hooks/useCategories'
 import useRoomState from '../../hooks/useRoomState'
-import { getValidationsWithSync, saveValidation } from '../../firebase/services/validations'
+import {
+  getValidationsWithSync,
+  saveValidation
+} from '../../firebase/services/validations'
+import { generateData } from '../../utils/generateData'
+import { Unsubscribe } from '@firebase/database'
 
 interface Validation {
   roomKey: string;
@@ -21,14 +26,8 @@ interface Validation {
 
 const ValidationPage = () => {
   const history = useHistory()
-  const {
-    room,
-    roomKey,
-    setRoomKey,
-    currentLetter,
-    onlinePlayers,
-    isHost
-  } = useContext(RoomContext)
+  const { room, roomKey, setRoomKey, currentLetter, onlinePlayers, isHost } =
+    useContext(RoomContext)
   const { player, playerKey } = useContext(PlayerContext)
   const [categoryCount, setCategoryCount] = useState(0)
   const [validations, setValidations] = useState<Validation[] | null>(null)
@@ -38,15 +37,6 @@ const ValidationPage = () => {
   const [nextSended, setNextSended] = useState(false)
   const { idRoom } = useParams<{ idRoom: string }>()
   const [next] = useRoomState({})
-
-  const generateData = (data: any, callback: (data: any) => void) => {
-    const parsedData = Object.keys(data).map((key) => data[key])
-    const inProgressValidation = parsedData.filter(
-      ({ roomKey, round }) =>
-        roomKey === idRoom && round === room?.roundInProgress
-    )
-    callback(inProgressValidation)
-  }
 
   const validating = useMemo(() => {
     if (validations) {
@@ -112,14 +102,22 @@ const ValidationPage = () => {
   }, [])
 
   useEffect(() => {
-    getRoundsGame((data) => generateData(data, setValidations))
-    const unsuscribe = getValidationsWithSync((data) => generateData(data, setSavedValidations))
+    let unsuscribe: Unsubscribe | null = null
+    if (room?.roundInProgress) {
+      getRoundsGame((data) =>
+        generateData(data, setValidations, idRoom, room?.roundInProgress)
+      )
+      unsuscribe = getValidationsWithSync((data) =>
+        generateData(data, setSavedValidations, idRoom, room?.roundInProgress)
+      )
+    }
 
-    return () => unsuscribe()
+    return () => unsuscribe?.()
   }, [room])
 
   useEffect(() => {
-    if (savedValidations &&
+    if (
+      savedValidations &&
       onlinePlayers &&
       savedValidations.length >= onlinePlayers.length &&
       isHost(player) &&
@@ -132,7 +130,7 @@ const ValidationPage = () => {
 
   const getDurationProgress = () => {
     const cantPlayers = room?.players.length
-    return cantPlayers > 4 ? (5 * ((cantPlayers - 4) * 2.5)) : 5
+    return cantPlayers > 4 ? 5 * ((cantPlayers - 4) * 2.5) : 5
   }
 
   return (
@@ -154,8 +152,8 @@ const ValidationPage = () => {
           <WordsValidation
             myAnswer={validating.myAnswer}
             renderAnswers={renderAnswers()}
-            durationProgress={ getDurationProgress() }
-            onCompleteProgress={ handleValidate }
+            durationProgress={getDurationProgress()}
+            onCompleteProgress={handleValidate}
           />
         </>
       )}
