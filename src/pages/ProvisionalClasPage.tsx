@@ -8,17 +8,6 @@ import useRoomState from '../hooks/useRoomState'
 import Layout from '../components/templates/Layout'
 import { PlayerContext } from '../contexts/PlayerContextState'
 
-export interface Props {
-  positions: Position[]
-}
-
-export interface Position {
-  id: number,
-  name: string,
-  score: number,
-  image: string // ?
-}
-
 const LABELS = (isEnd: boolean, roundInProgress: number, rounds: number) => isEnd
   ? { title: 'Clasificación Final' }
   : { title: 'Clasificación temporal', subTitle: `Ronda ${roundInProgress}/${rounds}` }
