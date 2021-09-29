@@ -1,26 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
-
-//variables
-//$font-primary: "Work Sans", sans-serif;
-$font-medium: 'work sans', sans-serif;
-$white-color: #f8f9fa;
-$font-size-02: 22px;
-$font-size-03: 20px;
-$font-small: 16px;
-$black-color: #272727;
-$primary-40: #f15362;
-$secundary-60: #1f4459;
-$weight-500: 500;
-$weight-600: 600;
-$weight-700: 700;
+@use './../../../scss/colors' as colors;
+@use './../../../scss/typography-mobile' as t;
 
 .container {
   align-items: center;
-  background-color: $secundary-60;
+  background-color: colors.$secondary-60;
   border-radius: 8px;
+  color: colors.$neutral-30;
   display: flex;
   flex-direction: row;
-  font-size: $font-small;
+  font-size: t.$small-bold-size;
+  font-weight: t.$medium-medium-weight;
   justify-content: space-between;
   letter-spacing: 0.2;
   line-height: 24px;
@@ -35,8 +24,12 @@ $weight-700: 700;
     justify-content: center;
   }
 
+  .description > p {
+    margin: 0;
+  }
+
   .image {
-    background-color: $primary-40;
+    background-color: colors.$primary-40;
     border-radius: 50%;
     height: 60px;
     margin-right: 16px;
@@ -44,10 +37,18 @@ $weight-700: 700;
   }
 
   .name {
-    font-weight: $weight-700;
+    font-weight: t.$small-bold-weight;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 170px;
   }
 
   .info {
     display: flex;
+  }
+
+  .position {
+    font-size: t.$display-02-size;
   }
 }
