@@ -10,6 +10,13 @@ body {
   background-image: url('../../../assets/bg-mobile-pattern.svg');
   min-height: 100vh;
 
+  .header {
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 9;
+
   &.ended {
     background-image: url('../../../assets/bgGold.svg');
   }
@@ -19,7 +26,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 12px 16px;
+    padding: 76px 16px 12px;
   }
 
   .footer {

@@ -33,7 +33,7 @@ const Header = ({ title, subTitle, onClose, letter = '', handleButtonClick }: Pr
             </div>
           )
           : (
-            <div className={styles.lettercontainer}>
+            <div className={`${styles.lettercontainer} ${handleButtonClick ? styles.letterboard : ''}`}>
               <h1 className={styles.title}>{title}</h1>
               <span className={styles.subtitle}>{subTitle}</span>
             </div>
