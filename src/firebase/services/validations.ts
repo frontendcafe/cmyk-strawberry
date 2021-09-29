@@ -12,3 +12,11 @@ export const getValidationsWithSync = (callback: (data: any) => void) => {
     callback(snapshot.val())
   })
 }
+
+export const getValidations = (callback: (data: any) => void) => {
+  onValue(validationsRef, (snapshot) => {
+    callback(snapshot.val())
+  }, {
+    onlyOnce: true
+  })
+}
