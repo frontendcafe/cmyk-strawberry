@@ -130,7 +130,7 @@ const ProvisionalClasPage: React.FC = () => {
           if (roundResponses.every((otherResponse) =>
             otherResponse.playerKey === playerKey ||
             (!otherResponse.values?.[name] ||
-            otherResponse.values[name].trim() !== '')
+            otherResponse.values[name].trim() === '')
           )) return 20
 
           // By default give 10 points
