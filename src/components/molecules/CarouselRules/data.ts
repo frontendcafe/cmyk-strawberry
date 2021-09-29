@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
-import image1 from '../../../assets/carousel-rules/rules1.svg'
+import image1 from '../../../assets/carousel-rules/rules1.png'
 import image2 from '../../../assets/carousel-rules/rules2.svg'
 import image3 from '../../../assets/carousel-rules/rules3.svg'
 import image4 from '../../../assets/carousel-rules/rules4.svg'
