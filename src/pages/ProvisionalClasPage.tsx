@@ -62,12 +62,7 @@ const ProvisionalClasPage: React.FC = () => {
       .sort((paramA, paramB) => paramA.score > paramB.score ? -1 : 1)
 
     const winner = isLastRound
-      ? {
-        name: room.players[0].name,
-        image: room.players[0].imageIndex,
-        score: gameStats.find(({ playerName }) => playerName === room.players[0].name)?.points ?? 0,
-        isCurrentUser: player.name === room.players[0].name
-      }
+      ? positions[0]
       : null
 
     return {
@@ -133,7 +128,7 @@ const ProvisionalClasPage: React.FC = () => {
 
           // If no one fill's this category give 20 points
           if (roundResponses.every((otherResponse) =>
-            otherResponse.playerKey !== playerKey &&
+            otherResponse.playerKey === playerKey ||
             (!otherResponse.values?.[name] ||
             otherResponse.values[name].trim() !== '')
           )) return 20
