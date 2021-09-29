@@ -8,7 +8,7 @@ const Logotype1: React.FC = () => {
       <div className="border">
             Frutti
         <br/>
-            !STOP¡
+            ¡STOP!
       </div>
 
     </div>

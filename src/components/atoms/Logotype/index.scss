@@ -1,24 +1,21 @@
 
 @use '../../../scss/colors' as c;
 
-$size: 60px;
 $weight: 400;
-$coloursred: #f00;
 $spacing: -0.05em;
 $shadow: -11px 15px 4px c.$neutral-110;
 
 .letra {
   align-items: center;
-  color: c.$primary-10;
+  color: #fff1f1;
   display: flex;
-  font-size: $size;
+  font-size: 57px;
   font-style: normal;
-  font-weight: $weight;
-  letter-spacing: $spacing;
-  line-height: 50px;
+  letter-spacing: -4px;
+  line-height: 52px;
   text-align: center;
   text-shadow: -6px 8px 1px #000;
-  -webkit-text-stroke: 4px $coloursred;
+  -webkit-text-stroke: 4px c.$primary-50;
   transition: all 0.6s;
 
   div {
@@ -28,6 +25,6 @@ $shadow: -11px 15px 4px c.$neutral-110;
   &:hover {
     color: c.$primary-10;
     text-shadow: $shadow;
-    -webkit-text-stroke: 4px $coloursred;
+    -webkit-text-stroke: 4px c.$primary-50;
   }
 }
