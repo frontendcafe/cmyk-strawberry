@@ -116,7 +116,7 @@ const PreviewPage = () => {
       <PreviewInfoRoom room={room}/>
 
       {
-        isPrivate && <PasswordRoom setPassword={setPassword}/>
+        (isPrivate && !isHost(player)) && <PasswordRoom setPassword={setPassword}/>
       }
 
     </Layout>
