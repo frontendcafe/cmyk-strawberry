@@ -1,18 +1,19 @@
 import React from 'react'
 import styles from './styles/aboutPages.module.scss'
-import close from '../assets/close.svg'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import PersonalCard from '../components/molecules/PersonalCard/index'
+import Layout from '../components/templates/Layout'
+import { useHistory } from 'react-router'
+import { paths } from '../routes'
 
 const AboutPage: React.FC = () => {
+  const history = useHistory()
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <Link to='/'>
-          <img src={close} alt='close'/>
-        </Link>
-        <h3 className={styles.title}>Sobre Nosotros</h3>
-      </header>
+    <Layout
+      title="Sobre Nosotros"
+      subTitle=""
+      onClose={() => history.push(paths.HOME)}
+    >
       <div className={styles.info}>
         <div className={styles.project}>
           <h4>Contexto del proyecto</h4>
@@ -103,7 +104,7 @@ const AboutPage: React.FC = () => {
           />
         </div>
       </div>
-    </div>
+    </Layout>
   )
 }
 

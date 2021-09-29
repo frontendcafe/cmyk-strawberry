@@ -28,10 +28,9 @@ const Layout = ({
 }: Props) => {
   return (
     <div className={`${styles.container} ${isEnded ? styles.ended : ''}${className ?? ''}`}>
-      <div>
+      <div className={styles.header}>
         <Header title={title} subTitle={subTitle} onClose={onClose} letter={letter} handleButtonClick={handleButtonClick}/>
       </div>
-
       <main className={styles.main}>
         {loading ? 'Cargando...' : children}
       </main>

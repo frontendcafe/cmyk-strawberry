@@ -4,13 +4,26 @@ import { addPlayer, getPlayerByKeyWithSync, subscribePlayerOnlineStatus, updateP
 import { IPlayerContext, IPlayer } from '../types/room'
 
 export const namesPool = [
-  'Malvavisco Tostado',
-  'Cazadora de Pollitos',
-  'Cementerio de Doritos',
-  'Saco de papas',
   'Perrito Malvado',
-  'Tommiyiyi',
-  'Albondiga de oro'
+  'Malvavisco Tostado',
+  'Saco de papas',
+  'Ráfaga de invierno',
+  'Bolsa de boxeo',
+  'Hereje de satán',
+  'Tender con alas',
+  'Capataz del Hobbit',
+  'Crema del cielo',
+  'Espuma de dios',
+  'Cementerio de Doritos',
+  'Albondiga de oro',
+  'Motociclista a contramano',
+  'Pejelagarto',
+  'Anato mía',
+  'Saco de huesos',
+  'Calcetín de Rombos Man',
+  'Rin raja',
+  'Rollo de cocina',
+  'Dentrífico helado'
 ]
 
 export const getRandomName = () => {
