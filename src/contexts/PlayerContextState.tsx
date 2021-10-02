@@ -26,19 +26,28 @@ export const namesPool = [
   'Dentrífico helado'
 ]
 
+const AVATAR_ARRAY_LENGTH = 5 // TODO: pasarlo a AVATAR Component y exportarlo de ahi para el dia q se agregue mas avatar
+
 export const getRandomName = () => {
   return namesPool[Math.floor(Math.random() * namesPool.length)]
 }
 
-const AVATAR_ARRAY_LENGTH = 5 // TODO: pasarlo a AVATAR Component y exportarlo de ahi para el dia q se agregue mas avatar
+export const getRandomAvatarIndex = (actualIndex: number) => {
+  let randomIndex = Math.floor(Math.random() * AVATAR_ARRAY_LENGTH)
+  while (randomIndex === actualIndex) {
+    randomIndex = Math.floor(Math.random() * AVATAR_ARRAY_LENGTH)
+  }
+  return randomIndex
+}
 
-export const getRandomPlayer = (host = false) => {
+export const getRandomPlayer = (host = false): IPlayer => {
   const randomAvatarIndex = Math.floor(Math.random() * AVATAR_ARRAY_LENGTH)
   const randomNameGenerated = getRandomName()
   return {
     name: randomNameGenerated,
     imageIndex: randomAvatarIndex,
-    host
+    host,
+    online: true
   }
 }
 
@@ -52,8 +61,6 @@ export const PlayerProvider: React.FC = ({ children }) => {
     if (playerKey) {
       getPlayerByKeyWithSync(playerKey, setPlayer)
       subscribePlayerOnlineStatus(playerKey)
-    } else {
-      setPlayer(getRandomPlayer()) // TODO: que hacer con este randomPlayer?
     }
   }, [])
 

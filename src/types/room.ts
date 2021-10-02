@@ -10,7 +10,7 @@ export interface IPlayer {
   name: string,
   imageIndex: number,
   host?: boolean
-  online?: boolean
+  online: boolean
 }
 
 export interface IPlayerContext {

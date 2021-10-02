@@ -7,42 +7,40 @@ import Subtract from './assets/Subtract.svg'
 import Input from './../input/index'
 import Avatar from './../Avatars/index'
 import { Link } from 'react-router-dom'
-import { PlayerContext, getRandomName } from '../../../contexts/PlayerContextState'
-import useLocalStorage from '../../../hooks/useLocalStorage'
+import { PlayerContext, getRandomPlayer, getRandomAvatarIndex } from '../../../contexts/PlayerContextState'
 import { paths } from '../../../routes'
 import { useHistory } from 'react-router'
-
-const AVATAR_ARRAY_LENGTH = 5 // TODO: pasarlo a avatar component
-const randomAvatarIndex = Math.floor(Math.random() * AVATAR_ARRAY_LENGTH)
+import { IPlayer } from '../../../types/room'
 
 function Home () {
+  const [homePlayer, setHomePlayer] = useState<IPlayer | null>(null)
   const { player, addPlayerToContext, updatePlayerInContext } = useContext(PlayerContext)
-  const [avatarIndex, setAvatarIndex] = useState(randomAvatarIndex)
-  const [playerName, setPlayerName] = useState('')
-  const [playerKeyFromLS]: any = useLocalStorage('player_key', null)
   const history = useHistory()
 
   useEffect(() => {
-    // si hay player en contexto, sino name vacio y randomAvatar
-    if (playerKeyFromLS) {
-      setPlayerName(player?.name ?? '')
-      setAvatarIndex(player?.imageIndex ?? randomAvatarIndex)
+    /**
+     * Si existe player en localstorage, se utiliza la informacion de playerContext
+     * Sino se crea un usuario random
+     */
+    if (player) {
+      setHomePlayer(player)
+    } else {
+      setHomePlayer(getRandomPlayer())
     }
   }, [player])
 
-  function saveNewPlayer (host: boolean) {
-    const selectedPlayerName = playerName === ''
-      ? getRandomName()
-      : playerName
+  const setHomePlayerName = (name: string): void => {
+    setHomePlayer({ ...homePlayer!, name })
+  }
 
-    const newPlayer = {
-      name: selectedPlayerName,
-      imageIndex: avatarIndex,
-      host,
-      online: true
-    }
+  const setHomePlayerAvatar = () => {
+    const randomIndex = getRandomAvatarIndex(homePlayer!.imageIndex)
+    setHomePlayer({ ...homePlayer!, imageIndex: randomIndex })
+  }
+
+  function saveNewPlayer (host: boolean) {
     try {
-      addPlayerToContext(newPlayer)
+      addPlayerToContext({ ...homePlayer!, host })
     } catch (err) {
       console.log('From Home Screen on saving to DB')
       console.log(err)
@@ -50,18 +48,8 @@ function Home () {
   }
 
   function updatePlayer (host: boolean) {
-    const selectedPlayerName = playerName === ''
-      ? getRandomName()
-      : playerName
-
-    const newPlayer = {
-      name: selectedPlayerName,
-      imageIndex: avatarIndex,
-      host,
-      online: true
-    }
     try {
-      updatePlayerInContext(newPlayer)
+      updatePlayerInContext({ ...homePlayer!, host })
     } catch (err) {
       console.log('From Home Screen on updating to DB')
       console.log(err)
@@ -70,7 +58,7 @@ function Home () {
 
   const handleNewRoom = () => {
     const host = true
-    if (playerKeyFromLS) { // Update name and avatar
+    if (player) { // Update name and avatar
       updatePlayer(host)
     } else {
       saveNewPlayer(host)
@@ -80,7 +68,7 @@ function Home () {
 
   const handleFindRoom = () => {
     const host = false
-    if (playerKeyFromLS) {
+    if (player) {
       updatePlayer(host)
     } else {
       saveNewPlayer(host)
@@ -88,13 +76,7 @@ function Home () {
     history.push(paths.ROOMS)
   }
 
-  const handleAvatarChange = () => {
-    let randomIndex = Math.floor(Math.random() * AVATAR_ARRAY_LENGTH)
-    while (randomIndex === avatarIndex) {
-      randomIndex = Math.floor(Math.random() * AVATAR_ARRAY_LENGTH)
-    }
-    setAvatarIndex(randomIndex)
-  }
+  if (!homePlayer) return 'Cargando...'
 
   return (
     <div className="background">
@@ -116,19 +98,19 @@ function Home () {
             theme="tertiary"
             size="small"
             type="reset"
-            onClick={() => handleAvatarChange()}
+            onClick={setHomePlayerAvatar}
           >
             <img src={Vector} alt="logo"/>
           </Button>
           <div className="avatar-container">
-            <Avatar index={avatarIndex}/>
+            <Avatar index={homePlayer.imageIndex}/>
             <div
               className="input"
             >
               <Input
                 addButton={false}
-                changeHandler={setPlayerName} size="small-size"
-                value={playerName}
+                changeHandler={setHomePlayerName} size="small-size"
+                value={homePlayer.name}
               />
 
               <div className="buttons">
